@@ -636,6 +636,177 @@
       <div class="ad-slot" style="width:300px;min-width:300px;height:600px;margin-top:24px;"><span class="ad-label">Advertisement – 300×600</span></div>
     </aside>
   </div>
+
+  <!-- ═══ LIVE NEWS FEED ═══ -->
+  <div style="margin-top:40px;padding-top:32px;border-top:2px solid var(--ink);">
+    <div style="font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:16px;display:flex;align-items:center;gap:8px;">
+      Live Feed &nbsp;<span style="background:var(--red);color:#fff;padding:2px 7px;border-radius:2px;font-size:9px;letter-spacing:.1em;animation:pulse 1.5s infinite;">● UPDATING</span>
+      <span style="flex:1;height:1px;background:var(--paper3);display:block;"></span>
+      <span id="feed-updated" style="font-size:10px;color:var(--ink3);letter-spacing:0;text-transform:none;font-weight:400;"></span>
+    </div>
+
+    <!-- FEED TABS -->
+    <div style="display:flex;gap:0;border-bottom:1px solid var(--paper3);margin-bottom:20px;overflow-x:auto;scrollbar-width:none;">
+      <button class="feed-tab active" data-feed="top" onclick="switchFeed('top',this)">🇺🇸 Top News</button>
+      <button class="feed-tab" data-feed="world" onclick="switchFeed('world',this)">🌍 World</button>
+      <button class="feed-tab" data-feed="business" onclick="switchFeed('business',this)">📈 Business</button>
+      <button class="feed-tab" data-feed="tech" onclick="switchFeed('tech',this)">💻 Technology</button>
+      <button class="feed-tab" data-feed="health" onclick="switchFeed('health',this)">🏥 Health</button>
+      <button class="feed-tab" data-feed="science" onclick="switchFeed('science',this)">🔬 Science</button>
+    </div>
+
+    <!-- FEED CONTAINER -->
+    <div id="live-feed-container">
+      <div id="feed-loading" style="text-align:center;padding:40px;font-family:var(--sans);font-size:13px;color:var(--ink3);">
+        <div class="feed-spinner"></div>
+        Loading live headlines…
+      </div>
+      <div id="feed-items" style="display:none;"></div>
+      <div id="feed-error" style="display:none;background:var(--paper2);border:1px solid var(--paper3);padding:24px;text-align:center;font-family:var(--sans);font-size:13px;color:var(--ink3);">
+        <div style="font-size:24px;margin-bottom:8px;">📡</div>
+        <strong style="color:var(--ink2);display:block;margin-bottom:6px;">Live feed temporarily unavailable</strong>
+        Headlines are fetched in real time — try refreshing the page, or <a href="#" onclick="loadFeed(currentFeed);return false;" style="color:var(--red);">click here to retry</a>.
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:16px;">
+      <button onclick="loadFeed(currentFeed)" style="background:none;border:1px solid var(--paper3);padding:8px 20px;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--ink3);cursor:pointer;letter-spacing:.05em;text-transform:uppercase;transition:all .2s;" onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)';" onmouseout="this.style.borderColor='var(--paper3)';this.style.color='var(--ink3)';">↻ Refresh Feed</button>
+    </div>
+  </div>
+
+  <style>
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .feed-spinner{width:20px;height:20px;border:2px solid var(--paper3);border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px;}
+    .feed-tab{background:none;border:none;border-bottom:3px solid transparent;padding:10px 16px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ink3);cursor:pointer;white-space:nowrap;transition:all .15s;margin-bottom:-1px;}
+    .feed-tab:hover{color:var(--ink)}
+    .feed-tab.active{color:var(--red);border-bottom-color:var(--red)}
+    .feed-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--paper3);align-items:flex-start;cursor:pointer;}
+    .feed-item:last-child{border-bottom:none}
+    .feed-item:hover .feed-item-headline{color:var(--red)}
+    .feed-item-num{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--paper3);min-width:28px;line-height:1;padding-top:2px;}
+    .feed-item:hover .feed-item-num{color:var(--gold2)}
+    .feed-item-body{flex:1}
+    .feed-item-source{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px;}
+    .feed-item-headline{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:5px;transition:color .15s;}
+    .feed-item-desc{font-size:13px;color:var(--ink3);line-height:1.5;margin-bottom:5px;}
+    .feed-item-meta{font-family:var(--sans);font-size:11px;color:var(--ink3);}
+    .feed-item-img{width:110px;min-width:110px;height:76px;overflow:hidden;background:var(--paper2);}
+    .feed-item-img img{width:100%;height:100%;object-fit:cover;display:block;}
+    @media(max-width:500px){.feed-item-img{display:none}.feed-tab{padding:10px 10px;font-size:11px}}
+  </style>
+
+  <script>
+  var currentFeed = 'top';
+  var feedCache = {};
+  var autoRefreshTimer;
+
+  var FEEDS = {
+    top:      'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHomePage.xml&api_key=public&count=12',
+    world:    'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FWorld.xml&api_key=public&count=12',
+    business: 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FBusiness.xml&api_key=public&count=12',
+    tech:     'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FTechnology.xml&api_key=public&count=12',
+    health:   'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHealth.xml&api_key=public&count=12',
+    science:  'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FScience.xml&api_key=public&count=12'
+  };
+
+  var FALLBACK_FEEDS = {
+    top:      'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml&api_key=public&count=12',
+    world:    'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml&api_key=public&count=12',
+    business: 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fbusiness%2Frss.xml&api_key=public&count=12',
+    tech:     'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Ftechnology%2Frss.xml&api_key=public&count=12',
+    health:   'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fhealth%2Frss.xml&api_key=public&count=12',
+    science:  'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fscience_and_environment%2Frss.xml&api_key=public&count=12'
+  };
+
+  function switchFeed(key, btn) {
+    currentFeed = key;
+    document.querySelectorAll('.feed-tab').forEach(function(t){ t.classList.remove('active'); });
+    btn.classList.add('active');
+    if (feedCache[key]) {
+      renderFeed(feedCache[key]);
+    } else {
+      loadFeed(key);
+    }
+  }
+
+  function loadFeed(key, useFallback) {
+    var url = useFallback ? FALLBACK_FEEDS[key] : FEEDS[key];
+    document.getElementById('feed-loading').style.display = 'block';
+    document.getElementById('feed-items').style.display = 'none';
+    document.getElementById('feed-error').style.display = 'none';
+
+    fetch(url)
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (!data.items || data.items.length === 0) throw new Error('empty');
+        feedCache[key] = data.items;
+        renderFeed(data.items);
+        var now = new Date();
+        document.getElementById('feed-updated').textContent = 'Updated ' + now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+      })
+      .catch(function(){
+        if (!useFallback) {
+          loadFeed(key, true);
+        } else {
+          document.getElementById('feed-loading').style.display = 'none';
+          document.getElementById('feed-error').style.display = 'block';
+        }
+      });
+  }
+
+  function timeAgo(pubDate) {
+    if (!pubDate) return '';
+    var then = new Date(pubDate);
+    var diff = Math.floor((Date.now() - then) / 60000);
+    if (diff < 1) return 'Just now';
+    if (diff < 60) return diff + ' min ago';
+    if (diff < 1440) return Math.floor(diff/60) + ' hrs ago';
+    return Math.floor(diff/1440) + ' days ago';
+  }
+
+  function stripHtml(html) {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = html || '';
+    return tmp.textContent || '';
+  }
+
+  function renderFeed(items) {
+    var html = '';
+    items.slice(0, 10).forEach(function(item, i) {
+      var title = item.title || '';
+      var desc = stripHtml(item.description || item.content || '').substring(0, 160).trim();
+      if (desc.length === 160) desc += '…';
+      var source = item.author || (item.link ? new URL(item.link).hostname.replace('www.','') : 'Reuters');
+      var img = item.thumbnail || item.enclosure && item.enclosure.link || '';
+      var link = item.link || '#';
+      var ago = timeAgo(item.pubDate);
+      html += '<div class="feed-item" onclick="window.open(\'' + link.replace(/'/g,"\'") + '\',\'_blank\')">' +
+        '<div class="feed-item-num">0' + (i+1) + '</div>' +
+        '<div class="feed-item-body">' +
+          '<div class="feed-item-source">' + source + '</div>' +
+          '<div class="feed-item-headline">' + title + '</div>' +
+          (desc ? '<div class="feed-item-desc">' + desc + '</div>' : '') +
+          '<div class="feed-item-meta">' + ago + '</div>' +
+        '</div>' +
+        (img ? '<div class="feed-item-img"><img src="' + img + '" alt="" onerror="this.parentElement.style.display=\'none\'"></div>' : '') +
+      '</div>';
+    });
+    document.getElementById('feed-items').innerHTML = html;
+    document.getElementById('feed-loading').style.display = 'none';
+    document.getElementById('feed-items').style.display = 'block';
+  }
+
+  // Load on page ready
+  loadFeed('top');
+
+  // Auto-refresh every 60 minutes
+  autoRefreshTimer = setInterval(function(){
+    feedCache = {};
+    loadFeed(currentFeed);
+  }, 60 * 60 * 1000);
+  </script>
+
 </div>
 
 <footer>

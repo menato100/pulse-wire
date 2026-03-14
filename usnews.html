@@ -224,5 +224,97 @@ footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
   const toggle=document.getElementById('nav-toggle'),menu=document.getElementById('nav-menu');
   if(toggle&&menu){toggle.addEventListener('click',()=>{toggle.classList.toggle('open');menu.classList.toggle('open');});}
 </script>
+
+<div style="max-width:1200px;margin:40px auto 0;padding:0 20px 40px;">
+  <div style="border-top:2px solid var(--ink);padding-top:28px;">
+    <div style="font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+      Live Headlines &nbsp;<span style="background:var(--red);color:#fff;padding:2px 7px;border-radius:2px;font-size:9px;animation:lpulse 1.5s infinite;">● LIVE</span>
+      <span style="flex:1;height:1px;background:var(--paper3);"></span>
+      <span id="lf-updated" style="font-size:10px;color:var(--ink3);text-transform:none;font-weight:400;letter-spacing:0;"></span>
+    </div>
+    <div style="display:flex;gap:0;border-bottom:1px solid var(--paper3);margin-bottom:18px;overflow-x:auto;scrollbar-width:none;">
+      <button class="lf-tab active" data-feed="top" onclick="lfSwitch('top',this)">🇺🇸 U.S.</button>
+      <button class="lf-tab" data-feed="world" onclick="lfSwitch('world',this)">🌍 World</button>
+      <button class="lf-tab" data-feed="business" onclick="lfSwitch('business',this)">📈 Business</button>
+      <button class="lf-tab" data-feed="tech" onclick="lfSwitch('tech',this)">💻 Tech</button>
+      <button class="lf-tab" data-feed="health" onclick="lfSwitch('health',this)">🏥 Health</button>
+    </div>
+    <div id="lf-loading" style="text-align:center;padding:32px;font-family:var(--sans);font-size:13px;color:var(--ink3);"><div class="lf-spin"></div>Loading live headlines…</div>
+    <div id="lf-items" style="display:none;"></div>
+    <div id="lf-error" style="display:none;background:var(--paper2);border:1px solid var(--paper3);padding:20px;text-align:center;font-family:var(--sans);font-size:13px;color:var(--ink3);">📡 Live feed temporarily unavailable — <a href="#" onclick="lfLoad(lfCurrent);return false;" style="color:var(--red);">retry</a></div>
+    <div style="text-align:center;margin-top:14px;"><button onclick="lfLoad(lfCurrent)" style="background:none;border:1px solid var(--paper3);padding:7px 18px;font-family:var(--sans);font-size:11px;font-weight:600;color:var(--ink3);cursor:pointer;text-transform:uppercase;letter-spacing:.05em;">↻ Refresh</button></div>
+  </div>
+</div>
+<style>
+@keyframes lpulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes lspin{to{transform:rotate(360deg)}}
+.lf-spin{width:18px;height:18px;border:2px solid var(--paper3);border-top-color:var(--red);border-radius:50%;animation:lspin .8s linear infinite;margin:0 auto 10px;}
+.lf-tab{background:none;border:none;border-bottom:3px solid transparent;padding:9px 14px;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--ink3);cursor:pointer;white-space:nowrap;transition:all .15s;margin-bottom:-1px;}
+.lf-tab:hover{color:var(--ink)}.lf-tab.active{color:var(--red);border-bottom-color:var(--red)}
+.lf-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--paper3);align-items:flex-start;cursor:pointer;}
+.lf-item:last-child{border-bottom:none}.lf-item:hover .lf-hl{color:var(--red)}
+.lf-num{font-family:var(--serif);font-size:20px;font-weight:900;color:var(--paper3);min-width:26px;line-height:1;padding-top:2px;}
+.lf-item:hover .lf-num{color:var(--gold2)}
+.lf-src{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:3px;}
+.lf-hl{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px;transition:color .15s;}
+.lf-desc{font-size:12px;color:var(--ink3);line-height:1.5;margin-bottom:4px;}
+.lf-meta{font-family:var(--sans);font-size:11px;color:var(--ink3);}
+.lf-img{width:90px;min-width:90px;height:64px;overflow:hidden;background:var(--paper2);}
+.lf-img img{width:100%;height:100%;object-fit:cover;display:block;}
+@media(max-width:480px){.lf-img{display:none}}
+</style>
+<script>
+var lfCurrent='top',lfCache={};
+var LF_FEEDS={
+  top:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHomePage.xml&api_key=public&count=10',
+  world:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FWorld.xml&api_key=public&count=10',
+  business:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FBusiness.xml&api_key=public&count=10',
+  tech:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FTechnology.xml&api_key=public&count=10',
+  health:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHealth.xml&api_key=public&count=10'
+};
+var LF_FB={
+  top:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml&api_key=public&count=10',
+  world:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml&api_key=public&count=10',
+  business:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fbusiness%2Frss.xml&api_key=public&count=10',
+  tech:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Ftechnology%2Frss.xml&api_key=public&count=10',
+  health:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fhealth%2Frss.xml&api_key=public&count=10'
+};
+function lfSwitch(k,b){lfCurrent=k;document.querySelectorAll('.lf-tab').forEach(function(t){t.classList.remove('active')});b.classList.add('active');lfCache[k]?lfRender(lfCache[k]):lfLoad(k);}
+function lfLoad(k,fb){
+  var u=fb?LF_FB[k]:LF_FEEDS[k];
+  document.getElementById('lf-loading').style.display='block';
+  document.getElementById('lf-items').style.display='none';
+  document.getElementById('lf-error').style.display='none';
+  fetch(u).then(function(r){return r.json();}).then(function(d){
+    if(!d.items||!d.items.length)throw 0;
+    lfCache[k]=d.items;lfRender(d.items);
+    var n=new Date();document.getElementById('lf-updated').textContent='Updated '+n.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+  }).catch(function(){fb?showLfErr():lfLoad(k,true);});
+}
+function showLfErr(){document.getElementById('lf-loading').style.display='none';document.getElementById('lf-error').style.display='block';}
+function lfTimeAgo(p){if(!p)return'';var d=Math.floor((Date.now()-new Date(p))/60000);if(d<1)return'Just now';if(d<60)return d+' min ago';if(d<1440)return Math.floor(d/60)+' hrs ago';return Math.floor(d/1440)+' days ago';}
+function lfStrip(h){var t=document.createElement('div');t.innerHTML=h||'';return t.textContent||'';}
+function lfRender(items){
+  var h='';
+  items.slice(0,8).forEach(function(item,i){
+    var t=item.title||'',ds=lfStrip(item.description||item.content||'').substring(0,140);
+    if(ds.length===140)ds+='…';
+    var src=item.author||(item.link?new URL(item.link).hostname.replace('www.',''):'News');
+    var img=item.thumbnail||(item.enclosure&&item.enclosure.link)||'';
+    var lk=item.link||'#';
+    h+='<div class="lf-item" onclick="window.open(''+lk.replace(/'/g,"\'")+"','_blank')">"+
+      '<div class="lf-num">0'+(i+1)+'</div>'+
+      '<div style="flex:1"><div class="lf-src">'+src+'</div><div class="lf-hl">'+t+'</div>'+(ds?'<div class="lf-desc">'+ds+'</div>':'')+'<div class="lf-meta">'+lfTimeAgo(item.pubDate)+'</div></div>'+
+      (img?'<div class="lf-img"><img src="'+img+'" alt="" onerror="this.parentElement.style.display='none'"></div>':'')+
+    '</div>';
+  });
+  document.getElementById('lf-items').innerHTML=h;
+  document.getElementById('lf-loading').style.display='none';
+  document.getElementById('lf-items').style.display='block';
+}
+lfLoad(lfCurrent);
+setInterval(function(){lfCache={};lfLoad(lfCurrent);},3600000);
+</script>
+
 </body>
 </html>
