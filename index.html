@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PulseWire – Breaking News, Global Coverage & Trending Stories</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--ink:#1a1714;--ink2:#3d3830;--ink3:#6b6258;--paper:#faf8f4;--paper2:#f2efe9;--paper3:#e8e3da;--red:#c0392b;--red2:#e74c3c;--gold:#b8963a;--gold2:#d4ab52;--blue:#1a4a7a;--serif:'Playfair Display',Georgia,serif;--body-serif:'Source Serif 4',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+  html{font-size:16px}body{background:var(--paper);color:var(--ink);font-family:var(--body-serif);line-height:1.6}
+  .top-bar{background:var(--ink);color:#aaa;font-family:var(--sans);font-size:11px;letter-spacing:.08em;padding:6px 0}
+  .top-bar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+  .top-bar a{color:#ccc;text-decoration:none;margin-left:16px}.top-bar a:hover{color:#fff}
+  .ticker{display:flex;gap:24px;overflow:hidden;flex:1;align-items:center}
+  .ticker-label{background:var(--red);color:#fff;padding:1px 8px;font-size:10px;font-weight:600;letter-spacing:.1em;border-radius:2px;white-space:nowrap}
+  header{border-bottom:3px solid var(--ink);padding:18px 0 0;background:var(--paper)}
+  .header-inner{max-width:1200px;margin:0 auto;padding:0 20px}
+  .header-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--paper3)}
+  .masthead{font-family:var(--serif);font-size:clamp(42px,7vw,82px);font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+  .masthead span{color:var(--red)}
+  .header-meta{text-align:right;font-family:var(--sans);font-size:12px;color:var(--ink3);line-height:1.8}
+  .header-meta strong{display:block;font-size:13px;color:var(--ink2)}
+  .header-tagline{font-family:var(--body-serif);font-style:italic;font-size:13px;color:var(--ink3);letter-spacing:.04em}
+  .ad-slot{background:var(--paper2);border:1px dashed var(--paper3);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:11px;color:var(--ink3);letter-spacing:.1em}
+  .ad-slot-leaderboard{height:90px;margin:14px 0}
+  .ad-label{text-transform:uppercase;font-size:10px;background:var(--paper3);padding:2px 8px;border-radius:2px}
+  nav{border-bottom:2px solid var(--ink);position:relative}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+  nav ul{list-style:none;display:flex;gap:0;flex-wrap:wrap}
+  nav ul li a{display:block;padding:11px 16px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.05em;text-decoration:none;color:var(--ink2);text-transform:uppercase;transition:color .15s;white-space:nowrap}
+  nav ul li a:hover,nav ul li.active a{color:var(--red)}
+  nav ul li.active a{border-bottom:3px solid var(--red);margin-bottom:-2px}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:12px 0;flex-direction:column;gap:5px}
+  .nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .25s}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:760px){.nav-toggle{display:flex}nav ul{display:none;flex-direction:column;width:100%;background:var(--paper);border-top:1px solid var(--paper3);position:absolute;top:100%;left:0;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.08)}nav ul.open{display:flex}nav ul li a{padding:13px 20px;border-bottom:1px solid var(--paper3);font-size:14px}nav ul li.active a{border-bottom:1px solid var(--paper3);border-left:3px solid var(--red);padding-left:17px;margin-bottom:0}}
+  @media(min-width:761px) and (max-width:1040px){nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}nav ul::-webkit-scrollbar{display:none}nav ul li a{padding:11px 12px;font-size:12px}}
+  .breaking-bar{background:var(--red);color:#fff;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.08em;padding:7px 0;text-align:center}
+  .breaking-bar em{font-style:normal;background:rgba(0,0,0,.2);padding:1px 8px;border-radius:2px;margin-right:10px;font-size:10px;letter-spacing:.15em}
+  .container{max-width:1200px;margin:0 auto;padding:28px 20px}
+  .grid{display:grid;grid-template-columns:1fr 300px;gap:40px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .section-label{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--paper3)}
+  .hero{display:grid;grid-template-columns:3fr 2fr;gap:32px;padding-bottom:28px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+  @media(max-width:680px){.hero{grid-template-columns:1fr}}
+  .hero-image{width:100%;aspect-ratio:16/9;margin-bottom:14px;overflow:hidden}
+  .hero-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+  .hero-image img:hover{transform:scale(1.03)}
+  .cat-tag{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;margin-bottom:10px}
+  .hero-headline{font-family:var(--serif);font-size:clamp(22px,3.5vw,34px);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:10px;cursor:pointer}
+  .hero-headline:hover{color:var(--red)}
+  .hero-deck{font-size:15px;color:var(--ink2);line-height:1.6;margin-bottom:12px}
+  .byline{font-family:var(--sans);font-size:12px;color:var(--ink3)}
+  .byline strong{color:var(--ink2);font-weight:600}
+  .hero-side{display:flex;flex-direction:column;gap:0}
+  .side-story{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--paper3)}
+  .side-story:last-child{border-bottom:none}
+  .side-thumb{width:90px;min-width:90px;height:64px;overflow:hidden}
+  .side-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .side-headline{font-family:var(--serif);font-size:15px;font-weight:700;line-height:1.3;color:var(--ink);cursor:pointer;margin-bottom:4px}
+  .side-headline:hover{color:var(--red)}
+  .side-deck{font-size:12px;color:var(--ink3);line-height:1.45}
+  .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-bottom:28px;border-bottom:1px solid var(--paper3);margin-bottom:28px}
+  @media(max-width:680px){.three-col{grid-template-columns:1fr}}
+  @media(min-width:481px) and (max-width:680px){.three-col{grid-template-columns:repeat(2,1fr)}}
+  .two-col{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding-bottom:28px;border-bottom:1px solid var(--paper3);margin-bottom:28px}
+  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
+  .article-card{cursor:pointer}
+  .article-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:10px}
+  .article-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .article-thumb img:hover{transform:scale(1.04)}
+  .article-headline{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:6px}
+  .article-headline:hover{color:var(--red)}
+  .article-deck{font-size:13px;color:var(--ink3);line-height:1.5;margin-bottom:8px}
+  .trending-list{display:flex;flex-direction:column;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--paper3)}
+  .trending-item{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--paper3);align-items:center}
+  .trending-item:last-child{border-bottom:none}
+  .trending-num{font-family:var(--serif);font-size:28px;font-weight:900;color:var(--paper3);line-height:1;min-width:32px}
+  .trending-item:hover .trending-num{color:var(--gold2)}
+  .trending-thumb{width:80px;min-width:80px;height:56px;overflow:hidden}
+  .trending-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .trending-headline{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.3;color:var(--ink);cursor:pointer;margin-bottom:4px}
+  .trending-headline:hover{color:var(--red)}
+  .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:28px}
+  @media(max-width:600px){.video-grid{grid-template-columns:1fr}}
+  .video-card{cursor:pointer}
+  .video-thumb{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;margin-bottom:10px}
+  .video-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .video-thumb img:hover{transform:scale(1.04)}
+  .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:rgba(255,255,255,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .play-btn::after{content:'';border-style:solid;border-width:9px 0 9px 18px;border-color:transparent transparent transparent var(--ink);margin-left:4px}
+  .video-headline{font-family:var(--serif);font-size:15px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px}
+  .video-headline:hover{color:var(--red)}
+  .video-meta{font-family:var(--sans);font-size:11px;color:var(--ink3)}
+  .opinion-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:24px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--paper3);margin-bottom:28px}
+  @media(max-width:760px){.opinion-strip{grid-template-columns:repeat(2,1fr)}}
+  .opinion-card{padding:16px;background:var(--paper2);border:1px solid var(--paper3)}
+  .opinion-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;margin-bottom:10px}
+  .opinion-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .opinion-quote{font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.5;color:var(--ink);margin-bottom:10px;cursor:pointer}
+  .opinion-author{font-family:var(--sans);font-size:11px;font-weight:600;color:var(--ink3)}
+  .sidebar-widget{margin-bottom:28px}
+  .sidebar-title{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:16px}
+  .sidebar-story{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--paper3);align-items:flex-start}
+  .sidebar-story:last-child{border-bottom:none}
+  .sidebar-thumb{width:64px;min-width:64px;height:46px;overflow:hidden}
+  .sidebar-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .sidebar-content{flex:1}
+  .sidebar-headline{font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.35;color:var(--ink);cursor:pointer;margin-bottom:3px}
+  .sidebar-headline:hover{color:var(--red)}
+  .sidebar-meta{font-family:var(--sans);font-size:11px;color:var(--ink3)}
+  .briefing-story{padding:12px 0;border-bottom:1px solid var(--paper3)}
+  .briefing-story:last-child{border-bottom:none}
+  /* FEATURE STRIP */
+  .feature-strip{display:grid;grid-template-columns:2fr 1fr 1fr;gap:0;border:1px solid var(--paper3);margin-bottom:28px}
+  @media(max-width:700px){.feature-strip{grid-template-columns:1fr}}
+  .feature-main{position:relative;overflow:hidden}
+  .feature-main img{width:100%;height:300px;object-fit:cover;display:block}
+  .feature-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,.82))}
+  .feature-overlay .cat-tag{margin-bottom:6px}
+  .feature-overlay h3{font-family:var(--serif);font-size:20px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:6px}
+  .feature-overlay p{font-size:12px;color:rgba(255,255,255,.75);font-family:var(--sans)}
+  .feature-side{display:flex;flex-direction:column}
+  .feature-side-item{display:flex;flex-direction:column;border-left:1px solid var(--paper3);border-bottom:1px solid var(--paper3);overflow:hidden;flex:1}
+  .feature-side-item:last-child{border-bottom:none}
+  .feature-side-item img{width:100%;height:110px;object-fit:cover;display:block}
+  .feature-side-content{padding:10px 12px}
+  .feature-side-content h4{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px}
+  .feature-side-content h4:hover{color:var(--red)}
+  .feature-side-content p{font-size:11px;color:var(--ink3);font-family:var(--sans)}
+  /* LISTICLE */
+  .listicle{background:var(--paper2);border:1px solid var(--paper3);padding:20px 24px;margin-bottom:28px}
+  .listicle h3{font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:16px;color:var(--ink)}
+  .listicle ol{list-style:none;counter-reset:li}
+  .listicle ol li{counter-increment:li;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--paper3);align-items:flex-start}
+  .listicle ol li:last-child{border-bottom:none}
+  .listicle ol li::before{content:counter(li);font-family:var(--serif);font-size:24px;font-weight:900;color:var(--red);min-width:28px;line-height:1}
+  .listicle ol li .li-content h4{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:3px}
+  .listicle ol li .li-content p{font-size:13px;color:var(--ink3)}
+  footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
+  .footer-inner{max-width:1200px;margin:0 auto;padding:0 20px}
+  .footer-logo{font-family:var(--serif);font-size:32px;font-weight:900;color:#fff;margin-bottom:4px}
+  .footer-logo span{color:var(--red2)}
+  .footer-tagline{font-family:var(--body-serif);font-style:italic;font-size:13px;color:#666;margin-bottom:28px}
+  .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-bottom:28px;border-bottom:1px solid #2a2724;margin-bottom:20px}
+  @media(max-width:640px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+  .footer-col-title{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin-bottom:12px}
+  .footer-col a{display:block;font-family:var(--sans);font-size:13px;color:#666;text-decoration:none;margin-bottom:7px}
+  .footer-col a:hover{color:#ccc}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:11px;flex-wrap:wrap;gap:8px}
+  .footer-bottom a{color:#555;text-decoration:none;margin-left:16px}
+  .footer-bottom a:hover{color:#999}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="ticker" style="display:flex;align-items:center;gap:12px;">
+      <span class="ticker-label">LIVE</span>
+      <span>DOW +0.6% &nbsp;·&nbsp; S&P 500 +0.3% &nbsp;·&nbsp; NASDAQ –0.1% &nbsp;·&nbsp; Oil $82.40/bbl &nbsp;·&nbsp; Fed Meeting: Rate Decision Due Wednesday</span>
+    </div>
+    <div style="display:flex;gap:0;white-space:nowrap;">
+      <a href="#">Sign In</a><a href="#">Subscribe</a><a href="newsletter.html">Newsletter</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="header-top">
+      <div>
+        <div class="masthead"><a href="index.html" style="text-decoration:none;color:inherit">Pulse<span>Wire</span></a></div>
+        <div class="header-tagline">America's Window to the World.</div>
+      </div>
+      <div class="header-meta">
+        <strong id="hdate"></strong>
+        <span>New York, NY &nbsp;·&nbsp; 54°F Partly Cloudy</span><br>
+        <span>U.S. Edition &nbsp;·&nbsp; Global Coverage</span>
+      </div>
+    </div>
+    <div class="ad-slot ad-slot-leaderboard"><span class="ad-label">Advertisement – 728×90</span></div>
+  </div>
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <ul id="nav-menu">
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="#">U.S. News</a></li>
+        <li><a href="#">Politics</a></li>
+        <li><a href="#">World</a></li>
+        <li><a href="#">Business</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Health</a></li>
+        <li><a href="#">Opinion</a></li>
+        <li><a href="#">Video</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="breaking-bar">
+  <em>BREAKING</em> U.S. Senate passes sweeping border security package in 67–33 bipartisan vote — live updates
+</div>
+
+<div class="container">
+  <div class="section-label">Top Stories</div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-main">
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=900&q=80&fit=crop" alt="U.S. Capitol Building">
+      </div>
+      <span class="cat-tag">U.S. Politics</span>
+      <div class="hero-headline">Senate Passes Landmark Border Security Bill as Trump Pushes for Rapid White House Signing</div>
+      <div class="hero-deck">In a rare display of bipartisan cooperation, 67 senators voted to approve the most significant immigration enforcement overhaul in two decades — expanding detention capacity, fast-tracking asylum hearings, and allocating $14 billion for border infrastructure. Critics say the bill sidelines humanitarian protections.</div>
+      <div class="byline"><strong>By Margaret Ellis</strong> · Washington Bureau Chief · 1 hour ago · 7 min read</div>
+    </div>
+    <div class="hero-side">
+      <div class="side-story">
+        <div class="side-thumb"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=200&q=80&fit=crop" alt="Federal Reserve"></div>
+        <div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;">U.S. Economy</span>
+          <div class="side-headline">Fed Signals One Rate Cut in 2026 as Inflation Edges Back Toward 2% Target</div>
+          <div class="byline" style="font-size:11px;margin-top:4px;">James Whitfield · 2 hrs ago</div>
+        </div>
+      </div>
+      <div class="side-story">
+        <div class="side-thumb"><img src="https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=200&q=80&fit=crop" alt="Ukraine conflict"></div>
+        <div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--blue);">World</span>
+          <div class="side-headline">Russia-Ukraine Ceasefire Talks Stall in Istanbul Over Territorial Guarantees</div>
+          <div class="byline" style="font-size:11px;margin-top:4px;">Reuters / PulseWire · 3 hrs ago</div>
+        </div>
+      </div>
+      <div class="side-story">
+        <div class="side-thumb"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=200&q=80&fit=crop" alt="AI technology"></div>
+        <div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#5a3e8a;">Tech</span>
+          <div class="side-headline">OpenAI Unveils GPT-5 With Real-Time Reasoning — Stock Surges 11% in After-Hours</div>
+          <div class="byline" style="font-size:11px;margin-top:4px;">Sara Kim · 4 hrs ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMERICA TODAY -->
+  <div class="section-label">America Today</div>
+  <div class="three-col">
+    <div class="article-card">
+      <div class="article-thumb"><img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=600&q=80&fit=crop" alt="Voting midterms"></div>
+      <span class="cat-tag" style="font-size:9px;padding:2px 7px;">Politics</span>
+      <div class="article-headline">2026 Midterms: Democrats Surge in Key Senate Battleground Polls</div>
+      <div class="article-deck">New polling in Arizona, Pennsylvania, and Wisconsin shows Democrats within striking distance of flipping three Republican-held seats.</div>
+      <div class="byline" style="font-size:11px;">Rachel Torres · 2 hrs ago · 5 min read</div>
+    </div>
+    <div class="article-card">
+      <div class="article-thumb"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80&fit=crop" alt="Supreme Court"></div>
+      <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a6b3a;">Supreme Court</span>
+      <div class="article-headline">Supreme Court Agrees to Hear Challenge to Social Media Content Moderation Laws</div>
+      <div class="article-deck">The justices will weigh whether state laws in Texas and Florida forcing platforms to carry all speech violate the First Amendment.</div>
+      <div class="byline" style="font-size:11px;">David Park · 3 hrs ago · 4 min read</div>
+    </div>
+    <div class="article-card">
+      <div class="article-thumb"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80&fit=crop" alt="CDC Health"></div>
+      <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#a0522d;">Health</span>
+      <div class="article-headline">CDC Reports Measles Outbreaks in Six States — Largest in 30 Years</div>
+      <div class="article-deck">Health officials link the surge to declining vaccination rates, calling it a "preventable public health crisis."</div>
+      <div class="byline" style="font-size:11px;">Linda Foster · 4 hrs ago · 6 min read</div>
+    </div>
+  </div>
+
+  <!-- FEATURE STRIP -->
+  <div class="section-label">Editor's Picks</div>
+  <div class="feature-strip" style="margin-bottom:28px;">
+    <div class="feature-main">
+      <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=700&q=80&fit=crop" alt="NASA Moon mission">
+      <div class="feature-overlay">
+        <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#5a3e8a;">Space</span>
+        <h3>NASA's Artemis III: Inside the Race Back to the Moon</h3>
+        <p>Tom Briggs · 5 hrs ago · 8 min read</p>
+      </div>
+    </div>
+    <div class="feature-side">
+      <div class="feature-side-item">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=80&fit=crop" alt="Housing market">
+        <div class="feature-side-content">
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a6b3a;margin-bottom:5px;display:inline-block;">Housing</span>
+          <h4>U.S. Home Sales Hit 12-Year Low as Rates Near 7%</h4>
+          <p>Kevin Marsh · 7 hrs ago</p>
+        </div>
+      </div>
+      <div class="feature-side-item">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&q=80&fit=crop" alt="Student loans">
+        <div class="feature-side-content">
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--gold);margin-bottom:5px;display:inline-block;">Education</span>
+          <h4>Student Loan Relief Blocked Again by Appeals Court</h4>
+          <p>Diane Foster · 6 hrs ago</p>
+        </div>
+      </div>
+    </div>
+    <div class="feature-side">
+      <div class="feature-side-item">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80&fit=crop" alt="Climate change">
+        <div class="feature-side-content">
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a6b3a;margin-bottom:5px;display:inline-block;">Climate</span>
+          <h4>2025 Confirmed as Hottest Year Ever Recorded</h4>
+          <p>Ellen Marsh · 5 hrs ago</p>
+        </div>
+      </div>
+      <div class="feature-side-item">
+        <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&q=80&fit=crop" alt="Tesla EV">
+        <div class="feature-side-content">
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#5a3e8a;margin-bottom:5px;display:inline-block;">Tech</span>
+          <h4>Tesla Shares Crater After Musk CEO Announcement</h4>
+          <p>Sara Kim · 2 hrs ago</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="main-col">
+
+      <!-- TRENDING -->
+      <div class="section-label">Trending Globally</div>
+      <div class="trending-list">
+        <div class="trending-item">
+          <div class="trending-num">01</div>
+          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=200&q=80&fit=crop" alt="White House"></div>
+          <div>
+            <span class="cat-tag" style="font-size:9px;padding:2px 7px;">🇺🇸 U.S.</span>
+            <div class="trending-headline">Trump Signs Executive Order Withdrawing U.S. from WHO for Second Time</div>
+            <div class="byline" style="font-size:11px;">18,200 reading now · 30 min ago</div>
+          </div>
+        </div>
+        <div class="trending-item">
+          <div class="trending-num">02</div>
+          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=200&q=80&fit=crop" alt="China military"></div>
+          <div>
+            <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--blue);">🇨🇳 China</span>
+            <div class="trending-headline">China Launches Record Naval Exercises Near Taiwan Strait, Pentagon Issues Formal Warning</div>
+            <div class="byline" style="font-size:11px;">14,700 reading now · 1 hr ago</div>
+          </div>
+        </div>
+        <div class="trending-item">
+          <div class="trending-num">03</div>
+          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=200&q=80&fit=crop" alt="Tesla"></div>
+          <div>
+            <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#5a3e8a;">🇺🇸 Tech</span>
+            <div class="trending-headline">Tesla Stock Drops 18% After Musk Confirms He Won't Return as CEO</div>
+            <div class="byline" style="font-size:11px;">12,300 reading now · 2 hrs ago</div>
+          </div>
+        </div>
+        <div class="trending-item">
+          <div class="trending-num">04</div>
+          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=200&q=80&fit=crop" alt="London UK"></div>
+          <div>
+            <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--gold);">🇬🇧 UK</span>
+            <div class="trending-headline">UK Prime Minister Faces No-Confidence Motion After NHS Funding Scandal Widens</div>
+            <div class="byline" style="font-size:11px;">9,800 reading now · 2 hrs ago</div>
+          </div>
+        </div>
+        <div class="trending-item">
+          <div class="trending-num">05</div>
+          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=200&q=80&fit=crop" alt="Jobs economy"></div>
+          <div>
+            <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a6b3a;">🇺🇸 Economy</span>
+            <div class="trending-headline">U.S. Adds 312,000 Jobs in February — Unemployment Falls to 3.6%</div>
+            <div class="byline" style="font-size:11px;">8,400 reading now · 3 hrs ago</div>
+          </div>
+        </div>
+        <div class="trending-item">
+          <div class="trending-num">06</div>
+          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&q=80&fit=crop" alt="Russia diplomacy"></div>
+          <div>
+            <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#8b2020;">🇷🇺 Russia</span>
+            <div class="trending-headline">Kremlin Dismisses Western Peace Plan, Says Ukraine Must Cede Territory Before Talks</div>
+            <div class="byline" style="font-size:11px;">6,900 reading now · 4 hrs ago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-slot" style="height:90px;margin-bottom:28px;"><span class="ad-label">Advertisement – 728×90 In-Content</span></div>
+
+      <!-- AROUND THE WORLD -->
+      <div class="section-label">Around the World</div>
+      <div class="three-col" style="border-bottom:none;margin-bottom:28px;">
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80&fit=crop" alt="EU Brussels"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--blue);">Europe</span>
+          <div class="article-headline">EU Agrees to $500B Joint Defense Fund — Germany and France Lead Push</div>
+          <div class="article-deck">European leaders signed the historic pact in Brussels, citing an "existential shift" in the continent's security environment.</div>
+          <div class="byline" style="font-size:11px;">AP / PulseWire · 1 hr ago</div>
+        </div>
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80&fit=crop" alt="India economy"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#b05000;">India</span>
+          <div class="article-headline">India Surpasses Japan as World's Fourth-Largest Economy, IMF Confirms</div>
+          <div class="article-deck">GDP figures show India's rapid ascent, fueled by manufacturing exports and a booming digital services sector.</div>
+          <div class="byline" style="font-size:11px;">Priya Nair · 3 hrs ago</div>
+        </div>
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80&fit=crop" alt="Climate"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a6b3a;">Climate</span>
+          <div class="article-headline">Scientists Confirm 2025 Was the Hottest Year on Record — By a Wide Margin</div>
+          <div class="article-deck">Global average temperatures exceeded the 1.5°C Paris threshold for the first full calendar year.</div>
+          <div class="byline" style="font-size:11px;">Ellen Marsh · 5 hrs ago</div>
+        </div>
+      </div>
+
+      <!-- NEW: BUSINESS & ECONOMY -->
+      <div class="section-label">Business & Economy</div>
+      <div class="two-col">
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80&fit=crop" alt="Stock market Wall Street"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a6b3a;">Markets</span>
+          <div class="article-headline">Wall Street Rallies for Fourth Straight Week on Strong Jobs Data and Cooling Inflation</div>
+          <div class="article-deck">The S&P 500 closed at a record high Friday after better-than-expected jobs data and a softer-than-feared CPI print gave investors reason to cheer. Technology and energy led the gains as bond yields fell sharply.</div>
+          <div class="byline" style="font-size:11px;">Patricia Osei · 1 hr ago · 5 min read</div>
+        </div>
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=700&q=80&fit=crop" alt="Business economy tariffs"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--gold);">Trade</span>
+          <div class="article-headline">New U.S. Tariffs on Chinese Goods Take Effect Monday — Here's What Gets More Expensive</div>
+          <div class="article-deck">From electronics to clothing and household goods, the sweeping 25% tariff package is set to raise consumer prices on hundreds of product categories. Retailers are already warning of price hikes within weeks.</div>
+          <div class="byline" style="font-size:11px;">Daniel Cho · 3 hrs ago · 6 min read</div>
+        </div>
+      </div>
+
+      <!-- NEW: TECH DEEP DIVE -->
+      <div class="section-label">Technology</div>
+      <div class="three-col" style="border-bottom:none;margin-bottom:0;">
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80&fit=crop" alt="AI artificial intelligence"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#5a3e8a;">AI</span>
+          <div class="article-headline">OpenAI's GPT-5: What It Can Do That Every Previous Model Couldn't</div>
+          <div class="article-deck">From real-time web browsing to multi-step reasoning chains, GPT-5 marks a qualitative leap — not just a performance bump.</div>
+          <div class="byline" style="font-size:11px;">Sara Kim · 4 hrs ago · 7 min read</div>
+        </div>
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&fit=crop" alt="Semiconductors chips"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--blue);">Semiconductors</span>
+          <div class="article-headline">NVIDIA Announces Next-Gen Blackwell Ultra Chip — Already Sold Out Through 2027</div>
+          <div class="article-deck">The new GPU architecture promises 4× the AI training performance of its predecessor, with orders from Microsoft, Google, and Amazon locked in.</div>
+          <div class="byline" style="font-size:11px;">Kevin Ho · 6 hrs ago · 4 min read</div>
+        </div>
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80&fit=crop" alt="Cybersecurity hacking"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#8b2020;">Cybersecurity</span>
+          <div class="article-headline">Major U.S. Water Utilities Hit by Coordinated Cyberattack — DHS Opens Investigation</div>
+          <div class="article-deck">Federal officials confirmed that at least 12 municipal water systems across five states were targeted in what experts are calling the most serious infrastructure cyber incident in years.</div>
+          <div class="byline" style="font-size:11px;">Angela Brooks · 8 hrs ago · 5 min read</div>
+        </div>
+      </div>
+
+      <div style="margin-top:28px;padding-top:28px;border-top:1px solid var(--paper3);margin-bottom:28px;">
+        <div class="ad-slot" style="height:90px;"><span class="ad-label">Advertisement – 728×90 In-Content</span></div>
+      </div>
+
+      <!-- LISTICLE -->
+      <div class="listicle">
+        <span class="cat-tag" style="margin-bottom:10px;display:inline-block;">Analysis</span>
+        <h3>7 Ways the New Border Bill Will Change Life in America</h3>
+        <ol>
+          <li><div class="li-content"><h4>Faster deportation proceedings</h4><p>Immigration courts will be required to process cases within 180 days, down from an average of over 4 years under the current system.</p></div></li>
+          <li><div class="li-content"><h4>Expanded detention capacity</h4><p>$4.2 billion allocated to build and contract new detention facilities, adding up to 100,000 new beds nationwide.</p></div></li>
+          <li><div class="li-content"><h4>Stricter asylum criteria</h4><p>New "clear and convincing" evidence standard replaces the lower credible fear threshold used since 1996.</p></div></li>
+          <li><div class="li-content"><h4>E-Verify becomes mandatory</h4><p>All U.S. employers will be required to use the federal employment verification system within 18 months of enactment.</p></div></li>
+          <li><div class="li-content"><h4>Wall funding renewed</h4><p>$3.8 billion for physical barriers and surveillance technology along the southern border, resuming previously halted construction.</p></div></li>
+          <li><div class="li-content"><h4>Refugee cap slashed</h4><p>Annual refugee admissions ceiling drops from 125,000 to 50,000 — the lowest since the modern refugee program was established.</p></div></li>
+          <li><div class="li-content"><h4>State enforcement authority expanded</h4><p>Governors in border states gain new authority to deploy National Guard units and conduct limited immigration enforcement operations.</p></div></li>
+        </ol>
+      </div>
+
+      <!-- VIDEO -->
+      <div class="section-label">Video</div>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-thumb">
+            <img src="https://images.unsplash.com/photo-1575320181282-9afab399332c?w=700&q=80&fit=crop" alt="U.S. Senate">
+            <div class="play-btn"></div>
+          </div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--red);margin-bottom:7px;display:inline-block;">Exclusive</span>
+          <div class="video-headline">Inside the Senate: The 12 Hours That Passed the Border Bill</div>
+          <div class="video-meta">32:18 &nbsp;·&nbsp; 224K views &nbsp;·&nbsp; 2 hours ago</div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb">
+            <img src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=700&q=80&fit=crop" alt="Taiwan Strait">
+            <div class="play-btn"></div>
+          </div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--blue);margin-bottom:7px;display:inline-block;">World</span>
+          <div class="video-headline">Taiwan Strait Crisis Explained: What the U.S. Can and Cannot Do</div>
+          <div class="video-meta">18:44 &nbsp;·&nbsp; 187K views &nbsp;·&nbsp; 4 hours ago</div>
+        </div>
+      </div>
+
+      <!-- OPINION -->
+      <div class="section-label" style="margin-top:28px;">Opinion & Analysis</div>
+      <div class="opinion-strip">
+        <div class="opinion-card">
+          <div class="opinion-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&fit=crop&crop=face" alt="Carl Whitman"></div>
+          <div class="opinion-quote">"The border bill is a win for security. Whether it's a win for America's soul is a different question entirely."</div>
+          <div class="opinion-author">CARL WHITMAN &nbsp;·&nbsp; Political Editor</div>
+        </div>
+        <div class="opinion-card">
+          <div class="opinion-avatar"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80&fit=crop&crop=face" alt="Dr Amy Chen"></div>
+          <div class="opinion-quote">"The Fed's caution is warranted, but the longer they wait, the more they risk cratering the housing market."</div>
+          <div class="opinion-author">DR. AMY CHEN &nbsp;·&nbsp; Economist</div>
+        </div>
+        <div class="opinion-card">
+          <div class="opinion-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80&fit=crop&crop=face" alt="Marcus Reed"></div>
+          <div class="opinion-quote">"GPT-5 isn't the end of jobs. But it is the end of pretending AI regulation can wait another year."</div>
+          <div class="opinion-author">MARCUS REED &nbsp;·&nbsp; Tech Columnist</div>
+        </div>
+        <div class="opinion-card">
+          <div class="opinion-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80&fit=crop&crop=face" alt="Staff Writer"></div>
+          <div class="opinion-quote">"7 Ways China's Taiwan Moves Are Changing U.S. Defense Spending for the Next Decade"</div>
+          <div class="opinion-author">LISTICLE &nbsp;·&nbsp; 9 min read</div>
+        </div>
+      </div>
+
+      <!-- MORE US NEWS -->
+      <div class="section-label">More U.S. News</div>
+      <div class="three-col" style="border-bottom:none;">
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&q=80&fit=crop" alt="NASA space"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#5a3e8a;">Space</span>
+          <div class="article-headline">NASA Announces Artemis III Moon Landing Pushed to 2027 Amid SpaceX Delays</div>
+          <div class="article-deck">Funding shortfalls and Starship certification setbacks have forced a 14-month delay to the crewed lunar return.</div>
+          <div class="byline" style="font-size:11px;">Tom Briggs · 5 hrs ago</div>
+        </div>
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80&fit=crop" alt="Student loans"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--gold);">Education</span>
+          <div class="article-headline">Student Loan Forgiveness Program Blocked Again by Federal Appeals Court</div>
+          <div class="article-deck">A three-judge panel ruled the administration exceeded its authority, affecting an estimated 8 million borrowers.</div>
+          <div class="byline" style="font-size:11px;">Diane Foster · 6 hrs ago</div>
+        </div>
+        <div class="article-card">
+          <div class="article-thumb"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80&fit=crop" alt="Housing"></div>
+          <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a6b3a;">Housing</span>
+          <div class="article-headline">U.S. Home Sales Hit 12-Year Low as Mortgage Rates Hover Near 7%</div>
+          <div class="article-deck">Economists warn of a "frozen market" as both buyers and sellers hold out and inventory stays near historic lows.</div>
+          <div class="byline" style="font-size:11px;">Kevin Marsh · 7 hrs ago</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside>
+      <div class="ad-slot" style="width:300px;min-width:300px;height:250px;margin-bottom:24px;"><span class="ad-label">Advertisement – 300×250</span></div>
+      <div class="sidebar-widget">
+        <div class="sidebar-title">Most Read Today</div>
+        <div class="sidebar-story">
+          <div class="sidebar-thumb"><img src="https://images.unsplash.com/photo-1623659248894-c28160a8c8d8?w=150&q=80&fit=crop" alt="Border security"></div>
+          <div class="sidebar-content">
+            <div class="sidebar-headline">What the Border Bill Actually Does — Provision by Provision</div>
+            <div class="sidebar-meta">U.S. Politics · 2.1M reads</div>
+          </div>
+        </div>
+        <div class="sidebar-story">
+          <div class="sidebar-thumb"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=150&q=80&fit=crop" alt="OpenAI"></div>
+          <div class="sidebar-content">
+            <div class="sidebar-headline">OpenAI's GPT-5: Everything You Need to Know</div>
+            <div class="sidebar-meta">Technology · 1.6M reads</div>
+          </div>
+        </div>
+        <div class="sidebar-story">
+          <div class="sidebar-thumb"><img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=150&q=80&fit=crop" alt="Taiwan China"></div>
+          <div class="sidebar-content">
+            <div class="sidebar-headline">China's Taiwan Drills: A Full Military Breakdown</div>
+            <div class="sidebar-meta">World · 1.1M reads</div>
+          </div>
+        </div>
+        <div class="sidebar-story">
+          <div class="sidebar-thumb"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=150&q=80&fit=crop" alt="Fed rate"></div>
+          <div class="sidebar-content">
+            <div class="sidebar-headline">Fed Rate Decision: What It Means for Your Mortgage and 401(k)</div>
+            <div class="sidebar-meta">Economy · 870K reads</div>
+          </div>
+        </div>
+        <div class="sidebar-story">
+          <div class="sidebar-thumb"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=150&q=80&fit=crop" alt="Measles"></div>
+          <div class="sidebar-content">
+            <div class="sidebar-headline">Measles Outbreak Map: Is Your State Affected?</div>
+            <div class="sidebar-meta">Health · 740K reads</div>
+          </div>
+        </div>
+      </div>
+      <div class="ad-slot" style="width:300px;min-width:300px;height:250px;margin-bottom:24px;"><span class="ad-label">Advertisement – 300×250</span></div>
+      <div class="sidebar-widget">
+        <div class="sidebar-title">Global Briefing</div>
+        <div class="briefing-story">
+          <div style="font-family:var(--sans);font-size:10px;color:var(--ink3);margin-bottom:4px;">🇬🇧 UNITED KINGDOM</div>
+          <div class="sidebar-headline" style="font-size:13px;">Keir Starmer Survives No-Confidence Vote by 11 Seats</div>
+          <div class="sidebar-meta">2 hrs ago</div>
+        </div>
+        <div class="briefing-story">
+          <div style="font-family:var(--sans);font-size:10px;color:var(--ink3);margin-bottom:4px;">🇫🇷 FRANCE</div>
+          <div class="sidebar-headline" style="font-size:13px;">Paris Braces for General Strike Over Pension Age Rollback</div>
+          <div class="sidebar-meta">3 hrs ago</div>
+        </div>
+        <div class="briefing-story">
+          <div style="font-family:var(--sans);font-size:10px;color:var(--ink3);margin-bottom:4px;">🇯🇵 JAPAN</div>
+          <div class="sidebar-headline" style="font-size:13px;">Bank of Japan Raises Rates for Third Time — Yen Jumps</div>
+          <div class="sidebar-meta">4 hrs ago</div>
+        </div>
+        <div class="briefing-story">
+          <div style="font-family:var(--sans);font-size:10px;color:var(--ink3);margin-bottom:4px;">🇧🇷 BRAZIL</div>
+          <div class="sidebar-headline" style="font-size:13px;">Amazon Deforestation Hits 4-Year Low Under Enforcement Push</div>
+          <div class="sidebar-meta">5 hrs ago</div>
+        </div>
+        <div class="briefing-story">
+          <div style="font-family:var(--sans);font-size:10px;color:var(--ink3);margin-bottom:4px;">🇮🇱 MIDDLE EAST</div>
+          <div class="sidebar-headline" style="font-size:13px;">Gaza Ceasefire Holds Into Week Three as Talks Resume</div>
+          <div class="sidebar-meta">6 hrs ago</div>
+        </div>
+      </div>
+      <div class="sidebar-widget" style="background:var(--ink);padding:20px;color:#ccc;">
+        <div style="font-family:var(--serif);font-size:20px;font-weight:700;color:#fff;margin-bottom:6px;">PulseWire AM</div>
+        <div style="font-size:13px;line-height:1.6;margin-bottom:14px;">Your 5-minute brief on America and the world — free, every morning at 6am ET.</div>
+        <input type="email" placeholder="your@email.com" style="width:100%;padding:9px 12px;font-size:13px;background:#2a2724;border:1px solid #3a3530;color:#ccc;border-radius:4px;margin-bottom:8px;outline:none;">
+        <button style="width:100%;background:var(--red);color:#fff;border:none;padding:9px;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:4px;">Subscribe Free</button>
+      </div>
+      <div class="ad-slot" style="width:300px;min-width:300px;height:600px;margin-top:24px;"><span class="ad-label">Advertisement – 300×600</span></div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><a href="index.html" style="text-decoration:none;color:inherit">Pulse<span>Wire</span></a></div>
+    <div class="footer-tagline">America's Window to the World. Independent. Uncompromising.</div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Sections</div>
+        <a href="#">U.S. News</a><a href="#">Politics</a><a href="#">World</a><a href="#">Business</a><a href="#">Technology</a><a href="#">Health</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">World Desks</div>
+        <a href="#">Europe</a><a href="#">Asia-Pacific</a><a href="#">Middle East</a><a href="#">Latin America</a><a href="#">Africa</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="#">Advertise</a><a href="#">Careers</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Follow Us</div>
+        <a href="#">Facebook</a><a href="#">Twitter/X</a><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PulseWire Media LLC. New York, NY. All rights reserved.</span>
+      <div><a href="privacy.html">Privacy</a><a href="#">Terms</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+  const d=new Date();document.getElementById('hdate').textContent=d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const toggle=document.getElementById('nav-toggle'),menu=document.getElementById('nav-menu');
+  toggle.addEventListener('click',()=>{toggle.classList.toggle('open');menu.classList.toggle('open');});
+  document.querySelectorAll('#nav-menu li a').forEach(link=>{link.addEventListener('click',function(){document.querySelectorAll('#nav-menu li').forEach(li=>li.classList.remove('active'));this.parentElement.classList.add('active');menu.classList.remove('open');toggle.classList.remove('open');});});
+</script>
+</body>
+</html>

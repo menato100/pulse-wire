@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us – PulseWire</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--ink:#1a1714;--ink2:#3d3830;--ink3:#6b6258;--paper:#faf8f4;--paper2:#f2efe9;--paper3:#e8e3da;--red:#c0392b;--red2:#e74c3c;--gold:#b8963a;--blue:#1a4a7a;--serif:'Playfair Display',Georgia,serif;--body-serif:'Source Serif 4',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+  html{font-size:16px}body{background:var(--paper);color:var(--ink);font-family:var(--body-serif);line-height:1.6}
+  .top-bar{background:var(--ink);color:#aaa;font-family:var(--sans);font-size:11px;letter-spacing:.08em;padding:6px 0}
+  .top-bar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+  .top-bar a{color:#ccc;text-decoration:none;margin-left:16px}.top-bar a:hover{color:#fff}
+  header{border-bottom:3px solid var(--ink);padding:18px 0 0;background:var(--paper)}
+  .header-inner{max-width:1200px;margin:0 auto;padding:0 20px}
+  .header-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--paper3)}
+  .masthead{font-family:var(--serif);font-size:clamp(42px,7vw,82px);font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+  .masthead span{color:var(--red)}
+  .header-tagline{font-family:var(--body-serif);font-style:italic;font-size:13px;color:var(--ink3);letter-spacing:.04em}
+  nav{border-bottom:2px solid var(--ink);position:relative}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+  nav ul{list-style:none;display:flex;gap:0;flex-wrap:wrap}
+  nav ul li a{display:block;padding:11px 16px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.05em;text-decoration:none;color:var(--ink2);text-transform:uppercase;transition:color .15s;white-space:nowrap}
+  nav ul li a:hover,nav ul li.active a{color:var(--red)}
+  nav ul li.active a{border-bottom:3px solid var(--red);margin-bottom:-2px}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:12px 0;flex-direction:column;gap:5px}
+  .nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .25s}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:760px){.nav-toggle{display:flex}nav ul{display:none;flex-direction:column;width:100%;background:var(--paper);border-top:1px solid var(--paper3);position:absolute;top:100%;left:0;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.08)}nav ul.open{display:flex}nav ul li a{padding:13px 20px;border-bottom:1px solid var(--paper3);font-size:14px}}
+  @media(min-width:761px) and (max-width:1040px){nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}nav ul li a{padding:11px 12px;font-size:12px}}
+  .container{max-width:1200px;margin:0 auto;padding:28px 20px}
+  /* PAGE HERO */
+  .page-hero{background:var(--ink);color:#fff;padding:64px 0;margin-bottom:0;text-align:center}
+  .page-hero h1{font-family:var(--serif);font-size:clamp(36px,5vw,64px);font-weight:900;margin-bottom:12px}
+  .page-hero p{font-family:var(--body-serif);font-style:italic;font-size:18px;color:rgba(255,255,255,.7);max-width:600px;margin:0 auto}
+  /* MISSION */
+  .mission{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:60px 0;border-bottom:1px solid var(--paper3)}
+  @media(max-width:700px){.mission{grid-template-columns:1fr;gap:32px}}
+  .mission-text h2{font-family:var(--serif);font-size:32px;font-weight:700;margin-bottom:16px;line-height:1.2}
+  .mission-text p{font-size:16px;color:var(--ink2);line-height:1.8;margin-bottom:14px}
+  .mission-image img{width:100%;height:100%;object-fit:cover;display:block;max-height:380px}
+  /* VALUES */
+  .values{padding:60px 0;border-bottom:1px solid var(--paper3)}
+  .values h2{font-family:var(--serif);font-size:32px;font-weight:700;margin-bottom:40px;text-align:center}
+  .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  @media(max-width:700px){.values-grid{grid-template-columns:1fr}}
+  .value-card{padding:28px;background:var(--paper2);border:1px solid var(--paper3)}
+  .value-icon{font-size:28px;margin-bottom:14px}
+  .value-card h3{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:10px;color:var(--ink)}
+  .value-card p{font-size:14px;color:var(--ink2);line-height:1.7}
+  /* TEAM */
+  .team{padding:60px 0;border-bottom:1px solid var(--paper3)}
+  .team h2{font-family:var(--serif);font-size:32px;font-weight:700;margin-bottom:40px;text-align:center}
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+  @media(max-width:800px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.team-grid{grid-template-columns:1fr}}
+  .team-card{text-align:center}
+  .team-photo{width:100%;aspect-ratio:1;overflow:hidden;margin-bottom:14px}
+  .team-photo img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .team-card h4{font-family:var(--serif);font-size:17px;font-weight:700;margin-bottom:3px}
+  .team-card .role{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--red);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+  .team-card p{font-size:13px;color:var(--ink3);line-height:1.6}
+  /* STATS */
+  .stats-bar{background:var(--ink);padding:40px 0}
+  .stats-grid{max-width:1200px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  @media(max-width:600px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+  .stat-num{font-family:var(--serif);font-size:40px;font-weight:900;color:var(--red2);display:block;margin-bottom:4px}
+  .stat-label{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.6)}
+  /* HISTORY */
+  .history{padding:60px 0}
+  .history h2{font-family:var(--serif);font-size:32px;font-weight:700;margin-bottom:40px}
+  .timeline{position:relative;padding-left:32px;border-left:2px solid var(--paper3)}
+  .timeline-item{position:relative;margin-bottom:32px}
+  .timeline-item::before{content:'';position:absolute;left:-40px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--red);border:3px solid var(--paper)}
+  .timeline-item .year{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--red);text-transform:uppercase;margin-bottom:4px}
+  .timeline-item h4{font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:6px}
+  .timeline-item p{font-size:14px;color:var(--ink2);line-height:1.7}
+  footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
+  .footer-inner{max-width:1200px;margin:0 auto;padding:0 20px}
+  .footer-logo{font-family:var(--serif);font-size:32px;font-weight:900;color:#fff;margin-bottom:4px}
+  .footer-logo span{color:var(--red2)}
+  .footer-tagline{font-family:var(--body-serif);font-style:italic;font-size:13px;color:#666;margin-bottom:28px}
+  .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-bottom:28px;border-bottom:1px solid #2a2724;margin-bottom:20px}
+  @media(max-width:640px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+  .footer-col-title{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin-bottom:12px}
+  .footer-col a{display:block;font-family:var(--sans);font-size:13px;color:#666;text-decoration:none;margin-bottom:7px}
+  .footer-col a:hover{color:#ccc}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:11px;flex-wrap:wrap;gap:8px}
+  .footer-bottom a{color:#555;text-decoration:none;margin-left:16px}
+</style>
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-inner"><span style="color:#666;">America's Window to the World</span><div><a href="index.html">Home</a><a href="contact.html">Contact</a></div></div></div>
+<header>
+  <div class="header-inner">
+    <div class="header-top">
+      <div><div class="masthead"><a href="index.html" style="text-decoration:none;color:inherit">Pulse<span>Wire</span></a></div><div class="header-tagline">America's Window to the World.</div></div>
+    </div>
+  </div>
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <ul id="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">U.S. News</a></li>
+        <li><a href="#">Politics</a></li>
+        <li><a href="#">World</a></li>
+        <li><a href="#">Business</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Health</a></li>
+        <li><a href="#">Opinion</a></li>
+        <li class="active"><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <h1>About PulseWire</h1>
+  <p>Independent journalism in the public interest — breaking news, global coverage, and fearless reporting since 2018.</p>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div><span class="stat-num">42M</span><span class="stat-label">Monthly Readers</span></div>
+    <div><span class="stat-num">180+</span><span class="stat-label">Countries Reached</span></div>
+    <div><span class="stat-num">220</span><span class="stat-label">Staff Journalists</span></div>
+    <div><span class="stat-num">18</span><span class="stat-label">Global Bureaus</span></div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- MISSION -->
+  <div class="mission">
+    <div class="mission-text">
+      <h2>Our Mission: Truth Without Compromise</h2>
+      <p>PulseWire was founded on a single conviction — that the public deserves journalism that serves them, not advertisers, not political parties, not powerful institutions. We report what we find, even when it's uncomfortable.</p>
+      <p>As one of America's fastest-growing digital newsrooms, we cover the stories that matter most: from the halls of Congress to the streets of Kyiv, from Silicon Valley boardrooms to the communities most affected by policy decisions.</p>
+      <p>We believe an informed citizenry is the foundation of democracy. That's why our core news coverage is free, always. Every story we publish is held to the same standard: is it accurate? Is it fair? Does it serve the public interest?</p>
+      <p>We are editorially independent. Our newsroom makes its own decisions, free from commercial or political pressure. Our funding comes from reader subscriptions, advertising, and philanthropic support — never from political organizations or government sources.</p>
+    </div>
+    <div class="mission-image">
+      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop" alt="PulseWire newsroom journalism">
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="values">
+    <h2>What We Stand For</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">⚖️</div>
+        <h3>Accuracy First</h3>
+        <p>Every fact is verified before publication. We maintain a dedicated corrections team and publish corrections prominently and promptly when we get things wrong.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔍</div>
+        <h3>Independent Reporting</h3>
+        <p>Our editorial decisions are made by journalists, not advertisers or executives. No story is killed, softened, or shaped by commercial pressure.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌍</div>
+        <h3>Global Perspective</h3>
+        <p>With bureaus on six continents and correspondents in over 40 countries, we bring a genuinely global lens to American and international news.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔓</div>
+        <h3>Open Access</h3>
+        <p>Core news coverage is free for everyone. We believe access to credible information should not be a privilege reserved for those who can afford it.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">👥</div>
+        <h3>Diverse Voices</h3>
+        <p>Our newsroom reflects the country we cover. We actively recruit journalists from underrepresented backgrounds and prioritize diverse sourcing.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🛡️</div>
+        <h3>Source Protection</h3>
+        <p>We take the protection of confidential sources seriously. Whistleblowers and vulnerable sources can contact us securely through our encrypted tip line.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="team">
+    <h2>Our Leadership Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&fit=crop&crop=face" alt="James Harrington Editor"></div>
+        <h4>James Harrington</h4>
+        <div class="role">Editor-in-Chief</div>
+        <p>Former Washington Post political editor with 22 years of international reporting experience across five continents.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80&fit=crop&crop=face" alt="Dr Amy Chen Economics"></div>
+        <h4>Dr. Amy Chen</h4>
+        <div class="role">Economics Editor</div>
+        <p>PhD in Economics from MIT. Previously chief economics correspondent for Bloomberg and the Financial Times.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&fit=crop&crop=face" alt="Carl Whitman Politics"></div>
+        <h4>Carl Whitman</h4>
+        <div class="role">Political Editor</div>
+        <p>20-year veteran of political journalism. Covered six presidential campaigns and four administrations from the White House press pool.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80&fit=crop&crop=face" alt="Sandra Mills World Editor"></div>
+        <h4>Sandra Mills</h4>
+        <div class="role">World Editor</div>
+        <p>Former Reuters bureau chief in Beijing, Moscow, and Cairo. Speaks five languages. Pulitzer Prize finalist, 2021.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&fit=crop&crop=face" alt="Marcus Reed Technology"></div>
+        <h4>Marcus Reed</h4>
+        <div class="role">Tech & Science Editor</div>
+        <p>Former Wired senior editor. Has covered Silicon Valley for 15 years and is a leading voice on AI policy and digital rights.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80&fit=crop&crop=face" alt="Lisa Park Health Editor"></div>
+        <h4>Lisa Park</h4>
+        <div class="role">Health & Science Editor</div>
+        <p>MD from Johns Hopkins. Named one of the most influential health journalists in America by the Columbia Journalism Review.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&fit=crop&crop=face" alt="Robert Kwame CEO"></div>
+        <h4>Robert Kwame</h4>
+        <div class="role">Chief Executive Officer</div>
+        <p>Media industry veteran with 25 years in digital publishing. Built three successful news brands before co-founding PulseWire in 2018.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&q=80&fit=crop&crop=face" alt="Nina Torres Operations"></div>
+        <h4>Nina Torres</h4>
+        <div class="role">Chief Operating Officer</div>
+        <p>Former VP at The Atlantic and Condé Nast. Oversees PulseWire's global operations, partnerships, and audience strategy.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="history">
+    <h2>Our Story</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="year">2018</div>
+        <h4>PulseWire Is Founded</h4>
+        <p>James Harrington and Robert Kwame launch PulseWire from a small office in midtown Manhattan with a team of 12 journalists and a commitment to free, independent digital news. The site reaches 500,000 readers in its first month.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2019</div>
+        <h4>First International Bureaus Open</h4>
+        <p>PulseWire opens bureaus in London, Brussels, and Beijing, marking our commitment to first-hand international reporting rather than relying on wire services alone.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2020</div>
+        <h4>COVID-19 Coverage Earns National Recognition</h4>
+        <p>Our science and health team's pandemic reporting — including breaking the early superspreader story and exposing PPE shortages — earns PulseWire its first Society of Professional Journalists Award.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2021</div>
+        <h4>10 Million Monthly Readers</h4>
+        <p>PulseWire crosses 10 million monthly readers, becoming one of the fastest-growing digital news outlets in the United States. We expand our newsroom to 80 journalists.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2023</div>
+        <h4>Pulitzer Prize Nomination</h4>
+        <p>Our investigative team is nominated for a Pulitzer Prize for a year-long investigation into foreign interference in U.S. infrastructure. The investigation leads to two Congressional hearings.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2024</div>
+        <h4>PulseWire Reaches 30 Million Readers</h4>
+        <p>We expand to 18 global bureaus and 220 staff journalists. PulseWire launches its podcast network and live video operation, becoming a true multiplatform news brand.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2026</div>
+        <h4>42 Million Monthly Readers & Growing</h4>
+        <p>Today, PulseWire is read in over 180 countries and is recognized as one of the most trusted sources of global news for American audiences. We remain proudly independent.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><a href="index.html" style="text-decoration:none;color:inherit">Pulse<span>Wire</span></a></div>
+    <div class="footer-tagline">America's Window to the World. Independent. Uncompromising.</div>
+    <div class="footer-grid">
+      <div class="footer-col"><div class="footer-col-title">Sections</div><a href="index.html">Home</a><a href="#">U.S. News</a><a href="#">World</a><a href="#">Business</a><a href="#">Technology</a></div>
+      <div class="footer-col"><div class="footer-col-title">Company</div><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="#">Advertise</a></div>
+      <div class="footer-col"><div class="footer-col-title">World Desks</div><a href="#">Europe</a><a href="#">Asia-Pacific</a><a href="#">Middle East</a><a href="#">Latin America</a></div>
+      <div class="footer-col"><div class="footer-col-title">Follow Us</div><a href="#">Facebook</a><a href="#">Twitter/X</a><a href="#">Instagram</a><a href="#">YouTube</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 PulseWire Media LLC. New York, NY.</span><div><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div></div>
+  </div>
+</footer>
+<script>
+  const toggle=document.getElementById('nav-toggle'),menu=document.getElementById('nav-menu');
+  toggle.addEventListener('click',()=>{toggle.classList.toggle('open');menu.classList.toggle('open');});
+</script>
+</body></html>
