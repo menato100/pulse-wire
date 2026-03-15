@@ -121,7 +121,7 @@ footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
 </head>
 <body>
 <div class="top-bar"><div class="top-bar-inner">
-    <div class="ticker"><span class="ticker-label">LIVE</span><span>Oil $114.80/bbl ↑ &nbsp;·&nbsp; DOW Futures –600pts &nbsp;·&nbsp; Strait of Hormuz CLOSED &nbsp;·&nbsp; 98th Oscars TONIGHT</span></div>
+    <div class="ticker"><span class="ticker-label">LIVE</span><span id="ticker-text">Oil $114.80/bbl ↑ &nbsp;·&nbsp; DOW Futures –600pts &nbsp;·&nbsp; Strait of Hormuz CLOSED &nbsp;·&nbsp; 98th Oscars TONIGHT</span></div>
     <div><a href="index.html">Home</a><a href="contact.html">Contact</a><a href="#">Subscribe</a></div>
   </div></div>
 <header>
@@ -312,6 +312,141 @@ function lfRender(items){
 }
 lfLoad(lfCurrent);
 setInterval(function(){lfCache={};lfLoad(lfCurrent);},3600000);
+</script>
+
+
+<script>
+(function(){
+  var THREE_HRS=3*60*60*1000;
+  var CKEY='pw_sec_tech', CTS='pw_sec_ts_tech';
+  var PRIMARY='https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FTechnology.xml&api_key=public&count=20', FALLBACK='https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Ftechnology%2Frss.xml&api_key=public&count=20';
+  var TIMGS=[
+    ['iran|war|missile|military|strike|troops|soldiers|pentagon','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
+    ['oil|gas|energy|barrel|opec|fuel','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop'],
+    ['trump|white house|president|congress|senate|capitol','https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=800&q=80&fit=crop'],
+    ['russia|ukraine|putin|zelensky','https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop'],
+    ['china|beijing|taiwan|xi','https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop'],
+    ['economy|market|stock|dow|nasdaq|inflation|fed|recession','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&fit=crop'],
+    ['ai|tech|openai|gpt|nvidia|chip|cyber|hack','https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop'],
+    ['health|cdc|virus|disease|hospital|vaccine','https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop'],
+    ['climate|environment|carbon|temperature','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop'],
+    ['court|supreme|judge|law|legal','https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80&fit=crop'],
+    ['election|vote|ballot|poll|democrat|republican','https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=800&q=80&fit=crop'],
+    ['israel|hamas|gaza|middle east|beirut','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
+    ['space|nasa|rocket|moon|spacex','https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80&fit=crop'],
+];
+
+  function strip(h){var d=document.createElement('div');d.innerHTML=h||'';return d.textContent||'';}
+  function ago(p){if(!p)return'';var m=Math.floor((Date.now()-new Date(p))/60000);if(m<1)return'Just now';if(m<60)return m+' min ago';if(m<1440)return Math.floor(m/60)+' hr'+(Math.floor(m/60)>1?'s':'')+' ago';return Math.floor(m/1440)+' day'+(Math.floor(m/1440)>1?'s':'')+' ago';}
+  function srcName(item){if(item.author)return item.author;try{return new URL(item.link).hostname.replace('www.','');}catch(e){return'Reuters';}}
+  function getImg(item,title){
+    var i=item.thumbnail||(item.enclosure&&item.enclosure.link)||'';
+    if(i)return i;
+    var t=(title||'').toLowerCase();
+    for(var k=0;k<TIMGS.length;k++){var keys=TIMGS[k][0].split('|');for(var j=0;j<keys.length;j++){if(t.indexOf(keys[j])>-1)return TIMGS[k][1];}}
+    return 'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=800&q=80&fit=crop';
+  }
+
+  function updateBreaking(items){
+    var el=document.getElementById('breaking-text');
+    if(!el||!items.length)return;
+    el.textContent=items[0].title||'';
+    var i=1;
+    setInterval(function(){
+      if(!items[i])i=0;
+      el.style.opacity='0';
+      setTimeout(function(){el.textContent=(items[i]&&items[i].title)||'';el.style.opacity='1';},350);
+      i++;
+    },7000);
+    el.style.transition='opacity .35s';
+  }
+
+  function updateTicker(items){
+    var el=document.getElementById('ticker-text');
+    if(!el)return;
+    el.textContent=items.slice(0,6).map(function(x){return x.title||'';}).join('  ·  ');
+  }
+
+  function updateLead(item){
+    var img=document.querySelector('.lead-thumb img');
+    var tag=document.querySelector('.lead-thumb + .cat-tag, .lead-article .cat-tag');
+    var hl=document.querySelector('.lead-headline');
+    var deck=document.querySelector('.lead-deck');
+    var byl=document.querySelector('.lead-article .byline');
+    if(!hl)return;
+    var t=item.title||'';
+    var d=strip(item.description||item.content||'').substring(0,320);if(d.length===320)d+='…';
+    var s=srcName(item);
+    var a=ago(item.pubDate);
+    if(img){img.src=getImg(item,t);img.alt=t;}
+    if(tag)tag.textContent=s.split('.')[0].toUpperCase();
+    hl.textContent=t;
+    if(deck)deck.textContent=d;
+    if(byl)byl.innerHTML='<strong>'+s+'</strong> &nbsp;·&nbsp; '+a+' &nbsp;·&nbsp; 5 min read';
+    if(item.link){hl.style.cursor='pointer';hl.onclick=function(){window.open(item.link,'_blank');};}
+  }
+
+  function updateArticleList(items){
+    var list=document.querySelector('.article-list');
+    if(!list)return;
+    var html='';
+    items.slice(1,6).forEach(function(item){
+      var t=item.title||'';
+      var d=strip(item.description||item.content||'').substring(0,180);if(d.length===180)d+='…';
+      var s=srcName(item);var a=ago(item.pubDate);var lk=item.link||'#';
+      var im=getImg(item,t);
+      html+='<div class="article-list-item" style="cursor:pointer;" onclick="window.open(''+lk.replace(/'/g,"\'")+"','_blank')">"+
+        '<div class="article-list-thumb"><img src="'+im+'" alt="'+t.substring(0,40)+'" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=300&q=60&fit=crop'"></div>'+
+        '<div class="article-list-body">'+
+          '<span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+s.split('.')[0]+'</span>'+
+          '<div class="article-list-headline">'+t+'</div>'+
+          '<div class="article-list-deck">'+d+'</div>'+
+          '<div class="byline" style="font-size:11px;">'+a+'</div>'+
+        '</div>'+
+      '</div>';
+    });
+    list.innerHTML=html;
+  }
+
+  function updateTimestamp(){
+    var el=document.getElementById('sec-updated');
+    if(!el)return;
+    el.textContent='Updated '+new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})+' ET';
+  }
+
+  function loadSection(){
+    try{
+      var ts=parseInt(localStorage.getItem(CTS)||'0');
+      if(Date.now()-ts<THREE_HRS){
+        var c=JSON.parse(localStorage.getItem(CKEY)||'null');
+        if(c&&c.length){applyAll(c);return;}
+      }
+    }catch(e){}
+    fetch(PRIMARY).then(function(r){return r.json();}).then(function(d){
+      if(!d.items||!d.items.length)throw 0;
+      applyAll(d.items);
+      try{localStorage.setItem(CKEY,JSON.stringify(d.items));localStorage.setItem(CTS,Date.now().toString());}catch(e){}
+    }).catch(function(){
+      fetch(FALLBACK).then(function(r){return r.json();}).then(function(d){
+        if(d.items&&d.items.length)applyAll(d.items);
+      }).catch(function(){});
+    });
+  }
+
+  function applyAll(items){
+    updateBreaking(items);
+    updateTicker(items);
+    updateLead(items[0]);
+    updateArticleList(items);
+    updateTimestamp();
+  }
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',loadSection);}
+  else{loadSection();}
+  setInterval(function(){try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}loadSection();},THREE_HRS);
+  var _lf=Date.now();
+  document.addEventListener('visibilitychange',function(){if(!document.hidden){if(Date.now()-_lf>THREE_HRS){try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}loadSection();}_lf=Date.now();}});
+})();
 </script>
 
 </body>

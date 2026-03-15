@@ -162,7 +162,7 @@
   <div class="top-bar-inner">
     <div class="ticker" style="display:flex;align-items:center;gap:12px;">
       <span class="ticker-label">LIVE</span>
-      <span>Oil $114.80/bbl ↑ &nbsp;·&nbsp; DOW –2.4% &nbsp;·&nbsp; S&P 500 –1.9% &nbsp;·&nbsp; NASDAQ –2.1% &nbsp;·&nbsp; Strait of Hormuz CLOSED &nbsp;·&nbsp; 98th Oscars TONIGHT — Security on High Alert</span>
+      <span id="ticker-text">Loading latest headlines…</span>
     </div>
     <div style="display:flex;gap:0;white-space:nowrap;">
       <a href="#">Sign In</a><a href="#">Subscribe</a><a href="newsletter.html">Newsletter</a>
@@ -208,22 +208,22 @@
 </header>
 
 <div class="breaking-bar">
-  <em>BREAKING</em> Iran launches missile strikes on Tel Aviv &amp; Gulf states — Strait of Hormuz closed to shipping — oil prices surge · Live updates
+  <em>BREAKING</em> <span id="breaking-text">Loading breaking news…</span>
 </div>
 
 <div class="container">
   <div class="section-label">Top Stories</div>
 
-  <!-- HERO -->
+  <!-- HERO — auto-updates every 3 hours -->
   <div class="hero">
     <div class="hero-main">
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=900&q=80&fit=crop" alt="US-Iran war Middle East conflict military">
+      <div class="hero-image" id="hero-img-wrap">
+        <img id="hero-img" src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=900&q=80&fit=crop" alt="Top news story">
       </div>
-      <span class="cat-tag">Breaking News</span>
-      <div class="hero-headline">Iran Fires Missiles at Tel Aviv and Gulf States as U.S.-Israel War Enters Day 15</div>
-      <div class="hero-deck">Iran launched a wave of drone and ballistic missile strikes on Tel Aviv and several Gulf states overnight, marking the most significant escalation yet in the 15-day-old conflict. The Strait of Hormuz remains closed to commercial shipping, sending oil prices surging past $114 per barrel and triggering sharp losses on global markets. Trump says Iran is "ready to negotiate" but he is not yet ready to make a deal.</div>
-      <div class="byline"><strong>By Sandra Mills</strong> · World Editor · Updated 11:30 AM ET · 8 min read</div>
+      <span class="cat-tag" id="hero-tag">Loading…</span>
+      <div class="hero-headline" id="hero-headline">Fetching today's top story…</div>
+      <div class="hero-deck" id="hero-deck"></div>
+      <div class="byline" id="hero-byline"></div>
     </div>
     <div class="hero-side">
       <div class="side-story">
@@ -331,64 +331,14 @@
   <div class="grid">
     <div class="main-col">
 
-      <!-- TRENDING -->
-      <div class="section-label">Trending Globally</div>
-      <div class="trending-list">
-        <div class="trending-item">
-          <div class="trending-num">01</div>
-          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=200&q=80&fit=crop" alt="Iran war missiles Middle East"></div>
-          <div>
-            <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#8b2020;">🇮🇷 Iran War</span>
-            <div class="trending-headline">Iran Fires Missiles at Tel Aviv and Gulf States — Day 15 of U.S.-Israel Conflict</div>
-            <div class="byline" style="font-size:11px;">84,200 reading now · 1 hr ago</div>
-          </div>
+      <!-- TRENDING — auto-updates every 3 hours -->
+      <div class="section-label">Trending Globally <span id="news-timestamp" style="font-family:var(--sans);font-size:10px;color:var(--ink3);text-transform:none;font-weight:400;letter-spacing:0;margin-left:8px;"></span></div>
+      <div class="trending-list" id="trending-list">
+        <div id="trending-loading" style="text-align:center;padding:32px;font-family:var(--sans);font-size:13px;color:var(--ink3);">
+          <div style="width:18px;height:18px;border:2px solid var(--paper3);border-top-color:var(--red);border-radius:50%;animation:tspin .8s linear infinite;margin:0 auto 10px;"></div>
+          Loading trending stories…
         </div>
-        <div class="trending-item">
-          <div class="trending-num">02</div>
-          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=200&q=80&fit=crop" alt="Oil prices energy Strait of Hormuz"></div>
-          <div>
-            <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--gold);">🇺🇸 Economy</span>
-            <div class="trending-headline">Oil Hits $114/Barrel as Strait of Hormuz Stays Closed — Gas Prices at 15-Year High</div>
-            <div class="byline" style="font-size:11px;">61,500 reading now · 2 hrs ago</div>
-          </div>
-        </div>
-        <div class="trending-item">
-          <div class="trending-num">03</div>
-          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=200&q=80&fit=crop" alt="Trump White House Iran"></div>
-          <div>
-            <span class="cat-tag" style="font-size:9px;padding:2px 7px;">🇺🇸 White House</span>
-            <div class="trending-headline">Trump Claims U.S. "Destroyed 100%" of Iran's Military — Pentagon Has Not Confirmed</div>
-            <div class="byline" style="font-size:11px;">48,300 reading now · 1 hr ago</div>
-          </div>
-        </div>
-        <div class="trending-item">
-          <div class="trending-num">04</div>
-          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=200&q=80&fit=crop" alt="US military Iraq soldiers"></div>
-          <div>
-            <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--red);">🇺🇸 Military</span>
-            <div class="trending-headline">Pentagon Names 6 U.S. Service Members Killed in Iraq Plane Crash During Iran Operations</div>
-            <div class="byline" style="font-size:11px;">32,100 reading now · 3 hrs ago</div>
-          </div>
-        </div>
-        <div class="trending-item">
-          <div class="trending-num">05</div>
-          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1575320181282-9afab399332c?w=200&q=80&fit=crop" alt="Oscars Academy Awards 2026"></div>
-          <div>
-            <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#5a3e8a;">🇺🇸 Oscars</span>
-            <div class="trending-headline">98th Academy Awards Tonight — Security Dramatically Ramped Up After FBI Iran Strike Alert</div>
-            <div class="byline" style="font-size:11px;">28,700 reading now · 4 hrs ago</div>
-          </div>
-        </div>
-        <div class="trending-item">
-          <div class="trending-num">06</div>
-          <div class="trending-thumb"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&q=80&fit=crop" alt="Ukraine Russia Zelensky peace talks"></div>
-          <div>
-            <span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--blue);">🇺🇦 Ukraine</span>
-            <div class="trending-headline">Zelensky Says He Is Ready for Trilateral Peace Talks — Awaits Response from U.S. and Russia</div>
-            <div class="byline" style="font-size:11px;">19,400 reading now · 5 hrs ago</div>
-          </div>
-        </div>
-      </div>
+</div>
 
       <div class="ad-slot" style="height:90px;margin-bottom:28px;"><span class="ad-label">Advertisement – 728×90 In-Content</span></div>
 
@@ -843,5 +793,234 @@
   toggle.addEventListener('click',()=>{toggle.classList.toggle('open');menu.classList.toggle('open');});
   document.querySelectorAll('#nav-menu li a').forEach(link=>{link.addEventListener('click',function(){document.querySelectorAll('#nav-menu li').forEach(li=>li.classList.remove('active'));this.parentElement.classList.add('active');menu.classList.remove('open');toggle.classList.remove('open');});});
 </script>
+
+<style>
+  @keyframes tspin{to{transform:rotate(360deg)}}
+  .t-shimmer{background:linear-gradient(90deg,var(--paper2) 25%,var(--paper3) 50%,var(--paper2) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:3px;display:block;}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+</style>
+
+<script>
+(function(){
+  var CACHE_KEY = 'pw_news_cache';
+  var CACHE_TS  = 'pw_news_ts';
+  var THREE_HRS = 3 * 60 * 60 * 1000;
+
+  var FEEDS = {
+    top:     'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHomePage.xml&api_key=public&count=20',
+    world:   'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FWorld.xml&api_key=public&count=10',
+    biz:     'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FBusiness.xml&api_key=public&count=6',
+  };
+  var FB = {
+    top:   'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml&api_key=public&count=20',
+    world: 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml&api_key=public&count=10',
+    biz:   'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fbusiness%2Frss.xml&api_key=public&count=6',
+  };
+
+  // ── helpers ──
+  function strip(h){var d=document.createElement('div');d.innerHTML=h||'';return d.textContent||'';}
+  function ago(p){
+    if(!p)return'';
+    var m=Math.floor((Date.now()-new Date(p))/60000);
+    if(m<1)return'Just now';if(m<60)return m+' min ago';
+    if(m<1440)return Math.floor(m/60)+' hr'+(Math.floor(m/60)>1?'s':'')+' ago';
+    return Math.floor(m/1440)+' day'+(Math.floor(m/1440)>1?'s':'')+' ago';
+  }
+  function src(item){
+    if(item.author)return item.author;
+    try{return new URL(item.link).hostname.replace('www.','');}catch(e){return'Reuters';}
+  }
+  function img(item){
+    return item.thumbnail||(item.enclosure&&item.enclosure.link)||'';
+  }
+  // Unsplash keyword images by category guess
+  var TOPIC_IMGS = [
+    ['iran|war|missile|military|strike|troops|soldiers|pentagon','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
+    ['oil|gas|energy|barrel|opec|fuel','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop'],
+    ['trump|white house|president|congress|senate|house|capitol','https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=800&q=80&fit=crop'],
+    ['russia|ukraine|putin|zelensky|war','https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop'],
+    ['china|beijing|taiwan|xi|chinese','https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop'],
+    ['economy|market|stock|dow|nasdaq|inflation|fed|rate|recession','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&fit=crop'],
+    ['ai|tech|openai|gpt|nvidia|chip|cyber|hack','https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop'],
+    ['health|cdc|virus|disease|hospital|vaccine','https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop'],
+    ['climate|environment|carbon|temperature|flood','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop'],
+    ['court|supreme|judge|law|legal','https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80&fit=crop'],
+    ['election|vote|ballot|poll|democrat|republican','https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=800&q=80&fit=crop'],
+    ['israel|hamas|gaza|middle east|beirut|lebanon','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
+    ['space|nasa|rocket|moon|mars|spacex','https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80&fit=crop'],
+  ];
+  function topicImg(title){
+    var t=(title||'').toLowerCase();
+    for(var i=0;i<TOPIC_IMGS.length;i++){
+      var keys=TOPIC_IMGS[i][0].split('|');
+      for(var j=0;j<keys.length;j++){
+        if(t.indexOf(keys[j])>-1)return TOPIC_IMGS[i][1];
+      }
+    }
+    return 'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=800&q=80&fit=crop';
+  }
+
+  // ── render hero ──
+  function renderHero(item){
+    var el=document.getElementById('hero-headline');
+    if(!el)return;
+    var t=item.title||'';
+    var d=strip(item.description||item.content||'').substring(0,280);
+    if(d.length===280)d+='…';
+    var s=src(item);
+    var i=img(item)||topicImg(t);
+    var a=ago(item.pubDate);
+    var heroImg=document.getElementById('hero-img');
+    if(heroImg){heroImg.src=i;heroImg.alt=t;}
+    document.getElementById('hero-tag').textContent=s.split('.')[0].toUpperCase();
+    el.textContent=t;
+    var deck=document.getElementById('hero-deck');
+    if(deck)deck.textContent=d;
+    var byline=document.getElementById('hero-byline');
+    if(byline)byline.innerHTML='<strong>'+s+'</strong> &nbsp;·&nbsp; '+a+' &nbsp;·&nbsp; 5 min read';
+    if(item.link){
+      el.style.cursor='pointer';
+      el.onclick=function(){window.open(item.link,'_blank');};
+    }
+  }
+
+  // ── render breaking bar ──
+  function renderBreaking(items){
+    var el=document.getElementById('breaking-text');
+    if(!el||!items.length)return;
+    el.textContent=items[0].title||'';
+    var i=1;
+    setInterval(function(){
+      if(!items[i])i=0;
+      var txt=items[i]?items[i].title:'';
+      el.style.opacity='0';
+      setTimeout(function(){el.textContent=txt;el.style.opacity='1';},400);
+      i++;
+    },6000);
+    el.style.transition='opacity .4s';
+  }
+
+  // ── render ticker ──
+  function renderTicker(items){
+    var el=document.getElementById('ticker-text');
+    if(!el)return;
+    var headlines=items.slice(0,8).map(function(x){return x.title||'';}).filter(Boolean);
+    el.textContent=headlines.join(' &nbsp;·&nbsp; ');
+    var full=headlines.join('   ·   ');
+    el.textContent=full;
+  }
+
+  // ── render trending ──
+  function renderTrending(items){
+    var list=document.getElementById('trending-list');
+    if(!list)return;
+    var flags=['🇺🇸','🌍','🇺🇸','🌍','🇺🇸','🇺🇸'];
+    var html='';
+    items.slice(0,6).forEach(function(item,i){
+      var t=item.title||'';
+      var a=ago(item.pubDate);
+      var s=src(item);
+      var im=img(item)||topicImg(t);
+      var lk=item.link||'#';
+      var num='0'+(i+1);
+      html+='<div class="trending-item" style="cursor:pointer;" onclick="window.open(''+lk.replace(/'/g,"\'")+"','_blank')">"+
+        '<div class="trending-num">'+num+'</div>'+
+        '<div class="trending-thumb"><img src="'+im+'" alt="" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=200&q=60&fit=crop'"></div>'+
+        '<div>'+
+          '<span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+flags[i]+' '+s.split('.')[0]+'</span>'+
+          '<div class="trending-headline">'+t+'</div>'+
+          '<div class="byline" style="font-size:11px;">'+a+'</div>'+
+        '</div>'+
+      '</div>';
+    });
+    list.innerHTML=html;
+  }
+
+  // ── update timestamp ──
+  function setTimestamp(){
+    var el=document.getElementById('news-timestamp');
+    if(!el)return;
+    var now=new Date();
+    el.textContent='— Updated '+now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})+' ET';
+  }
+
+  // ── fetch with fallback ──
+  function fetchFeed(primary,fallback,cb){
+    fetch(primary)
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(!d.items||!d.items.length)throw 0;
+        cb(d.items);
+      })
+      .catch(function(){
+        if(fallback){
+          fetch(fallback)
+            .then(function(r){return r.json();})
+            .then(function(d){if(d.items&&d.items.length)cb(d.items);})
+            .catch(function(){});
+        }
+      });
+  }
+
+  // ── load & cache ──
+  function loadAll(){
+    // Try to use cache
+    try {
+      var ts=parseInt(localStorage.getItem(CACHE_TS)||'0');
+      if(Date.now()-ts < THREE_HRS){
+        var cached=JSON.parse(localStorage.getItem(CACHE_KEY)||'null');
+        if(cached&&cached.top){
+          renderHero(cached.top[0]);
+          renderBreaking(cached.top);
+          renderTicker(cached.top);
+          renderTrending(cached.top);
+          setTimestamp();
+          return;
+        }
+      }
+    } catch(e){}
+
+    // Fetch fresh
+    fetchFeed(FEEDS.top, FB.top, function(items){
+      renderHero(items[0]);
+      renderBreaking(items);
+      renderTicker(items);
+      renderTrending(items);
+      setTimestamp();
+      try{
+        localStorage.setItem(CACHE_KEY, JSON.stringify({top:items}));
+        localStorage.setItem(CACHE_TS, Date.now().toString());
+      }catch(e){}
+    });
+  }
+
+  // ── run on load ──
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',loadAll);
+  } else {
+    loadAll();
+  }
+
+  // ── auto-refresh every 3 hours ──
+  setInterval(function(){
+    try{localStorage.removeItem(CACHE_KEY);localStorage.removeItem(CACHE_TS);}catch(e){}
+    loadAll();
+  }, THREE_HRS);
+
+  // ── refresh on tab focus after 3h away ──
+  var lastFocus=Date.now();
+  document.addEventListener('visibilitychange',function(){
+    if(!document.hidden){
+      if(Date.now()-lastFocus > THREE_HRS){
+        try{localStorage.removeItem(CACHE_KEY);localStorage.removeItem(CACHE_TS);}catch(e){}
+        loadAll();
+      }
+      lastFocus=Date.now();
+    }
+  });
+
+})();
+</script>
+
 </body>
 </html>
