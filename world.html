@@ -370,6 +370,16 @@ footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
     if(hd)hd.textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   }
 
+  
+  var PROXIES=[
+    function(u){return 'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(u)+'&api_key=public&count=20';},
+    function(u){return 'https://api.allorigins.win/get?url='+encodeURIComponent(u);},
+    function(u){return 'https://corsproxy.io/?'+encodeURIComponent(u);}
+  ];
+  function parseRSS(x){var p=new DOMParser(),doc=p.parseFromString(x,'text/xml'),items=doc.querySelectorAll('item'),r=[];items.forEach(function(i){var enc=i.querySelector('enclosure'),mt=i.querySelector('thumbnail');r.push({title:i.querySelector('title')?i.querySelector('title').textContent:'',link:i.querySelector('link')?i.querySelector('link').textContent:'',description:i.querySelector('description')?i.querySelector('description').textContent:'',pubDate:i.querySelector('pubDate')?i.querySelector('pubDate').textContent:'',author:i.querySelector('creator')?i.querySelector('creator').textContent:'',thumbnail:mt?mt.getAttribute('url'):(enc?enc.getAttribute('url'):''),content:i.querySelector('encoded')?i.querySelector('encoded').textContent:''});});return r;}
+  function fetchProxy(url,idx,cb){if(idx>=PROXIES.length){cb(null);return;}fetch(PROXIES[idx](url)).then(function(r){return r.json();}).then(function(d){if(d.items&&d.items.length){cb(d.items);return;}if(d.contents){var its=parseRSS(d.contents);if(its.length){cb(its);return;}}throw 0;}).catch(function(){fetchProxy(url,idx+1,cb);});}
+  function fetchFeedRobust(pri,fb,cb){fetchProxy(pri,0,function(its){if(its&&its.length){cb(its);return;}fetchProxy(fb,0,function(its2){cb(its2&&its2.length?its2:null);});});}
+
   function loadPage(){
     try{
       var ts=parseInt(localStorage.getItem(CTS)||'0');
@@ -380,20 +390,18 @@ footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
     }catch(e){}
     var hero=document.getElementById('hero-section');
     if(hero)hero.innerHTML='<div class="loading-box"><div class="spin"></div>Loading today's top stories…</div>';
-    fetch(PRIMARY).then(function(r){return r.json();}).then(function(d){
-      if(!d.items||!d.items.length)throw 0;
-      renderAll(d.items);
-      try{localStorage.setItem(CKEY,JSON.stringify(d.items));localStorage.setItem(CTS,Date.now().toString());}catch(e){}
-    }).catch(function(){
-      fetch(FALLBACK).then(function(r){return r.json();}).then(function(d){
-        if(d.items&&d.items.length){renderAll(d.items);try{localStorage.setItem(CKEY,JSON.stringify(d.items));localStorage.setItem(CTS,Date.now().toString());}catch(e){}}
-      }).catch(function(){
-        var hero2=document.getElementById('hero-section');
-        if(hero2)hero2.innerHTML='<div class="loading-box">⚠️ Could not load stories. Please refresh.</div>';
-      });
+    fetchFeedRobust(PRIMARY,FALLBACK,function(items){
+      if(items&&items.length){
+        renderAll(items);
+        try{localStorage.setItem(CKEY,JSON.stringify(items));localStorage.setItem(CTS,Date.now().toString());}catch(e){}
+      } else {
+        var h2=document.getElementById('hero-section');
+        if(h2)h2.innerHTML='<div class="loading-box">⚠️ Could not load stories. <a href="javascript:location.reload()" style="color:var(--red);">Tap to retry</a></div>';
+      }
     });
   }
 
+  try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',loadPage);}
   else{loadPage();}
   setInterval(function(){try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}loadPage();},THREE_HRS);
