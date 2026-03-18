@@ -6,26 +6,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#1a1714;--ink2:#3d3830;--ink3:#6b6258;--paper:#faf8f4;--paper2:#f2efe9;--paper3:#e8e3da;--red:#c0392b;--red2:#e74c3c;--gold:#b8963a;--gold2:#d4ab52;--blue:#1a4a7a;--serif:'Playfair Display',Georgia,serif;--body-serif:'Source Serif 4',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+:root{--ink:#1a1714;--ink2:#3d3830;--ink3:#6b6258;--paper:#faf8f4;--paper2:#f2efe9;--paper3:#e8e3da;--red:#c0392b;--red2:#e74c3c;--gold:#b8963a;--blue:#1a4a7a;--serif:'Playfair Display',Georgia,serif;--body-serif:'Source Serif 4',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
 html{font-size:16px}body{background:var(--paper);color:var(--ink);font-family:var(--body-serif);line-height:1.6}
 .top-bar{background:var(--ink);color:#aaa;font-family:var(--sans);font-size:11px;letter-spacing:.08em;padding:6px 0}
 .top-bar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
 .top-bar a{color:#ccc;text-decoration:none;margin-left:16px}.top-bar a:hover{color:#fff}
-.ticker{display:flex;gap:16px;overflow:hidden;flex:1;align-items:center}
+.ticker{display:flex;gap:12px;overflow:hidden;flex:1;align-items:center}
 .ticker-label{background:var(--red);color:#fff;padding:1px 8px;font-size:10px;font-weight:600;letter-spacing:.1em;border-radius:2px;white-space:nowrap}
 header{border-bottom:3px solid var(--ink);padding:18px 0 0;background:var(--paper)}
 .header-inner{max-width:1200px;margin:0 auto;padding:0 20px}
 .header-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--paper3)}
-.masthead{font-family:var(--serif);font-size:clamp(38px,6vw,72px);font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.masthead{font-family:var(--serif);font-size:clamp(38px,6vw,72px);font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--ink);text-decoration:none}
 .masthead span{color:var(--red)}
-.header-meta{text-align:right;font-family:var(--sans);font-size:12px;color:var(--ink3);line-height:1.8}
-.header-meta strong{display:block;font-size:13px;color:var(--ink2)}
 .header-tagline{font-family:var(--body-serif);font-style:italic;font-size:13px;color:var(--ink3);letter-spacing:.04em}
 .ad-slot{background:var(--paper2);border:1px dashed var(--paper3);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:11px;color:var(--ink3);letter-spacing:.1em}
 .ad-label{text-transform:uppercase;font-size:10px;background:var(--paper3);padding:2px 8px;border-radius:2px}
 nav{border-bottom:2px solid var(--ink);position:relative}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
-nav ul{list-style:none;display:flex;gap:0;flex-wrap:wrap}
+nav ul{list-style:none;display:flex;flex-wrap:wrap}
 nav ul li a{display:block;padding:11px 14px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.05em;text-decoration:none;color:var(--ink2);text-transform:uppercase;transition:color .15s;white-space:nowrap}
 nav ul li a:hover,nav ul li.active a{color:var(--red)}
 nav ul li.active a{border-bottom:3px solid var(--red);margin-bottom:-2px}
@@ -36,69 +34,75 @@ nav ul li.active a{border-bottom:3px solid var(--red);margin-bottom:-2px}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media(max-width:760px){.nav-toggle{display:flex}nav ul{display:none;flex-direction:column;width:100%;background:var(--paper);border-top:1px solid var(--paper3);position:absolute;top:100%;left:0;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.08)}nav ul.open{display:flex}nav ul li a{padding:13px 20px;border-bottom:1px solid var(--paper3);font-size:14px}nav ul li.active a{border-bottom:1px solid var(--paper3);border-left:3px solid var(--red);padding-left:17px;margin-bottom:0}}
 @media(min-width:761px) and (max-width:1040px){nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}nav ul::-webkit-scrollbar{display:none}nav ul li a{padding:11px 10px;font-size:11px}}
+.breaking-bar{background:var(--red);color:#fff;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.08em;padding:7px 0;text-align:center;transition:opacity .4s}
+.breaking-bar em{font-style:normal;background:rgba(0,0,0,.2);padding:1px 8px;border-radius:2px;margin-right:10px;font-size:10px;letter-spacing:.15em}
 .container{max-width:1200px;margin:0 auto;padding:28px 20px}
 .page-grid{display:grid;grid-template-columns:1fr 300px;gap:40px}
 @media(max-width:860px){.page-grid{grid-template-columns:1fr}}
 .section-label{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .section-label::after{content:'';flex:1;height:1px;background:var(--paper3)}
+.page-banner{padding:32px 0;border-bottom:2px solid var(--ink)}
+.page-banner-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.page-banner h1{font-family:var(--serif);font-size:clamp(28px,4vw,52px);font-weight:900;line-height:1;color:#fff}
+.page-banner p{font-family:var(--body-serif);font-style:italic;font-size:14px;color:rgba(255,255,255,.7)}
+/* HERO */
+.hero-dyn{display:grid;grid-template-columns:3fr 2fr;gap:32px;padding-bottom:28px;border-bottom:2px solid var(--ink);margin-bottom:28px;cursor:pointer}
+@media(max-width:680px){.hero-dyn{grid-template-columns:1fr}}
+.hero-img{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:14px}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.hero-img img:hover{transform:scale(1.03)}
 .cat-tag{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;margin-bottom:10px}
+.hero-headline{font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:10px}
+.hero-headline:hover{color:var(--red)}
+.hero-deck{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:10px}
 .byline{font-family:var(--sans);font-size:12px;color:var(--ink3)}
 .byline strong{color:var(--ink2);font-weight:600}
-/* PAGE HERO BANNER */
-.page-banner{padding:36px 0;margin-bottom:0;border-bottom:2px solid var(--ink)}
-.page-banner-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
-.page-banner h1{font-family:var(--serif);font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1;color:var(--ink)}
-.page-banner h1 span{color:var(--red)}
-.page-banner p{font-family:var(--body-serif);font-style:italic;font-size:14px;color:var(--ink3);max-width:400px;text-align:right}
-/* LEAD ARTICLE */
-.lead-article{display:grid;grid-template-columns:3fr 2fr;gap:32px;padding-bottom:28px;border-bottom:1px solid var(--paper3);margin-bottom:28px}
-@media(max-width:680px){.lead-article{grid-template-columns:1fr}}
-.lead-thumb{width:100%;aspect-ratio:16/9;overflow:hidden}
-.lead-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-.lead-thumb img:hover{transform:scale(1.03)}
-.lead-headline{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:10px;cursor:pointer}
-.lead-headline:hover{color:var(--red)}
-.lead-deck{font-size:15px;color:var(--ink2);line-height:1.7;margin-bottom:12px}
-.lead-side{display:flex;flex-direction:column;gap:0}
-.side-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--paper3)}
+/* SIDE STACK */
+.side-stack{display:flex;flex-direction:column;gap:0}
+.side-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--paper3);cursor:pointer;align-items:flex-start}
 .side-item:last-child{border-bottom:none}
 .side-item-thumb{width:88px;min-width:88px;height:62px;overflow:hidden}
 .side-item-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.side-item-headline{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.3;color:var(--ink);cursor:pointer;margin-bottom:4px}
+.side-item-headline{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px}
 .side-item-headline:hover{color:var(--red)}
-/* ARTICLE GRID */
-.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:28px}
-@media(max-width:680px){.article-grid{grid-template-columns:1fr}}
-@media(min-width:481px) and (max-width:680px){.article-grid{grid-template-columns:repeat(2,1fr)}}
-.article-card{cursor:pointer;padding-bottom:20px;border-bottom:1px solid var(--paper3)}
-.article-card:nth-last-child(-n+3){border-bottom:none}
-.article-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:10px}
-.article-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
-.article-thumb img:hover{transform:scale(1.04)}
-.article-headline{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:6px}
-.article-headline:hover{color:var(--red)}
-.article-deck{font-size:13px;color:var(--ink3);line-height:1.5;margin-bottom:8px}
-/* LIST ARTICLES (text-heavy rows) */
-.article-list{margin-bottom:28px}
-.article-list-item{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--paper3);align-items:flex-start}
+/* ARTICLE LIST */
+.article-list-item{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--paper3);cursor:pointer;align-items:flex-start}
 .article-list-item:last-child{border-bottom:none}
 .article-list-thumb{width:140px;min-width:140px;height:96px;overflow:hidden}
-.article-list-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.article-list-body{}
-.article-list-headline{font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:7px;cursor:pointer}
+.article-list-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.article-list-thumb img:hover{transform:scale(1.04)}
+.article-list-headline{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:6px}
 .article-list-headline:hover{color:var(--red)}
-.article-list-deck{font-size:14px;color:var(--ink2);line-height:1.6;margin-bottom:8px}
+.article-list-deck{font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:6px}
+/* ARTICLE GRID */
+.article-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:28px}
+@media(max-width:680px){.article-grid-3{grid-template-columns:1fr}}
+@media(min-width:481px) and (max-width:680px){.article-grid-3{grid-template-columns:repeat(2,1fr)}}
+.article-card{cursor:pointer;padding-bottom:20px;border-bottom:1px solid var(--paper3)}
+.article-card:nth-last-child(-n+3){border-bottom:none}
+.article-card-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:10px}
+.article-card-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.article-card-thumb img:hover{transform:scale(1.04)}
+.article-card-headline{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:5px}
+.article-card-headline:hover{color:var(--red)}
+.article-card-deck{font-size:13px;color:var(--ink3);line-height:1.5;margin-bottom:6px}
 /* SIDEBAR */
 .sidebar-widget{margin-bottom:28px}
 .sidebar-title{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:16px}
-.sidebar-story{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--paper3);align-items:flex-start}
+.sidebar-story{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--paper3);cursor:pointer}
 .sidebar-story:last-child{border-bottom:none}
-.sidebar-thumb{width:64px;min-width:64px;height:46px;overflow:hidden}
+.sidebar-thumb{width:60px;min-width:60px;height:44px;overflow:hidden}
 .sidebar-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.sidebar-content{flex:1}
-.sidebar-headline{font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.35;color:var(--ink);cursor:pointer;margin-bottom:3px}
+.sidebar-headline{font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:3px}
 .sidebar-headline:hover{color:var(--red)}
 .sidebar-meta{font-family:var(--sans);font-size:11px;color:var(--ink3)}
+/* LOADING */
+@keyframes spin2{to{transform:rotate(360deg)}}
+@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.4}}
+.spin{width:20px;height:20px;border:2px solid var(--paper3);border-top-color:var(--red);border-radius:50%;animation:spin2 .8s linear infinite;margin:0 auto 12px}
+.loading-box{text-align:center;padding:48px 20px;font-family:var(--sans);font-size:13px;color:var(--ink3)}
+/* LIVE badge */
+.live-badge{background:var(--red);color:#fff;padding:2px 7px;border-radius:2px;font-size:9px;letter-spacing:.1em;animation:pulse2 1.5s infinite;margin-left:6px}
 footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
 .footer-inner{max-width:1200px;margin:0 auto;padding:0 20px}
 .footer-logo{font-family:var(--serif);font-size:32px;font-weight:900;color:#fff;margin-bottom:4px}
@@ -111,89 +115,76 @@ footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
 .footer-col a:hover{color:#ccc}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:11px;flex-wrap:wrap;gap:8px}
 .footer-bottom a{color:#555;text-decoration:none;margin-left:16px}
-.footer-bottom a:hover{color:#999}
 
-.page-banner{background:#3a2a0a;padding:36px 0;border-bottom:2px solid var(--ink)}
-.page-banner-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.page-banner h1{font-family:var(--serif);font-size:clamp(28px,4vw,52px);font-weight:900;line-height:1;color:#fff}
-.page-banner p{font-family:var(--body-serif);font-style:italic;font-size:14px;color:rgba(255,255,255,.7);max-width:420px;text-align:right}
+.page-banner{background:#3a2a0a;padding:32px 0;border-bottom:2px solid var(--ink)}
 </style>
+  <script src="https://5gvci.com/act/files/tag.min.js?z=10748030" data-cfasync="false" async></script>
 </head>
 <body>
 <div class="top-bar"><div class="top-bar-inner">
-    <div class="ticker"><span class="ticker-label">LIVE</span><span id="ticker-text">Oil $114.80/bbl ↑ &nbsp;·&nbsp; DOW Futures –600pts &nbsp;·&nbsp; Strait of Hormuz CLOSED &nbsp;·&nbsp; 98th Oscars TONIGHT</span></div>
+    <div class="ticker"><span class="ticker-label">LIVE</span><span id="ticker-text">Loading latest…</span></div>
     <div><a href="index.html">Home</a><a href="contact.html">Contact</a><a href="#">Subscribe</a></div>
   </div></div>
-<header>
-  <div class="header-inner">
+<header><div class="header-inner">
     <div class="header-top">
-      <div><div class="masthead"><a href="index.html" style="text-decoration:none;color:inherit">Pulse<span>Wire</span></a></div><div class="header-tagline">America's Window to the World.</div></div>
-      <div class="header-meta"><strong id="hdate"></strong><span>New York, NY &nbsp;·&nbsp; U.S. Edition</span></div>
+      <div><a href="index.html" class="masthead">Pulse<span>Wire</span></a>
+      <div class="header-tagline">America's Window to the World.</div></div>
+      <div style="text-align:right;font-family:var(--sans);font-size:12px;color:var(--ink3);line-height:1.8;">
+        <strong id="hdate" style="display:block;color:var(--ink2);font-size:13px;"></strong>
+        <span>New York, NY &nbsp;·&nbsp; U.S. Edition</span>
+      </div>
     </div>
     <div class="ad-slot" style="height:90px;margin:14px 0;"><span class="ad-label">Advertisement – 728×90</span></div>
   </div>
-  <nav id="main-nav">
-    <div class="nav-inner">
-      <ul id="nav-menu"><li><a href="index.html">Home</a></li><li><a href="usnews.html">U.S. News</a></li><li><a href="politics.html">Politics</a></li><li><a href="world.html">World</a></li><li><a href="business.html">Business</a></li><li><a href="technology.html">Technology</a></li><li><a href="health.html">Health</a></li><li class="active"><a href="opinion.html">Opinion</a></li><li><a href="video.html">Video</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <nav id="main-nav"><div class="nav-inner"><ul id="nav-menu"><li><a href="index.html">Home</a></li><li><a href="usnews.html">U.S. News</a></li><li><a href="politics.html">Politics</a></li><li><a href="world.html">World</a></li><li><a href="business.html">Business</a></li><li><a href="technology.html">Technology</a></li><li><a href="health.html">Health</a></li><li  class="active"><a href="opinion.html">Opinion</a></li><li><a href="video.html">Video</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
+    </div></nav>
 </header>
+<div class="breaking-bar"><em>BREAKING</em> <span id="breaking-text">Loading top stories…</span></div>
+
 <div class="page-banner">
   <div class="page-banner-inner">
     <h1>Opinion & Analysis</h1>
-    <p>Commentary, columns, and editorial perspectives from PulseWire writers and guest contributors.</p>
+    <p>Commentary, columns, and editorial perspectives. <span id="last-updated" style="display:block;font-size:12px;opacity:.6;margin-top:4px;"></span></p>
   </div>
 </div>
+
 <div class="container">
   <div class="page-grid">
     <div>
-      <div class="lead-article">
-        <div>
-          <div class="lead-thumb"><img src="https://images.unsplash.com/photo-1575320181282-9afab399332c?w=900&q=80&fit=crop" alt="Editorial news today March 15 2026"></div>
-          <span class="cat-tag" style="background:var(--gold);">Editorial</span>
-          <div class="lead-headline">The Border Bill Is a Compromise — But Is It Justice?</div>
-          <div class="lead-deck">The Senate's bipartisan border bill delivers real enforcement gains. But buried in its 847 pages are provisions that will separate families, gut asylum protections, and make the U.S. border one of the harshest in the developed world. Our editorial board believes the security wins don't justify the human costs.</div>
-          <div class="byline"><strong>The PulseWire Editorial Board</strong> · 1 hour ago · 6 min read</div>
-        </div>
-        <div class="lead-side">
-          <div class="side-item"><div class="side-item-thumb"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80&fit=crop&crop=face" alt="Carl Whitman columnist"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a4a7a;">Column</span><div class="side-item-headline">Carl Whitman: The Senate Still Has a Few Profiles in Courage</div><div class="byline" style="font-size:11px;margin-top:3px;">Carl Whitman · 2 hrs ago</div></div></div>
-          <div class="side-item"><div class="side-item-thumb"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80&fit=crop&crop=face" alt="Dr Amy Chen economist"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a6b3a;">Economics</span><div class="side-item-headline">Dr. Amy Chen: The Fed Is Playing a Dangerous Waiting Game</div><div class="byline" style="font-size:11px;margin-top:3px;">Dr. Amy Chen · 3 hrs ago</div></div></div>
-          <div class="side-item"><div class="side-item-thumb"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80&fit=crop&crop=face" alt="Marcus Reed tech columnist"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#5a3e8a;">Tech</span><div class="side-item-headline">Marcus Reed: AI Regulation Is America's Apollo Moment — And We're Already Behind</div><div class="byline" style="font-size:11px;margin-top:3px;">Marcus Reed · 4 hrs ago</div></div></div>
-        </div>
+      <!-- HERO + SIDE — filled by JS -->
+      <div id="hero-section">
+        <div class="loading-box"><div class="spin"></div>Loading today's top stories…</div>
       </div>
-      <div class="section-label">Columns & Commentary</div>
-      <div class="article-list">
-        <div class="article-list-item"><div class="article-list-thumb"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80&fit=crop&crop=face" alt="Carl Whitman political columnist"></div><div class="article-list-body"><span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a4a7a;">Politics</span><div class="article-list-headline">Carl Whitman: The Bipartisan Deal Wasn't a Miracle. It Was a Warning Sign.</div><div class="article-list-deck">When 67 senators agree on anything in 2026, you should probably be worried. Here's what the border bill's passage actually tells us about the state of American democracy — and why the celebration misses the point entirely.</div><div class="byline" style="font-size:11px;">Carl Whitman · Political Editor · 2 hrs ago · 7 min read</div></div></div>
-        <div class="article-list-item"><div class="article-list-thumb"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80&fit=crop&crop=face" alt="Dr Amy Chen economics opinion"></div><div class="article-list-body"><span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a6b3a;">Economics</span><div class="article-list-headline">Dr. Amy Chen: Jerome Powell's Patience Is Running Out — And Markets Aren't Ready</div><div class="article-list-deck">The Fed Chair has been careful not to spook investors. But with inflation proving stickier than expected and tariffs adding new price pressures, the central bank may be forced into a choice between two bad options far sooner than anyone wants to admit.</div><div class="byline" style="font-size:11px;">Dr. Amy Chen · Economist · 3 hrs ago · 8 min read</div></div></div>
-        <div class="article-list-item"><div class="article-list-thumb"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80&fit=crop&crop=face" alt="Marcus Reed technology AI columnist"></div><div class="article-list-body"><span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#5a3e8a;">Technology</span><div class="article-list-headline">Marcus Reed: We Have Six Months to Regulate AI Before It's Too Late</div><div class="article-list-deck">GPT-5 passing the medical licensing exam isn't just impressive — it's a five-alarm fire for every profession that assumed AI was a tool, not a replacement. Washington has a narrow window to act before the technology outruns the policy entirely.</div><div class="byline" style="font-size:11px;">Marcus Reed · Tech Columnist · 4 hrs ago · 9 min read</div></div></div>
-        <div class="article-list-item"><div class="article-list-thumb"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80&fit=crop&crop=face" alt="Sandra Mills world affairs opinion"></div><div class="article-list-body"><span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--blue);">World</span><div class="article-list-headline">Sandra Mills: Europe Is Finally Serious About Defense. Why Did It Take This Long?</div><div class="article-list-deck">The EU's $500 billion defense fund is real — but it comes almost a decade after Russia first showed its true intentions. Sandra Mills traces the slow, painful realization that America cannot always be counted on, and what it means for the future of the Western alliance.</div><div class="byline" style="font-size:11px;">Sandra Mills · World Editor · 5 hrs ago · 8 min read</div></div></div>
-      </div>
+
+      <!-- AD SLOT -->
       <div class="ad-slot" style="height:90px;margin-bottom:28px;"><span class="ad-label">Advertisement – 728×90</span></div>
-      <div class="section-label">Guest Essays</div>
-      <div class="article-grid">
-        <div class="article-card"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=500&q=80&fit=crop" alt="Democracy voting rights essay"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;background:var(--gold);">Essay</span><div class="article-headline">Why Young Americans Are Voting in Record Numbers — And What They Want</div><div class="article-deck">A political scientist explains the data behind the youth turnout surge — and what it means for 2026.</div><div class="byline" style="font-size:11px;">Prof. James Hill · Guest · 6 hrs ago</div></div>
-        <div class="article-card"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500&q=80&fit=crop" alt="Climate policy opinion environment"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#1a6b3a;">Climate</span><div class="article-headline">The Climate Crisis Is Here. American Politics Is Still Catching Up.</div><div class="article-deck">A former EPA administrator argues that the gap between scientific urgency and political action has never been wider.</div><div class="byline" style="font-size:11px;">Dr. Carol Reyes · Guest · 7 hrs ago</div></div>
-        <div class="article-card"><div class="article-thumb"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&q=80&fit=crop" alt="Free trade protectionism tariffs opinion"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;background:#8b2020;">Trade</span><div class="article-headline">Tariffs Are a Tax on American Consumers. Let's Stop Pretending Otherwise.</div><div class="article-deck">An economist makes the case that protectionism always costs more than it saves — and the data to back it up.</div><div class="byline" style="font-size:11px;">Prof. David Kim · Guest · 8 hrs ago</div></div>
+
+      <!-- ARTICLE LIST — filled by JS -->
+      <div class="section-label">Latest Stories <span class="live-badge">● LIVE</span></div>
+      <div id="article-list" style="margin-bottom:28px;">
+        <div class="loading-box"><div class="spin"></div>Loading stories…</div>
+      </div>
+
+      <!-- AD SLOT 2 -->
+      <div class="ad-slot" style="height:90px;margin-bottom:28px;"><span class="ad-label">Advertisement – 728×90</span></div>
+
+      <!-- ARTICLE GRID — filled by JS -->
+      <div class="section-label">More Stories</div>
+      <div class="article-grid-3" id="article-grid">
+        <!-- filled by JS -->
       </div>
     </div>
+
+    <!-- SIDEBAR -->
     <aside>
       <div class="ad-slot" style="width:300px;min-width:300px;height:250px;margin-bottom:24px;"><span class="ad-label">Advertisement – 300×250</span></div>
-      <div class="sidebar-widget"><div class="sidebar-title">Most Read</div><div class="sidebar-story">
-          <div class="sidebar-thumb"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80&fit=crop&crop=face" alt="Carl Whitman: The Deal That Wa"></div>
-          <div class="sidebar-content"><div class="sidebar-headline">Carl Whitman: The Deal That Wasn't a Miracle</div><div class="sidebar-meta">Politics · 9,800 reading now</div></div>
-        </div><div class="sidebar-story">
-          <div class="sidebar-thumb"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80&fit=crop&crop=face" alt="Dr. Chen: Powell's Patience Is"></div>
-          <div class="sidebar-content"><div class="sidebar-headline">Dr. Chen: Powell's Patience Is Running Out</div><div class="sidebar-meta">Economics · 7,200 reading now</div></div>
-        </div><div class="sidebar-story">
-          <div class="sidebar-thumb"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80&fit=crop&crop=face" alt="Marcus Reed: 6 Months to Regul"></div>
-          <div class="sidebar-content"><div class="sidebar-headline">Marcus Reed: 6 Months to Regulate AI</div><div class="sidebar-meta">Technology · 6,100 reading now</div></div>
-        </div><div class="sidebar-story">
-          <div class="sidebar-thumb"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80&fit=crop&crop=face" alt="Sandra Mills: Europe's Defense"></div>
-          <div class="sidebar-content"><div class="sidebar-headline">Sandra Mills: Europe's Defense Awakening</div><div class="sidebar-meta">World · 4,700 reading now</div></div>
-        </div></div>
-      <div class="ad-slot" style="width:300px;min-width:300px;height:250px;margin-top:24px;"><span class="ad-label">Advertisement – 300×250</span></div>
-      <div class="sidebar-widget" style="margin-top:24px;background:var(--ink);padding:20px;color:#ccc;">
+      <div class="sidebar-widget">
+        <div class="sidebar-title">Most Read</div>
+        <div id="sidebar-list"><div class="loading-box" style="padding:20px 0;"><div class="spin"></div></div></div>
+      </div>
+      <div class="ad-slot" style="width:300px;min-width:300px;height:250px;margin-top:24px;margin-bottom:24px;"><span class="ad-label">Advertisement – 300×250</span></div>
+      <div class="sidebar-widget" style="background:var(--ink);padding:20px;color:#ccc;">
         <div style="font-family:var(--serif);font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;">PulseWire AM</div>
         <div style="font-size:13px;line-height:1.6;margin-bottom:14px;">Your daily briefing — free, every morning at 6am ET.</div>
         <input type="email" placeholder="your@email.com" style="width:100%;padding:9px 12px;font-size:13px;background:#2a2724;border:1px solid #3a3530;color:#ccc;border-radius:4px;margin-bottom:8px;outline:none;">
@@ -203,127 +194,28 @@ footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
     </aside>
   </div>
 </div>
-<footer>
-  <div class="footer-inner">
+
+<footer><div class="footer-inner">
     <div class="footer-logo"><a href="index.html" style="text-decoration:none;color:inherit">Pulse<span>Wire</span></a></div>
     <div class="footer-tagline">America's Window to the World. Independent. Uncompromising.</div>
     <div class="footer-grid">
       <div class="footer-col"><div class="footer-col-title">Sections</div><a href="usnews.html">U.S. News</a><a href="politics.html">Politics</a><a href="world.html">World</a><a href="business.html">Business</a><a href="technology.html">Technology</a><a href="health.html">Health</a></div>
-      <div class="footer-col"><div class="footer-col-title">More</div><a href="opinion.html">Opinion</a><a href="video.html">Video</a><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a></div>
+      <div class="footer-col"><div class="footer-col-title">More</div><a href="opinion.html">Opinion</a><a href="video.html">Video</a><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
       <div class="footer-col"><div class="footer-col-title">World Desks</div><a href="world.html">Europe</a><a href="world.html">Asia-Pacific</a><a href="world.html">Middle East</a><a href="world.html">Latin America</a></div>
       <div class="footer-col"><div class="footer-col-title">Follow Us</div><a href="#">Facebook</a><a href="#">Twitter/X</a><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">TikTok</a></div>
     </div>
     <div class="footer-bottom"><span>© 2026 PulseWire Media LLC. New York, NY. All rights reserved.</span><div><a href="privacy.html">Privacy</a><a href="#">Terms</a><a href="contact.html">Contact</a></div></div>
-  </div>
-</footer>
-<script>
-  const d=new Date();
-  const hd=document.getElementById('hdate');
-  if(hd) hd.textContent=d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  const toggle=document.getElementById('nav-toggle'),menu=document.getElementById('nav-menu');
-  if(toggle&&menu){toggle.addEventListener('click',()=>{toggle.classList.toggle('open');menu.classList.toggle('open');});}
-</script>
-
-<div style="max-width:1200px;margin:40px auto 0;padding:0 20px 40px;">
-  <div style="border-top:2px solid var(--ink);padding-top:28px;">
-    <div style="font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:14px;display:flex;align-items:center;gap:8px;">
-      Live Headlines &nbsp;<span style="background:var(--red);color:#fff;padding:2px 7px;border-radius:2px;font-size:9px;animation:lpulse 1.5s infinite;">● LIVE</span>
-      <span style="flex:1;height:1px;background:var(--paper3);"></span>
-      <span id="lf-updated" style="font-size:10px;color:var(--ink3);text-transform:none;font-weight:400;letter-spacing:0;"></span>
-    </div>
-    <div style="display:flex;gap:0;border-bottom:1px solid var(--paper3);margin-bottom:18px;overflow-x:auto;scrollbar-width:none;">
-      <button class="lf-tab active" data-feed="top" onclick="lfSwitch('top',this)">🇺🇸 U.S.</button>
-      <button class="lf-tab" data-feed="world" onclick="lfSwitch('world',this)">🌍 World</button>
-      <button class="lf-tab" data-feed="business" onclick="lfSwitch('business',this)">📈 Business</button>
-      <button class="lf-tab" data-feed="tech" onclick="lfSwitch('tech',this)">💻 Tech</button>
-      <button class="lf-tab" data-feed="health" onclick="lfSwitch('health',this)">🏥 Health</button>
-    </div>
-    <div id="lf-loading" style="text-align:center;padding:32px;font-family:var(--sans);font-size:13px;color:var(--ink3);"><div class="lf-spin"></div>Loading live headlines…</div>
-    <div id="lf-items" style="display:none;"></div>
-    <div id="lf-error" style="display:none;background:var(--paper2);border:1px solid var(--paper3);padding:20px;text-align:center;font-family:var(--sans);font-size:13px;color:var(--ink3);">📡 Live feed temporarily unavailable — <a href="#" onclick="lfLoad(lfCurrent);return false;" style="color:var(--red);">retry</a></div>
-    <div style="text-align:center;margin-top:14px;"><button onclick="lfLoad(lfCurrent)" style="background:none;border:1px solid var(--paper3);padding:7px 18px;font-family:var(--sans);font-size:11px;font-weight:600;color:var(--ink3);cursor:pointer;text-transform:uppercase;letter-spacing:.05em;">↻ Refresh</button></div>
-  </div>
-</div>
-<style>
-@keyframes lpulse{0%,100%{opacity:1}50%{opacity:.4}}
-@keyframes lspin{to{transform:rotate(360deg)}}
-.lf-spin{width:18px;height:18px;border:2px solid var(--paper3);border-top-color:var(--red);border-radius:50%;animation:lspin .8s linear infinite;margin:0 auto 10px;}
-.lf-tab{background:none;border:none;border-bottom:3px solid transparent;padding:9px 14px;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--ink3);cursor:pointer;white-space:nowrap;transition:all .15s;margin-bottom:-1px;}
-.lf-tab:hover{color:var(--ink)}.lf-tab.active{color:var(--red);border-bottom-color:var(--red)}
-.lf-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--paper3);align-items:flex-start;cursor:pointer;}
-.lf-item:last-child{border-bottom:none}.lf-item:hover .lf-hl{color:var(--red)}
-.lf-num{font-family:var(--serif);font-size:20px;font-weight:900;color:var(--paper3);min-width:26px;line-height:1;padding-top:2px;}
-.lf-item:hover .lf-num{color:var(--gold2)}
-.lf-src{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:3px;}
-.lf-hl{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px;transition:color .15s;}
-.lf-desc{font-size:12px;color:var(--ink3);line-height:1.5;margin-bottom:4px;}
-.lf-meta{font-family:var(--sans);font-size:11px;color:var(--ink3);}
-.lf-img{width:90px;min-width:90px;height:64px;overflow:hidden;background:var(--paper2);}
-.lf-img img{width:100%;height:100%;object-fit:cover;display:block;}
-@media(max-width:480px){.lf-img{display:none}}
-</style>
-<script>
-var lfCurrent='top',lfCache={};
-var LF_FEEDS={
-  top:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHomePage.xml&api_key=public&count=10',
-  world:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FWorld.xml&api_key=public&count=10',
-  business:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FBusiness.xml&api_key=public&count=10',
-  tech:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FTechnology.xml&api_key=public&count=10',
-  health:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHealth.xml&api_key=public&count=10'
-};
-var LF_FB={
-  top:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml&api_key=public&count=10',
-  world:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml&api_key=public&count=10',
-  business:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fbusiness%2Frss.xml&api_key=public&count=10',
-  tech:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Ftechnology%2Frss.xml&api_key=public&count=10',
-  health:'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fhealth%2Frss.xml&api_key=public&count=10'
-};
-function lfSwitch(k,b){lfCurrent=k;document.querySelectorAll('.lf-tab').forEach(function(t){t.classList.remove('active')});b.classList.add('active');lfCache[k]?lfRender(lfCache[k]):lfLoad(k);}
-function lfLoad(k,fb){
-  var u=fb?LF_FB[k]:LF_FEEDS[k];
-  document.getElementById('lf-loading').style.display='block';
-  document.getElementById('lf-items').style.display='none';
-  document.getElementById('lf-error').style.display='none';
-  fetch(u).then(function(r){return r.json();}).then(function(d){
-    if(!d.items||!d.items.length)throw 0;
-    lfCache[k]=d.items;lfRender(d.items);
-    var n=new Date();document.getElementById('lf-updated').textContent='Updated '+n.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
-  }).catch(function(){fb?showLfErr():lfLoad(k,true);});
-}
-function showLfErr(){document.getElementById('lf-loading').style.display='none';document.getElementById('lf-error').style.display='block';}
-function lfTimeAgo(p){if(!p)return'';var d=Math.floor((Date.now()-new Date(p))/60000);if(d<1)return'Just now';if(d<60)return d+' min ago';if(d<1440)return Math.floor(d/60)+' hrs ago';return Math.floor(d/1440)+' days ago';}
-function lfStrip(h){var t=document.createElement('div');t.innerHTML=h||'';return t.textContent||'';}
-function lfRender(items){
-  var h='';
-  items.slice(0,8).forEach(function(item,i){
-    var t=item.title||'',ds=lfStrip(item.description||item.content||'').substring(0,140);
-    if(ds.length===140)ds+='…';
-    var src=item.author||(item.link?new URL(item.link).hostname.replace('www.',''):'News');
-    var img=item.thumbnail||(item.enclosure&&item.enclosure.link)||'';
-    var lk=item.link||'#';
-    h+='<div class="lf-item" onclick="window.open(''+lk.replace(/'/g,"\'")+"','_blank')">"+
-      '<div class="lf-num">0'+(i+1)+'</div>'+
-      '<div style="flex:1"><div class="lf-src">'+src+'</div><div class="lf-hl">'+t+'</div>'+(ds?'<div class="lf-desc">'+ds+'</div>':'')+'<div class="lf-meta">'+lfTimeAgo(item.pubDate)+'</div></div>'+
-      (img?'<div class="lf-img"><img src="'+img+'" alt="" onerror="this.parentElement.style.display='none'"></div>':'')+
-    '</div>';
-  });
-  document.getElementById('lf-items').innerHTML=h;
-  document.getElementById('lf-loading').style.display='none';
-  document.getElementById('lf-items').style.display='block';
-}
-lfLoad(lfCurrent);
-setInterval(function(){lfCache={};lfLoad(lfCurrent);},3600000);
-</script>
-
+  </div></footer>
 
 <script>
 (function(){
+  var PRIMARY='https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FOpinion.xml&api_key=public&count=20', FALLBACK='https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml&api_key=public&count=20';
+  var SECTION='Opinion', CKEY='pw_opinion', CTS='pw_opinion_ts';
   var THREE_HRS=3*60*60*1000;
-  var CKEY='pw_sec_top', CTS='pw_sec_ts_top';
-  var PRIMARY='https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHomePage.xml&api_key=public&count=20', FALLBACK='https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml&api_key=public&count=20';
+
   var TIMGS=[
-    ['iran|war|missile|military|strike|troops|soldiers|pentagon','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
-    ['oil|gas|energy|barrel|opec|fuel','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop'],
+    ['iran|war|missile|military|strike','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
+    ['oil|gas|energy|barrel','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop'],
     ['trump|white house|president|congress|senate|capitol','https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=800&q=80&fit=crop'],
     ['russia|ukraine|putin|zelensky','https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop'],
     ['china|beijing|taiwan|xi','https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop'],
@@ -333,24 +225,47 @@ setInterval(function(){lfCache={};lfLoad(lfCurrent);},3600000);
     ['climate|environment|carbon|temperature','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop'],
     ['court|supreme|judge|law|legal','https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80&fit=crop'],
     ['election|vote|ballot|poll|democrat|republican','https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=800&q=80&fit=crop'],
-    ['israel|hamas|gaza|middle east|beirut','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
-    ['space|nasa|rocket|moon|spacex','https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80&fit=crop'],
-];
+    ['israel|hamas|gaza|middle east|beirut|lebanon','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
+    ['space|nasa|rocket|moon|mars|spacex','https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80&fit=crop'],
+  ];
 
   function strip(h){var d=document.createElement('div');d.innerHTML=h||'';return d.textContent||'';}
   function ago(p){if(!p)return'';var m=Math.floor((Date.now()-new Date(p))/60000);if(m<1)return'Just now';if(m<60)return m+' min ago';if(m<1440)return Math.floor(m/60)+' hr'+(Math.floor(m/60)>1?'s':'')+' ago';return Math.floor(m/1440)+' day'+(Math.floor(m/1440)>1?'s':'')+' ago';}
   function srcName(item){if(item.author)return item.author;try{return new URL(item.link).hostname.replace('www.','');}catch(e){return'Reuters';}}
-  function getImg(item,title){
+  function topicImg(title,w){
+    var t=(title||'').toLowerCase(),sz=w||800;
+    for(var k=0;k<TIMGS.length;k++){var keys=TIMGS[k][0].split('|');for(var j=0;j<keys.length;j++){if(t.indexOf(keys[j])>-1)return TIMGS[k][1].replace('w=800','w='+sz);}}
+    return 'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w='+sz+'&q=80&fit=crop';
+  }
+  function getImg(item,title,w){
     var i=item.thumbnail||(item.enclosure&&item.enclosure.link)||'';
-    if(i)return i;
-    var t=(title||'').toLowerCase();
-    for(var k=0;k<TIMGS.length;k++){var keys=TIMGS[k][0].split('|');for(var j=0;j<keys.length;j++){if(t.indexOf(keys[j])>-1)return TIMGS[k][1];}}
-    return 'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=800&q=80&fit=crop';
+    return i||topicImg(title,w||800);
+  }
+  function articleUrl(item){
+    var t=item.title||'',lk=item.link||'#',s=srcName(item);
+    var im=getImg(item,t,800);
+    var d=strip(item.description||item.content||'').substring(0,400);
+    return 'article.html?title='+encodeURIComponent(t)+'&url='+encodeURIComponent(lk)+'&img='+encodeURIComponent(im)+'&desc='+encodeURIComponent(d)+'&source='+encodeURIComponent(s)+'&section='+encodeURIComponent(SECTION)+'&time='+encodeURIComponent(item.pubDate||'');
   }
 
-  function updateBreaking(items){
+  function renderAll(items){
+    renderTicker(items);
+    renderBreaking(items);
+    renderHero(items[0], items.slice(1,4));
+    renderList(items.slice(1,4));
+    renderGrid(items.slice(4,7));
+    renderSidebar(items.slice(0,5));
+    setTimestamp();
+  }
+
+  function renderTicker(items){
+    var el=document.getElementById('ticker-text');
+    if(el)el.textContent=items.slice(0,6).map(function(x){return x.title||'';}).join('  ·  ');
+  }
+
+  function renderBreaking(items){
     var el=document.getElementById('breaking-text');
-    if(!el||!items.length)return;
+    if(!el||!items[0])return;
     el.textContent=items[0].title||'';
     var i=1;
     setInterval(function(){
@@ -362,93 +277,131 @@ setInterval(function(){lfCache={};lfLoad(lfCurrent);},3600000);
     el.style.transition='opacity .35s';
   }
 
-  function updateTicker(items){
-    var el=document.getElementById('ticker-text');
-    if(!el)return;
-    el.textContent=items.slice(0,6).map(function(x){return x.title||'';}).join('  ·  ');
-  }
-
-  function updateLead(item){
-    var img=document.querySelector('.lead-thumb img');
-    var tag=document.querySelector('.lead-thumb + .cat-tag, .lead-article .cat-tag');
-    var hl=document.querySelector('.lead-headline');
-    var deck=document.querySelector('.lead-deck');
-    var byl=document.querySelector('.lead-article .byline');
-    if(!hl)return;
-    var t=item.title||'';
-    var d=strip(item.description||item.content||'').substring(0,320);if(d.length===320)d+='…';
-    var s=srcName(item);
-    var a=ago(item.pubDate);
-    if(img){img.src=getImg(item,t);img.alt=t;}
-    if(tag)tag.textContent=s.split('.')[0].toUpperCase();
-    hl.textContent=t;
-    if(deck)deck.textContent=d;
-    if(byl)byl.innerHTML='<strong>'+s+'</strong> &nbsp;·&nbsp; '+a+' &nbsp;·&nbsp; 5 min read';
-    if(item.link){hl.style.cursor='pointer';hl.onclick=function(){window.open(item.link,'_blank');};}
-  }
-
-  function updateArticleList(items){
-    var list=document.querySelector('.article-list');
-    if(!list)return;
-    var html='';
-    items.slice(1,6).forEach(function(item){
-      var t=item.title||'';
-      var d=strip(item.description||item.content||'').substring(0,180);if(d.length===180)d+='…';
-      var s=srcName(item);var a=ago(item.pubDate);var lk=item.link||'#';
-      var im=getImg(item,t);
-      html+='<div class="article-list-item" style="cursor:pointer;" onclick="window.open(''+lk.replace(/'/g,"\'")+"','_blank')">"+
-        '<div class="article-list-thumb"><img src="'+im+'" alt="'+t.substring(0,40)+'" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=300&q=60&fit=crop'"></div>'+
-        '<div class="article-list-body">'+
-          '<span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+s.split('.')[0]+'</span>'+
-          '<div class="article-list-headline">'+t+'</div>'+
-          '<div class="article-list-deck">'+d+'</div>'+
-          '<div class="byline" style="font-size:11px;">'+a+'</div>'+
-        '</div>'+
+  function renderHero(item, sideItems){
+    if(!item)return;
+    var t=item.title||'', lk=articleUrl(item), s=srcName(item);
+    var im=getImg(item,t,900);
+    var d=strip(item.description||item.content||'').substring(0,240);if(d.length===240)d+='…';
+    var hero=document.getElementById('hero-section');
+    if(!hero)return;
+    var sideHtml='';
+    sideItems.forEach(function(si){
+      if(!si)return;
+      var st=si.title||'',slim=getImg(si,st,200),slk=articleUrl(si),ss=srcName(si);
+      sideHtml+='<div class="side-item" onclick="location.href=''+slk.replace(/'/g,"\'")+''">'+
+        '<div class="side-item-thumb"><img src="'+slim+'" alt="'+st.substring(0,30)+'" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=200&q=60&fit=crop'"></div>'+
+        '<div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+ss.split('.')[0].toUpperCase()+'</span>'+
+        '<div class="side-item-headline">'+st+'</div>'+
+        '<div class="byline" style="font-size:11px;margin-top:3px;">'+ago(si.pubDate)+'</div></div>'+
       '</div>';
     });
-    list.innerHTML=html;
+    hero.innerHTML=
+      '<div class="hero-dyn" onclick="location.href=''+lk.replace(/'/g,"\'")+''">'+
+        '<div><div class="hero-img"><img src="'+im+'" alt="'+t.substring(0,60)+'" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=900&q=60'"></div>'+
+        '<span class="cat-tag">'+s.split('.')[0].toUpperCase()+'</span>'+
+        '<div class="hero-headline">'+t+'</div>'+
+        '<div class="hero-deck">'+d+'</div>'+
+        '<div class="byline"><strong>'+s+'</strong> &nbsp;·&nbsp; '+ago(item.pubDate)+'</div></div>'+
+        '<div class="side-stack">'+sideHtml+'</div>'+
+      '</div>';
   }
 
-  function updateTimestamp(){
-    var el=document.getElementById('sec-updated');
-    if(!el)return;
-    el.textContent='Updated '+new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})+' ET';
+  function renderList(items){
+    var list=document.getElementById('article-list');
+    if(!list)return;
+    var html='';
+    items.forEach(function(item){
+      if(!item)return;
+      var t=item.title||'',lk=articleUrl(item),s=srcName(item);
+      var im=getImg(item,t,300);
+      var d=strip(item.description||item.content||'').substring(0,200);if(d.length===200)d+='…';
+      html+='<div class="article-list-item" onclick="location.href=''+lk.replace(/'/g,"\'")+''">'+
+        '<div class="article-list-thumb"><img src="'+im+'" alt="'+t.substring(0,40)+'" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=300&q=60'"></div>'+
+        '<div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+s.split('.')[0].toUpperCase()+'</span>'+
+        '<div class="article-list-headline">'+t+'</div>'+
+        '<div class="article-list-deck">'+d+'</div>'+
+        '<div class="byline" style="font-size:11px;">'+ago(item.pubDate)+'</div></div>'+
+      '</div>';
+    });
+    list.innerHTML=html||'<p style="font-family:var(--sans);font-size:13px;color:var(--ink3);padding:20px 0;">No stories available right now.</p>';
   }
 
-  function loadSection(){
+  function renderGrid(items){
+    var grid=document.getElementById('article-grid');
+    if(!grid)return;
+    var html='';
+    items.forEach(function(item){
+      if(!item)return;
+      var t=item.title||'',lk=articleUrl(item),s=srcName(item);
+      var im=getImg(item,t,500);
+      var d=strip(item.description||item.content||'').substring(0,120);if(d.length===120)d+='…';
+      html+='<div class="article-card" onclick="location.href=''+lk.replace(/'/g,"\'")+''">'+
+        '<div class="article-card-thumb"><img src="'+im+'" alt="'+t.substring(0,40)+'" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=500&q=60'"></div>'+
+        '<span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+s.split('.')[0].toUpperCase()+'</span>'+
+        '<div class="article-card-headline">'+t+'</div>'+
+        '<div class="article-card-deck">'+d+'</div>'+
+        '<div class="byline" style="font-size:11px;">'+ago(item.pubDate)+'</div>'+
+      '</div>';
+    });
+    grid.innerHTML=html;
+  }
+
+  function renderSidebar(items){
+    var sb=document.getElementById('sidebar-list');
+    if(!sb)return;
+    var html='';
+    items.forEach(function(item){
+      if(!item)return;
+      var t=item.title||'',lk=articleUrl(item),s=srcName(item);
+      var im=getImg(item,t,150);
+      html+='<div class="sidebar-story" onclick="location.href=''+lk.replace(/'/g,"\'")+''">'+
+        '<div class="sidebar-thumb"><img src="'+im+'" alt="" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=150&q=60'"></div>'+
+        '<div><div class="sidebar-headline">'+t+'</div><div class="sidebar-meta">'+s.split('.')[0]+' · '+ago(item.pubDate)+'</div></div>'+
+      '</div>';
+    });
+    sb.innerHTML=html;
+  }
+
+  function setTimestamp(){
+    var el=document.getElementById('last-updated');
+    if(el)el.textContent='Updated '+new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})+' ET';
+    var hd=document.getElementById('hdate');
+    if(hd)hd.textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  }
+
+  function loadPage(){
     try{
       var ts=parseInt(localStorage.getItem(CTS)||'0');
       if(Date.now()-ts<THREE_HRS){
         var c=JSON.parse(localStorage.getItem(CKEY)||'null');
-        if(c&&c.length){applyAll(c);return;}
+        if(c&&c.length){renderAll(c);return;}
       }
     }catch(e){}
+    var hero=document.getElementById('hero-section');
+    if(hero)hero.innerHTML='<div class="loading-box"><div class="spin"></div>Loading today's top stories…</div>';
     fetch(PRIMARY).then(function(r){return r.json();}).then(function(d){
       if(!d.items||!d.items.length)throw 0;
-      applyAll(d.items);
+      renderAll(d.items);
       try{localStorage.setItem(CKEY,JSON.stringify(d.items));localStorage.setItem(CTS,Date.now().toString());}catch(e){}
     }).catch(function(){
       fetch(FALLBACK).then(function(r){return r.json();}).then(function(d){
-        if(d.items&&d.items.length)applyAll(d.items);
-      }).catch(function(){});
+        if(d.items&&d.items.length){renderAll(d.items);try{localStorage.setItem(CKEY,JSON.stringify(d.items));localStorage.setItem(CTS,Date.now().toString());}catch(e){}}
+      }).catch(function(){
+        var hero2=document.getElementById('hero-section');
+        if(hero2)hero2.innerHTML='<div class="loading-box">⚠️ Could not load stories. Please refresh.</div>';
+      });
     });
   }
 
-  function applyAll(items){
-    updateBreaking(items);
-    updateTicker(items);
-    updateLead(items[0]);
-    updateArticleList(items);
-    updateTimestamp();
-  }
-
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',loadSection);}
-  else{loadSection();}
-  setInterval(function(){try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}loadSection();},THREE_HRS);
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',loadPage);}
+  else{loadPage();}
+  setInterval(function(){try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}loadPage();},THREE_HRS);
   var _lf=Date.now();
-  document.addEventListener('visibilitychange',function(){if(!document.hidden){if(Date.now()-_lf>THREE_HRS){try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}loadSection();}_lf=Date.now();}});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden){if(Date.now()-_lf>THREE_HRS){try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}loadPage();}_lf=Date.now();}});
+  var toggle=document.getElementById('nav-toggle'),menu=document.getElementById('nav-menu');
+  if(toggle&&menu){toggle.addEventListener('click',function(){toggle.classList.toggle('open');menu.classList.toggle('open');});}
 })();
 </script>
-
+  <script>(function(s){s.dataset.zone='10748039',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </body>
 </html>
