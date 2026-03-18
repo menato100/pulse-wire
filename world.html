@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="google-site-verification" content="Dfmh1yl016Ddlc0wRc9CSLe5REz-WZadO9c5wiAcX5s"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>World – PulseWire</title>
+<meta name="google-site-verification" content="Dfmh1yl016Ddlc0wRc9CSLe5REz-WZadO9c5wiAcX5s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World News &ndash; PulseWire</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://5gvci.com/act/files/tag.min.js?z=10748030" data-cfasync="false" async></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#1a1714;--ink2:#3d3830;--ink3:#6b6258;--paper:#faf8f4;--paper2:#f2efe9;--paper3:#e8e3da;--red:#c0392b;--red2:#e74c3c;--gold:#b8963a;--blue:#1a4a7a;--serif:'Playfair Display',Georgia,serif;--body-serif:'Source Serif 4',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
 html{font-size:16px}body{background:var(--paper);color:var(--ink);font-family:var(--body-serif);line-height:1.6}
-.top-bar{background:var(--ink);color:#aaa;font-family:var(--sans);font-size:11px;letter-spacing:.08em;padding:6px 0}
+.top-bar{background:var(--ink);color:#aaa;font-family:var(--sans);font-size:11px;padding:6px 0}
 .top-bar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
 .top-bar a{color:#ccc;text-decoration:none;margin-left:16px}.top-bar a:hover{color:#fff}
-.ticker{display:flex;gap:12px;overflow:hidden;flex:1;align-items:center}
-.ticker-label{background:var(--red);color:#fff;padding:1px 8px;font-size:10px;font-weight:600;letter-spacing:.1em;border-radius:2px;white-space:nowrap}
+.ticker-wrap{display:flex;gap:12px;overflow:hidden;flex:1;align-items:center}
+.ticker-label{background:var(--red);color:#fff;padding:1px 8px;font-size:10px;font-weight:600;border-radius:2px;white-space:nowrap}
 header{border-bottom:3px solid var(--ink);padding:18px 0 0;background:var(--paper)}
 .header-inner{max-width:1200px;margin:0 auto;padding:0 20px}
 .header-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--paper3)}
 .masthead{font-family:var(--serif);font-size:clamp(38px,6vw,72px);font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--ink);text-decoration:none}
 .masthead span{color:var(--red)}
-.header-tagline{font-family:var(--body-serif);font-style:italic;font-size:13px;color:var(--ink3);letter-spacing:.04em}
-.ad-slot{background:var(--paper2);border:1px dashed var(--paper3);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:11px;color:var(--ink3);letter-spacing:.1em}
+.header-tagline{font-family:var(--body-serif);font-style:italic;font-size:13px;color:var(--ink3)}
+.ad-slot{background:var(--paper2);border:1px dashed var(--paper3);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:11px;color:var(--ink3)}
 .ad-label{text-transform:uppercase;font-size:10px;background:var(--paper3);padding:2px 8px;border-radius:2px}
 nav{border-bottom:2px solid var(--ink);position:relative}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
@@ -33,77 +35,66 @@ nav ul li.active a{border-bottom:3px solid var(--red);margin-bottom:-2px}
 .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle.open span:nth-child(2){opacity:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-@media(max-width:760px){.nav-toggle{display:flex}nav ul{display:none;flex-direction:column;width:100%;background:var(--paper);border-top:1px solid var(--paper3);position:absolute;top:100%;left:0;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.08)}nav ul.open{display:flex}nav ul li a{padding:13px 20px;border-bottom:1px solid var(--paper3);font-size:14px}nav ul li.active a{border-bottom:1px solid var(--paper3);border-left:3px solid var(--red);padding-left:17px;margin-bottom:0}}
-@media(min-width:761px) and (max-width:1040px){nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}nav ul::-webkit-scrollbar{display:none}nav ul li a{padding:11px 10px;font-size:11px}}
-.breaking-bar{background:var(--red);color:#fff;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.08em;padding:7px 0;text-align:center;transition:opacity .4s}
-.breaking-bar em{font-style:normal;background:rgba(0,0,0,.2);padding:1px 8px;border-radius:2px;margin-right:10px;font-size:10px;letter-spacing:.15em}
+@media(max-width:760px){.nav-toggle{display:flex}nav ul{display:none;flex-direction:column;width:100%;background:var(--paper);border-top:1px solid var(--paper3);position:absolute;top:100%;left:0;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.08)}nav ul.open{display:flex}nav ul li a{padding:13px 20px;border-bottom:1px solid var(--paper3)}}
+@media(min-width:761px) and (max-width:1040px){nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}nav ul li a{padding:11px 10px;font-size:11px}}
+.breaking-bar{background:var(--red);color:#fff;font-family:var(--sans);font-size:12px;font-weight:600;padding:7px 0;text-align:center}
+.breaking-bar em{font-style:normal;background:rgba(0,0,0,.2);padding:1px 8px;border-radius:2px;margin-right:10px;font-size:10px}
 .container{max-width:1200px;margin:0 auto;padding:28px 20px}
 .page-grid{display:grid;grid-template-columns:1fr 300px;gap:40px}
 @media(max-width:860px){.page-grid{grid-template-columns:1fr}}
-.section-label{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.section-label::after{content:'';flex:1;height:1px;background:var(--paper3)}
-.page-banner{padding:32px 0;border-bottom:2px solid var(--ink)}
-.page-banner-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.page-banner h1{font-family:var(--serif);font-size:clamp(28px,4vw,52px);font-weight:900;line-height:1;color:#fff}
-.page-banner p{font-family:var(--body-serif);font-style:italic;font-size:14px;color:rgba(255,255,255,.7)}
+.slabel{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.slabel::after{content:'';flex:1;height:1px;background:var(--paper3)}
+.cat-tag{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;margin-bottom:8px}
+.byline{font-family:var(--sans);font-size:12px;color:var(--ink3)}
 /* HERO */
-.hero-dyn{display:grid;grid-template-columns:3fr 2fr;gap:32px;padding-bottom:28px;border-bottom:2px solid var(--ink);margin-bottom:28px;cursor:pointer}
-@media(max-width:680px){.hero-dyn{grid-template-columns:1fr}}
-.hero-img{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:14px}
+.hero-wrap{display:grid;grid-template-columns:3fr 2fr;gap:32px;padding-bottom:28px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+@media(max-width:680px){.hero-wrap{grid-template-columns:1fr}}
+.hero-img{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:12px}
 .hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
 .hero-img img:hover{transform:scale(1.03)}
-.cat-tag{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;margin-bottom:10px}
-.hero-headline{font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:10px}
-.hero-headline:hover{color:var(--red)}
+.hero-hl{font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:8px;cursor:pointer}
+.hero-hl:hover{color:var(--red)}
 .hero-deck{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:10px}
-.byline{font-family:var(--sans);font-size:12px;color:var(--ink3)}
-.byline strong{color:var(--ink2);font-weight:600}
-/* SIDE STACK */
-.side-stack{display:flex;flex-direction:column;gap:0}
-.side-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--paper3);cursor:pointer;align-items:flex-start}
+.side-stack{display:flex;flex-direction:column}
+.side-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--paper3);cursor:pointer}
 .side-item:last-child{border-bottom:none}
-.side-item-thumb{width:88px;min-width:88px;height:62px;overflow:hidden}
-.side-item-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.side-item-headline{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px}
-.side-item-headline:hover{color:var(--red)}
-/* ARTICLE LIST */
-.article-list-item{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid var(--paper3);cursor:pointer;align-items:flex-start}
-.article-list-item:last-child{border-bottom:none}
-.article-list-thumb{width:140px;min-width:140px;height:96px;overflow:hidden}
-.article-list-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
-.article-list-thumb img:hover{transform:scale(1.04)}
-.article-list-headline{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:6px}
-.article-list-headline:hover{color:var(--red)}
-.article-list-deck{font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:6px}
-/* ARTICLE GRID */
-.article-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:28px}
-@media(max-width:680px){.article-grid-3{grid-template-columns:1fr}}
-@media(min-width:481px) and (max-width:680px){.article-grid-3{grid-template-columns:repeat(2,1fr)}}
-.article-card{cursor:pointer;padding-bottom:20px;border-bottom:1px solid var(--paper3)}
-.article-card:nth-last-child(-n+3){border-bottom:none}
-.article-card-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:10px}
-.article-card-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
-.article-card-thumb img:hover{transform:scale(1.04)}
-.article-card-headline{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:5px}
-.article-card-headline:hover{color:var(--red)}
-.article-card-deck{font-size:13px;color:var(--ink3);line-height:1.5;margin-bottom:6px}
+.side-thumb{width:88px;min-width:88px;height:62px;overflow:hidden}
+.side-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.side-hl{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px}
+.side-hl:hover{color:var(--red)}
+/* LIST */
+.art-list-item{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid var(--paper3);cursor:pointer}
+.art-list-item:last-child{border-bottom:none}
+.art-list-thumb{width:130px;min-width:130px;height:88px;overflow:hidden}
+.art-list-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.art-list-thumb img:hover{transform:scale(1.04)}
+.art-list-hl{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:5px}
+.art-list-hl:hover{color:var(--red)}
+.art-list-deck{font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:5px}
+/* GRID */
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:28px}
+@media(max-width:680px){.art-grid{grid-template-columns:1fr}}
+@media(min-width:481px) and (max-width:680px){.art-grid{grid-template-columns:repeat(2,1fr)}}
+.art-card{cursor:pointer;padding-bottom:18px;border-bottom:1px solid var(--paper3)}
+.art-card:nth-last-child(-n+3){border-bottom:none}
+.art-card-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:9px}
+.art-card-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.art-card-thumb img:hover{transform:scale(1.04)}
+.art-card-hl{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:5px}
+.art-card-hl:hover{color:var(--red)}
+.art-card-deck{font-size:12px;color:var(--ink3);line-height:1.5;margin-bottom:5px}
 /* SIDEBAR */
 .sidebar-widget{margin-bottom:28px}
-.sidebar-title{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:16px}
-.sidebar-story{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--paper3);cursor:pointer}
-.sidebar-story:last-child{border-bottom:none}
-.sidebar-thumb{width:60px;min-width:60px;height:44px;overflow:hidden}
-.sidebar-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.sidebar-headline{font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:3px}
-.sidebar-headline:hover{color:var(--red)}
-.sidebar-meta{font-family:var(--sans);font-size:11px;color:var(--ink3)}
-/* LOADING */
-@keyframes spin2{to{transform:rotate(360deg)}}
-@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.4}}
-.spin{width:20px;height:20px;border:2px solid var(--paper3);border-top-color:var(--red);border-radius:50%;animation:spin2 .8s linear infinite;margin:0 auto 12px}
-.loading-box{text-align:center;padding:48px 20px;font-family:var(--sans);font-size:13px;color:var(--ink3)}
-/* LIVE badge */
-.live-badge{background:var(--red);color:#fff;padding:2px 7px;border-radius:2px;font-size:9px;letter-spacing:.1em;animation:pulse2 1.5s infinite;margin-left:6px}
+.sidebar-title{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:14px}
+.sb-story{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--paper3);cursor:pointer}
+.sb-story:last-child{border-bottom:none}
+.sb-thumb{width:60px;min-width:60px;height:44px;overflow:hidden}
+.sb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.sb-hl{font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:3px}
+.sb-hl:hover{color:var(--red)}
+.sb-meta{font-family:var(--sans);font-size:11px;color:var(--ink3)}
+@keyframes p3{0%,100%{opacity:1}50%{opacity:.4}}
+.live-dot{background:var(--red);color:#fff;padding:2px 7px;border-radius:2px;font-size:9px;animation:p3 1.5s infinite;margin-left:6px;font-family:var(--sans)}
 footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
 .footer-inner{max-width:1200px;margin:0 auto;padding:0 20px}
 .footer-logo{font-family:var(--serif);font-size:32px;font-weight:900;color:#fff;margin-bottom:4px}
@@ -114,88 +105,65 @@ footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
 .footer-col-title{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin-bottom:12px}
 .footer-col a{display:block;font-family:var(--sans);font-size:13px;color:#666;text-decoration:none;margin-bottom:7px}
 .footer-col a:hover{color:#ccc}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:11px;flex-wrap:wrap;gap:8px}
+.footer-bottom{display:flex;justify-content:space-between;font-family:var(--sans);font-size:11px;flex-wrap:wrap;gap:8px}
 .footer-bottom a{color:#555;text-decoration:none;margin-left:16px}
 
 .page-banner{background:#0f2d4a;padding:32px 0;border-bottom:2px solid var(--ink)}
+.page-banner-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </style>
-  <script src="https://5gvci.com/act/files/tag.min.js?z=10748030" data-cfasync="false" async></script>
 </head>
 <body>
 <div class="top-bar"><div class="top-bar-inner">
-    <div class="ticker"><span class="ticker-label">LIVE</span><span id="ticker-text">Loading latest…</span></div>
-    <div><a href="index.html">Home</a><a href="contact.html">Contact</a><a href="#">Subscribe</a></div>
-  </div></div>
+  <div class="ticker-wrap"><span class="ticker-label">LIVE</span><span id="ticker-text">pulsewire.ink &mdash; America&apos;s Window to the World</span></div>
+  <div><a href="index.html">Home</a><a href="contact.html">Contact</a><a href="#">Subscribe</a></div>
+</div></div>
 <header><div class="header-inner">
-    <div class="header-top">
-      <div><a href="index.html" class="masthead">Pulse<span>Wire</span></a>
-      <div class="header-tagline">America's Window to the World.</div></div>
-      <div style="text-align:right;font-family:var(--sans);font-size:12px;color:var(--ink3);line-height:1.8;">
-        <strong id="hdate" style="display:block;color:var(--ink2);font-size:13px;"></strong>
-        <span>New York, NY &nbsp;·&nbsp; U.S. Edition</span>
-      </div>
+  <div class="header-top">
+    <div><a href="index.html" class="masthead">Pulse<span>Wire</span></a>
+    <div class="header-tagline">America&apos;s Window to the World.</div></div>
+    <div style="text-align:right;font-family:var(--sans);font-size:12px;color:var(--ink3);line-height:1.8;">
+      <strong id="hdate" style="display:block;color:var(--ink2);font-size:13px;"></strong>
+      <span>New York, NY &nbsp;&middot;&nbsp; U.S. Edition</span>
     </div>
-    <div class="ad-slot" style="height:90px;margin:14px 0;"><span class="ad-label">Advertisement – 728×90</span></div>
   </div>
-  <nav id="main-nav"><div class="nav-inner"><ul id="nav-menu"><li><a href="index.html">Home</a></li><li><a href="usnews.html">U.S. News</a></li><li><a href="politics.html">Politics</a></li><li  class="active"><a href="world.html">World</a></li><li><a href="business.html">Business</a></li><li><a href="technology.html">Technology</a></li><li><a href="health.html">Health</a></li><li><a href="opinion.html">Opinion</a></li><li><a href="video.html">Video</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
-    </div></nav>
-</header>
-<div class="breaking-bar"><em>BREAKING</em> <span id="breaking-text">Loading top stories…</span></div>
-
-<div class="page-banner">
-  <div class="page-banner-inner">
-    <h1>World News</h1>
-    <p>Global coverage from PulseWire's 18 international bureaus. <span id="last-updated" style="display:block;font-size:12px;opacity:.6;margin-top:4px;"></span></p>
-  </div>
+  <div class="ad-slot" style="height:90px;margin:14px 0;"><span class="ad-label">Advertisement &ndash; 728x90</span></div>
 </div>
-
+<nav id="main-nav"><div class="nav-inner"><ul id="nav-menu"><li><a href="index.html">Home</a></li><li><a href="usnews.html">U.S. News</a></li><li><a href="politics.html">Politics</a></li><li class="active"><a href="world.html">World</a></li><li><a href="business.html">Business</a></li><li><a href="technology.html">Technology</a></li><li><a href="health.html">Health</a></li><li><a href="opinion.html">Opinion</a></li><li><a href="video.html">Video</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul><button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button></div></nav>
+</header>
+<div class="breaking-bar"><em>BREAKING</em> <span id="breaking-text">Visit pulsewire.ink for the latest global news &mdash; updated every 3 hours</span></div>
+<div class="page-banner"><div class="page-banner-inner">
+  <h1>World News</h1>
+  <p>Global coverage from 18 international bureaus. <span id="last-updated" style="display:block;font-size:12px;opacity:.6;margin-top:4px;"></span></p>
+</div></div>
 <div class="container">
   <div class="page-grid">
     <div>
-      <!-- HERO + SIDE — filled by JS -->
-      <div id="hero-section">
-        <div class="loading-box"><div class="spin"></div>Loading today's top stories…</div>
-      </div>
-
-      <!-- AD SLOT -->
-      <div class="ad-slot" style="height:90px;margin-bottom:28px;"><span class="ad-label">Advertisement – 728×90</span></div>
-
-      <!-- ARTICLE LIST — filled by JS -->
-      <div class="section-label">Latest Stories <span class="live-badge">● LIVE</span></div>
-      <div id="article-list" style="margin-bottom:28px;">
-        <div class="loading-box"><div class="spin"></div>Loading stories…</div>
-      </div>
-
-      <!-- AD SLOT 2 -->
-      <div class="ad-slot" style="height:90px;margin-bottom:28px;"><span class="ad-label">Advertisement – 728×90</span></div>
-
-      <!-- ARTICLE GRID — filled by JS -->
-      <div class="section-label">More Stories</div>
-      <div class="article-grid-3" id="article-grid">
-        <!-- filled by JS -->
-      </div>
+      <div class="slabel">Top Story</div>
+      <div class="hero-wrap"><div><div class="hero-img"><img id="hero-img" src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop" alt="Iran Launches Largest Missile Barrage Yet — Tel Aviv and Gul" loading="eager"></div><span class="cat-tag" id="hero-tag">PULSEWIRE</span><div class="hero-hl" id="hero-hl" onclick="location.href='article.html?title=Iran%20Launches%20Largest%20Missile%20Barrage%20Yet%20—%20Tel%20Aviv%20and%20Gulf%20States%20Under%20Attack&url=https://pulsewire.ink/world.html&img=https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop&desc=Iran%20fired%20over%20120%20ballistic%20missiles%20and%20drones%20at%20Israel%20and%20Gulf%20states%20overnight,%20triggering%20air%20defense%20systems.%20The%20Strait%20of%20Hormuz%20remains%20closed.&source=PulseWire&section=World&time=1%20hr%20ago'">Iran Launches Largest Missile Barrage Yet — Tel Aviv and Gulf States Under Attack</div><div class="hero-deck" id="hero-deck">Iran fired over 120 ballistic missiles and drones at Israel and Gulf states overnight, triggering air defense systems. The Strait of Hormuz remains closed.</div><div class="byline" id="hero-byline">PulseWire &nbsp;&middot;&nbsp; 1 hr ago</div></div><div class="side-stack" id="side-stack"><div class="side-item" onclick="location.href='article.html?title=Russia%20Launches%20Largest%20Drone%20Attack%20on%20Kyiv%20Since%20War%20Began&url=https://pulsewire.ink/world.html&img=https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop&desc=Ukraines%20capital%20came%20under%20a%20sustained%20overnight%20drone%20assault%20with%20over%2080%20Shahed%20drones%20targeting%20energy%20infrastructure%20across%20the%20city.&source=PulseWire&section=World&time=2%20hrs%20ago'"><div class="side-thumb"><img src="https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="side-hl">Russia Launches Largest Drone Attack on Kyiv Since War Began</div><div class="byline" style="font-size:11px;margin-top:3px;">2 hrs ago</div></div></div><div class="side-item" onclick="location.href='article.html?title=Chinas%20Xi%20Visits%20Moscow%20Amid%20Growing%20Russia-China%20Military%20Ties&url=https://pulsewire.ink/world.html&img=https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop&desc=The%20summit%20is%20expected%20to%20produce%20new%20agreements%20on%20trade,%20energy,%20and%20military%20cooperation%20as%20both%20countries%20face%20Western%20sanctions.&source=PulseWire&section=World&time=3%20hrs%20ago'"><div class="side-thumb"><img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="side-hl">China's Xi Visits Moscow Amid Growing Russia-China Military Ties</div><div class="byline" style="font-size:11px;margin-top:3px;">3 hrs ago</div></div></div><div class="side-item" onclick="location.href='article.html?title=UK%20Economy%20Falls%20Into%20Recession%20for%20Second%20Time%20in%20Two%20Years&url=https://pulsewire.ink/world.html&img=https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&fit=crop&desc=Britains%20GDP%20contracted%200.3%%20in%20Q1,%20official%20data%20confirmed,%20putting%20pressure%20on%20the%20Prime%20Minister%20ahead%20of%20a%20no-confidence%20vote.&source=PulseWire&section=World&time=4%20hrs%20ago'"><div class="side-thumb"><img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="side-hl">UK Economy Falls Into Recession for Second Time in Two Years</div><div class="byline" style="font-size:11px;margin-top:3px;">4 hrs ago</div></div></div></div></div>
+      <div class="ad-slot" style="height:90px;margin-bottom:28px;"><span class="ad-label">Advertisement &ndash; 728x90</span></div>
+      <div class="slabel">Latest Stories <span class="live-dot">&#9679; LIVE</span></div>
+      <div style="margin-bottom:28px;"><div id="art-list"><div class="art-list-item" onclick="location.href='article.html?title=Russia%20Launches%20Largest%20Drone%20Attack%20on%20Kyiv%20Since%20War%20Began&url=https://pulsewire.ink/world.html&img=https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop&desc=Ukraines%20capital%20came%20under%20a%20sustained%20overnight%20drone%20assault%20with%20over%2080%20Shahed%20drones%20targeting%20energy%20infrastructure%20across%20the%20city.&source=PulseWire&section=World&time=2%20hrs%20ago'"><div class="art-list-thumb"><img src="https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-list-hl">Russia Launches Largest Drone Attack on Kyiv Since War Began</div><div class="art-list-deck">Ukraine's capital came under a sustained overnight drone assault with over 80 Shahed drones targeting energy infrastructure across the city....</div><div class="byline" style="font-size:11px;">2 hrs ago</div></div></div><div class="art-list-item" onclick="location.href='article.html?title=Chinas%20Xi%20Visits%20Moscow%20Amid%20Growing%20Russia-China%20Military%20Ties&url=https://pulsewire.ink/world.html&img=https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop&desc=The%20summit%20is%20expected%20to%20produce%20new%20agreements%20on%20trade,%20energy,%20and%20military%20cooperation%20as%20both%20countries%20face%20Western%20sanctions.&source=PulseWire&section=World&time=3%20hrs%20ago'"><div class="art-list-thumb"><img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-list-hl">China's Xi Visits Moscow Amid Growing Russia-China Military Ties</div><div class="art-list-deck">The summit is expected to produce new agreements on trade, energy, and military cooperation as both countries face Western sanctions....</div><div class="byline" style="font-size:11px;">3 hrs ago</div></div></div><div class="art-list-item" onclick="location.href='article.html?title=UK%20Economy%20Falls%20Into%20Recession%20for%20Second%20Time%20in%20Two%20Years&url=https://pulsewire.ink/world.html&img=https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&fit=crop&desc=Britains%20GDP%20contracted%200.3%%20in%20Q1,%20official%20data%20confirmed,%20putting%20pressure%20on%20the%20Prime%20Minister%20ahead%20of%20a%20no-confidence%20vote.&source=PulseWire&section=World&time=4%20hrs%20ago'"><div class="art-list-thumb"><img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-list-hl">UK Economy Falls Into Recession for Second Time in Two Years</div><div class="art-list-deck">Britain's GDP contracted 0.3% in Q1, official data confirmed, putting pressure on the Prime Minister ahead of a no-confidence vote....</div><div class="byline" style="font-size:11px;">4 hrs ago</div></div></div></div></div>
+      <div class="ad-slot" style="height:90px;margin-bottom:28px;"><span class="ad-label">Advertisement &ndash; 728x90</span></div>
+      <div class="slabel">More Stories</div>
+      <div class="art-grid" id="art-grid"><div class="art-card" onclick="location.href='article.html?title=UK%20Economy%20Falls%20Into%20Recession%20for%20Second%20Time%20in%20Two%20Years&url=https://pulsewire.ink/world.html&img=https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&fit=crop&desc=Britains%20GDP%20contracted%200.3%%20in%20Q1,%20official%20data%20confirmed,%20putting%20pressure%20on%20the%20Prime%20Minister%20ahead%20of%20a%20no-confidence%20vote.&source=PulseWire&section=World&time=4%20hrs%20ago'"><div class="art-card-thumb"><img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&fit=crop" alt="" loading="lazy"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-card-hl">UK Economy Falls Into Recession for Second Time in Two Years</div><div class="art-card-deck">Britain's GDP contracted 0.3% in Q1, official data confirmed, putting pressure on the Prime Minister...</div><div class="byline" style="font-size:11px;">4 hrs ago</div></div><div class="art-card" onclick="location.href='article.html?title=India%20and%20Pakistan%20Exchange%20Fire%20Along%20Line%20of%20Control%20—%20UN%20Calls%20for%20Restraint&url=https://pulsewire.ink/world.html&img=https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&fit=crop&desc=Cross-border%20shelling%20left%20at%20least%208%20soldiers%20dead%20on%20both%20sides%20in%20the%20worst%20flare-up%20along%20the%20disputed%20border%20in%20three%20years.&source=PulseWire&section=World&time=5%20hrs%20ago'"><div class="art-card-thumb"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&fit=crop" alt="" loading="lazy"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-card-hl">India and Pakistan Exchange Fire Along Line of Control — UN Calls for Restraint</div><div class="art-card-deck">Cross-border shelling left at least 8 soldiers dead on both sides in the worst flare-up along the di...</div><div class="byline" style="font-size:11px;">5 hrs ago</div></div><div class="art-card" onclick="location.href='article.html?title=UN%20Climate%20Report:%20World%20Has%20Passed%201.5C%20Warming%20Threshold%20Permanently&url=https://pulsewire.ink/world.html&img=https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop&desc=The%20landmark%20IPCC%20assessment%20confirms%202025%20was%20the%20first%20year%20global%20temperatures%20permanently%20exceeded%20the%20Paris%20Agreements%201.5C%20target.&source=PulseWire&section=World&time=6%20hrs%20ago'"><div class="art-card-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop" alt="" loading="lazy"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-card-hl">UN Climate Report: World Has Passed 1.5C Warming Threshold Permanently</div><div class="art-card-deck">The landmark IPCC assessment confirms 2025 was the first year global temperatures permanently exceed...</div><div class="byline" style="font-size:11px;">6 hrs ago</div></div></div>
     </div>
-
-    <!-- SIDEBAR -->
     <aside>
-      <div class="ad-slot" style="width:300px;min-width:300px;height:250px;margin-bottom:24px;"><span class="ad-label">Advertisement – 300×250</span></div>
+      <div class="ad-slot" style="width:300px;min-width:300px;height:250px;margin-bottom:24px;"><span class="ad-label">Advertisement &ndash; 300x250</span></div>
       <div class="sidebar-widget">
         <div class="sidebar-title">Most Read</div>
-        <div id="sidebar-list"><div class="loading-box" style="padding:20px 0;"><div class="spin"></div></div></div>
+        <div id="sb-list"><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">Iran Launches Largest Missile Barrage Yet — Tel Aviv and Gulf States Under Attack</div><div class="sb-meta">PulseWire &middot; 1 hr ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">Russia Launches Largest Drone Attack on Kyiv Since War Began</div><div class="sb-meta">PulseWire &middot; 2 hrs ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">China's Xi Visits Moscow Amid Growing Russia-China Military Ties</div><div class="sb-meta">PulseWire &middot; 3 hrs ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">UK Economy Falls Into Recession for Second Time in Two Years</div><div class="sb-meta">PulseWire &middot; 4 hrs ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">India and Pakistan Exchange Fire Along Line of Control — UN Calls for Restraint</div><div class="sb-meta">PulseWire &middot; 5 hrs ago</div></div></div></div>
       </div>
-      <div class="ad-slot" style="width:300px;min-width:300px;height:250px;margin-top:24px;margin-bottom:24px;"><span class="ad-label">Advertisement – 300×250</span></div>
+      <div class="ad-slot" style="width:300px;min-width:300px;height:250px;margin-top:24px;margin-bottom:24px;"><span class="ad-label">Advertisement &ndash; 300x250</span></div>
       <div class="sidebar-widget" style="background:var(--ink);padding:20px;color:#ccc;">
         <div style="font-family:var(--serif);font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;">PulseWire AM</div>
-        <div style="font-size:13px;line-height:1.6;margin-bottom:14px;">Your daily briefing — free, every morning at 6am ET.</div>
+        <div style="font-size:13px;line-height:1.6;margin-bottom:14px;">Your daily briefing &mdash; free, every morning at 6am ET.</div>
         <input type="email" placeholder="your@email.com" style="width:100%;padding:9px 12px;font-size:13px;background:#2a2724;border:1px solid #3a3530;color:#ccc;border-radius:4px;margin-bottom:8px;outline:none;">
         <button style="width:100%;background:var(--red);color:#fff;border:none;padding:9px;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:4px;">Subscribe Free</button>
       </div>
-      <div class="ad-slot" style="width:300px;min-width:300px;height:600px;margin-top:24px;"><span class="ad-label">Advertisement – 300×600</span></div>
+      <div class="ad-slot" style="width:300px;min-width:300px;height:600px;margin-top:24px;"><span class="ad-label">Advertisement &ndash; 300x600</span></div>
     </aside>
   </div>
 </div>
-
 <footer><div class="footer-inner">
     <div class="footer-logo"><a href="index.html" style="text-decoration:none;color:inherit">Pulse<span>Wire</span></a></div>
     <div class="footer-tagline">America's Window to the World. Independent. Uncompromising.</div>
@@ -205,212 +173,83 @@ footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
       <div class="footer-col"><div class="footer-col-title">World Desks</div><a href="world.html">Europe</a><a href="world.html">Asia-Pacific</a><a href="world.html">Middle East</a><a href="world.html">Latin America</a></div>
       <div class="footer-col"><div class="footer-col-title">Follow Us</div><a href="#">Facebook</a><a href="#">Twitter/X</a><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">TikTok</a></div>
     </div>
-    <div class="footer-bottom"><span>© 2026 PulseWire Media LLC. New York, NY. All rights reserved.</span><div><a href="privacy.html">Privacy</a><a href="#">Terms</a><a href="contact.html">Contact</a></div></div>
+    <div class="footer-bottom"><span>2026 PulseWire Media LLC. All rights reserved.</span><div><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div></div>
   </div></footer>
 
 <script>
 (function(){
-  var PRIMARY='https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FWorld.xml&api_key=public&count=20', FALLBACK='https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml&api_key=public&count=20';
-  var SECTION='World', CKEY='pw_world', CTS='pw_world_ts';
-  var THREE_HRS=3*60*60*1000;
-
-  var TIMGS=[
-    ['iran|war|missile|military|strike','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
-    ['oil|gas|energy|barrel','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop'],
-    ['trump|white house|president|congress|senate|capitol','https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=800&q=80&fit=crop'],
-    ['russia|ukraine|putin|zelensky','https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop'],
-    ['china|beijing|taiwan|xi','https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop'],
-    ['economy|market|stock|dow|nasdaq|inflation|fed|recession','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&fit=crop'],
-    ['ai|tech|openai|gpt|nvidia|chip|cyber|hack','https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop'],
-    ['health|cdc|virus|disease|hospital|vaccine','https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop'],
-    ['climate|environment|carbon|temperature','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop'],
-    ['court|supreme|judge|law|legal','https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80&fit=crop'],
-    ['election|vote|ballot|poll|democrat|republican','https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=800&q=80&fit=crop'],
-    ['israel|hamas|gaza|middle east|beirut|lebanon','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
-    ['space|nasa|rocket|moon|mars|spacex','https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80&fit=crop'],
-  ];
-
-  function strip(h){var d=document.createElement('div');d.innerHTML=h||'';return d.textContent||'';}
-  function ago(p){if(!p)return'';var m=Math.floor((Date.now()-new Date(p))/60000);if(m<1)return'Just now';if(m<60)return m+' min ago';if(m<1440)return Math.floor(m/60)+' hr'+(Math.floor(m/60)>1?'s':'')+' ago';return Math.floor(m/1440)+' day'+(Math.floor(m/1440)>1?'s':'')+' ago';}
-  function srcName(item){if(item.author)return item.author;try{return new URL(item.link).hostname.replace('www.','');}catch(e){return'Reuters';}}
-  function topicImg(title,w){
-    var t=(title||'').toLowerCase(),sz=w||800;
-    for(var k=0;k<TIMGS.length;k++){var keys=TIMGS[k][0].split('|');for(var j=0;j<keys.length;j++){if(t.indexOf(keys[j])>-1)return TIMGS[k][1].replace('w=800','w='+sz);}}
-    return 'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w='+sz+'&q=80&fit=crop';
-  }
-  function getImg(item,title,w){
-    var i=item.thumbnail||(item.enclosure&&item.enclosure.link)||'';
-    return i||topicImg(title,w||800);
-  }
-  function articleUrl(item){
-    var t=item.title||'',lk=item.link||'#',s=srcName(item);
-    var im=getImg(item,t,800);
-    var d=strip(item.description||item.content||'').substring(0,400);
-    return 'article.html?title='+encodeURIComponent(t)+'&url='+encodeURIComponent(lk)+'&img='+encodeURIComponent(im)+'&desc='+encodeURIComponent(d)+'&source='+encodeURIComponent(s)+'&section='+encodeURIComponent(SECTION)+'&time='+encodeURIComponent(item.pubDate||'');
-  }
-
-  function renderAll(items){
-    renderTicker(items);
-    renderBreaking(items);
-    renderHero(items[0], items.slice(1,4));
-    renderList(items.slice(1,4));
-    renderGrid(items.slice(4,7));
-    renderSidebar(items.slice(0,5));
-    setTimestamp();
-  }
-
-  function renderTicker(items){
-    var el=document.getElementById('ticker-text');
-    if(el)el.textContent=items.slice(0,6).map(function(x){return x.title||'';}).join('  ·  ');
-  }
-
-  function renderBreaking(items){
-    var el=document.getElementById('breaking-text');
-    if(!el||!items[0])return;
-    el.textContent=items[0].title||'';
-    var i=1;
-    setInterval(function(){
-      if(!items[i])i=0;
-      el.style.opacity='0';
-      setTimeout(function(){el.textContent=(items[i]&&items[i].title)||'';el.style.opacity='1';},350);
-      i++;
-    },7000);
-    el.style.transition='opacity .35s';
-  }
-
-  function renderHero(item, sideItems){
-    if(!item)return;
-    var t=item.title||'', lk=articleUrl(item), s=srcName(item);
-    var im=getImg(item,t,900);
-    var d=strip(item.description||item.content||'').substring(0,240);if(d.length===240)d+='…';
-    var hero=document.getElementById('hero-section');
-    if(!hero)return;
-    var sideHtml='';
-    sideItems.forEach(function(si){
-      if(!si)return;
-      var st=si.title||'',slim=getImg(si,st,200),slk=articleUrl(si),ss=srcName(si);
-      sideHtml+='<div class="side-item" onclick="location.href=''+slk.replace(/'/g,"\'")+''">'+
-        '<div class="side-item-thumb"><img src="'+slim+'" alt="'+st.substring(0,30)+'" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=200&q=60&fit=crop'"></div>'+
-        '<div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+ss.split('.')[0].toUpperCase()+'</span>'+
-        '<div class="side-item-headline">'+st+'</div>'+
-        '<div class="byline" style="font-size:11px;margin-top:3px;">'+ago(si.pubDate)+'</div></div>'+
-      '</div>';
-    });
-    hero.innerHTML=
-      '<div class="hero-dyn" onclick="location.href=''+lk.replace(/'/g,"\'")+''">'+
-        '<div><div class="hero-img"><img src="'+im+'" alt="'+t.substring(0,60)+'" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=900&q=60'"></div>'+
-        '<span class="cat-tag">'+s.split('.')[0].toUpperCase()+'</span>'+
-        '<div class="hero-headline">'+t+'</div>'+
-        '<div class="hero-deck">'+d+'</div>'+
-        '<div class="byline"><strong>'+s+'</strong> &nbsp;·&nbsp; '+ago(item.pubDate)+'</div></div>'+
-        '<div class="side-stack">'+sideHtml+'</div>'+
-      '</div>';
-  }
-
-  function renderList(items){
-    var list=document.getElementById('article-list');
-    if(!list)return;
-    var html='';
-    items.forEach(function(item){
-      if(!item)return;
-      var t=item.title||'',lk=articleUrl(item),s=srcName(item);
-      var im=getImg(item,t,300);
-      var d=strip(item.description||item.content||'').substring(0,200);if(d.length===200)d+='…';
-      html+='<div class="article-list-item" onclick="location.href=''+lk.replace(/'/g,"\'")+''">'+
-        '<div class="article-list-thumb"><img src="'+im+'" alt="'+t.substring(0,40)+'" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=300&q=60'"></div>'+
-        '<div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+s.split('.')[0].toUpperCase()+'</span>'+
-        '<div class="article-list-headline">'+t+'</div>'+
-        '<div class="article-list-deck">'+d+'</div>'+
-        '<div class="byline" style="font-size:11px;">'+ago(item.pubDate)+'</div></div>'+
-      '</div>';
-    });
-    list.innerHTML=html||'<p style="font-family:var(--sans);font-size:13px;color:var(--ink3);padding:20px 0;">No stories available right now.</p>';
-  }
-
-  function renderGrid(items){
-    var grid=document.getElementById('article-grid');
-    if(!grid)return;
-    var html='';
-    items.forEach(function(item){
-      if(!item)return;
-      var t=item.title||'',lk=articleUrl(item),s=srcName(item);
-      var im=getImg(item,t,500);
-      var d=strip(item.description||item.content||'').substring(0,120);if(d.length===120)d+='…';
-      html+='<div class="article-card" onclick="location.href=''+lk.replace(/'/g,"\'")+''">'+
-        '<div class="article-card-thumb"><img src="'+im+'" alt="'+t.substring(0,40)+'" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=500&q=60'"></div>'+
-        '<span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+s.split('.')[0].toUpperCase()+'</span>'+
-        '<div class="article-card-headline">'+t+'</div>'+
-        '<div class="article-card-deck">'+d+'</div>'+
-        '<div class="byline" style="font-size:11px;">'+ago(item.pubDate)+'</div>'+
-      '</div>';
-    });
-    grid.innerHTML=html;
-  }
-
-  function renderSidebar(items){
-    var sb=document.getElementById('sidebar-list');
-    if(!sb)return;
-    var html='';
-    items.forEach(function(item){
-      if(!item)return;
-      var t=item.title||'',lk=articleUrl(item),s=srcName(item);
-      var im=getImg(item,t,150);
-      html+='<div class="sidebar-story" onclick="location.href=''+lk.replace(/'/g,"\'")+''">'+
-        '<div class="sidebar-thumb"><img src="'+im+'" alt="" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=150&q=60'"></div>'+
-        '<div><div class="sidebar-headline">'+t+'</div><div class="sidebar-meta">'+s.split('.')[0]+' · '+ago(item.pubDate)+'</div></div>'+
-      '</div>';
-    });
-    sb.innerHTML=html;
-  }
-
-  function setTimestamp(){
-    var el=document.getElementById('last-updated');
-    if(el)el.textContent='Updated '+new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})+' ET';
-    var hd=document.getElementById('hdate');
-    if(hd)hd.textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  }
-
-  
-  var PROXIES=[
+  var SEC='World',CK='pw_wd3',CKT='pw_wd3_ts',T3=3*60*60*1000;
+  var PRI='https://rss.nytimes.com/services/xml/rss/nyt/World.xml',FB='https://feeds.bbci.co.uk/news/world/rss.xml';
+  var PX=[
     function(u){return 'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(u)+'&api_key=public&count=20';},
     function(u){return 'https://api.allorigins.win/get?url='+encodeURIComponent(u);},
     function(u){return 'https://corsproxy.io/?'+encodeURIComponent(u);}
   ];
-  function parseRSS(x){var p=new DOMParser(),doc=p.parseFromString(x,'text/xml'),items=doc.querySelectorAll('item'),r=[];items.forEach(function(i){var enc=i.querySelector('enclosure'),mt=i.querySelector('thumbnail');r.push({title:i.querySelector('title')?i.querySelector('title').textContent:'',link:i.querySelector('link')?i.querySelector('link').textContent:'',description:i.querySelector('description')?i.querySelector('description').textContent:'',pubDate:i.querySelector('pubDate')?i.querySelector('pubDate').textContent:'',author:i.querySelector('creator')?i.querySelector('creator').textContent:'',thumbnail:mt?mt.getAttribute('url'):(enc?enc.getAttribute('url'):''),content:i.querySelector('encoded')?i.querySelector('encoded').textContent:''});});return r;}
-  function fetchProxy(url,idx,cb){if(idx>=PROXIES.length){cb(null);return;}fetch(PROXIES[idx](url)).then(function(r){return r.json();}).then(function(d){if(d.items&&d.items.length){cb(d.items);return;}if(d.contents){var its=parseRSS(d.contents);if(its.length){cb(its);return;}}throw 0;}).catch(function(){fetchProxy(url,idx+1,cb);});}
-  function fetchFeedRobust(pri,fb,cb){fetchProxy(pri,0,function(its){if(its&&its.length){cb(its);return;}fetchProxy(fb,0,function(its2){cb(its2&&its2.length?its2:null);});});}
-
-  function loadPage(){
-    try{
-      var ts=parseInt(localStorage.getItem(CTS)||'0');
-      if(Date.now()-ts<THREE_HRS){
-        var c=JSON.parse(localStorage.getItem(CKEY)||'null');
-        if(c&&c.length){renderAll(c);return;}
-      }
-    }catch(e){}
-    var hero=document.getElementById('hero-section');
-    if(hero)hero.innerHTML='<div class="loading-box"><div class="spin"></div>Loading today's top stories…</div>';
-    fetchFeedRobust(PRIMARY,FALLBACK,function(items){
-      if(items&&items.length){
-        renderAll(items);
-        try{localStorage.setItem(CKEY,JSON.stringify(items));localStorage.setItem(CTS,Date.now().toString());}catch(e){}
-      } else {
-        var h2=document.getElementById('hero-section');
-        if(h2)h2.innerHTML='<div class="loading-box">⚠️ Could not load stories. <a href="javascript:location.reload()" style="color:var(--red);">Tap to retry</a></div>';
-      }
-    });
+  var TI=[
+    ['iran|war|missile|military','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
+    ['trump|white house|president|congress','https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=800&q=80&fit=crop'],
+    ['russia|ukraine|putin','https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop'],
+    ['china|taiwan|beijing','https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop'],
+    ['economy|market|stock|inflation|fed','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&fit=crop'],
+    ['ai|tech|openai|nvidia|cyber','https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop'],
+    ['health|virus|disease|hospital','https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop'],
+    ['election|vote|ballot','https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=800&q=80&fit=crop'],
+    ['space|nasa|rocket','https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80&fit=crop'],
+  ];
+  function ti(t){var v=(t||'').toLowerCase();for(var k=0;k<TI.length;k++){var kk=TI[k][0].split('|');for(var j=0;j<kk.length;j++)if(v.indexOf(kk[j])>-1)return TI[k][1];}return 'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=800&q=80&fit=crop';}
+  function gi(item,t){return item.thumbnail||(item.enclosure&&item.enclosure.link)||ti(t);}
+  function st(h){var d=document.createElement('div');d.innerHTML=h||'';return d.textContent||'';}
+  function ag(p){if(!p)return'';var m=Math.floor((Date.now()-new Date(p))/60000);if(m<1)return'Just now';if(m<60)return m+' min ago';if(m<1440)return Math.floor(m/60)+' hr'+(Math.floor(m/60)>1?'s':'')+' ago';return Math.floor(m/1440)+' days ago';}
+  function sn(item){if(item.author)return item.author.split(',')[0];try{return new URL(item.link).hostname.replace('www.','');}catch(e){return'Reuters';}}
+  function au(item){var t=item.title||'',lk=item.link||'#',s=sn(item),im=gi(item,t),d=st(item.description||item.content||'').substring(0,400);return 'article.html?title='+encodeURIComponent(t)+'&url='+encodeURIComponent(lk)+'&img='+encodeURIComponent(im)+'&desc='+encodeURIComponent(d)+'&source='+encodeURIComponent(s)+'&section='+encodeURIComponent(SEC)+'&time='+encodeURIComponent(item.pubDate||'');}
+  function pr(x){var p=new DOMParser(),doc=p.parseFromString(x,'text/xml'),its=doc.querySelectorAll('item'),r=[];its.forEach(function(i){var enc=i.querySelector('enclosure'),mt=i.querySelector('thumbnail');r.push({title:i.querySelector('title')?i.querySelector('title').textContent:'',link:i.querySelector('link')?i.querySelector('link').textContent:'',description:i.querySelector('description')?i.querySelector('description').textContent:'',pubDate:i.querySelector('pubDate')?i.querySelector('pubDate').textContent:'',author:i.querySelector('creator')?i.querySelector('creator').textContent:'',thumbnail:mt?mt.getAttribute('url'):(enc?enc.getAttribute('url'):''),content:i.querySelector('encoded')?i.querySelector('encoded').textContent:''});});return r;}
+  function fp(url,idx,cb){if(idx>=PX.length){cb(null);return;}fetch(PX[idx](url)).then(function(r){return r.json();}).then(function(d){if(d.items&&d.items.length){cb(d.items);return;}if(d.contents){var its=pr(d.contents);if(its.length){cb(its);return;}}throw 0;}).catch(function(){fp(url,idx+1,cb);});}
+  function fr(p,f,cb){fp(p,0,function(its){if(its&&its.length){cb(its);return;}fp(f,0,function(its2){cb(its2&&its2.length?its2:null);});});}
+  function upd(items){
+    if(!items||!items.length)return;
+    var item=items[0],t=item.title||'',lk=au(item),s=sn(item),im=gi(item,t);
+    var d=st(item.description||item.content||'').substring(0,260);if(d.length===260)d+='...';
+    var img=document.getElementById('hero-img'),hl=document.getElementById('hero-hl'),deck=document.getElementById('hero-deck'),byl=document.getElementById('hero-byline'),tag=document.getElementById('hero-tag');
+    if(img){img.src=im;img.alt=t;}
+    if(tag)tag.textContent=s.split('.')[0].toUpperCase().substring(0,16);
+    if(hl){hl.textContent=t;hl.onclick=function(){location.href=lk;};}
+    if(deck)deck.textContent=d;
+    if(byl)byl.innerHTML='<strong>'+s.split('.')[0]+'</strong> &middot; '+ag(item.pubDate);
+    // Side stack
+    var ss=document.getElementById('side-stack');
+    if(ss){var sh='';items.slice(1,4).forEach(function(si){var st2=si.title||'',slk=au(si),sim=gi(si,st2);sh+='<div class="side-item" onclick="location.href=''+slk.replace(/'/g,"\'")+''"><div class="side-thumb"><img src="'+sim+'" alt="" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=200&q=60'"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+sn(si).split('.')[0].toUpperCase().substring(0,16)+'</span><div class="side-hl">'+st2+'</div><div class="byline" style="font-size:11px;margin-top:3px;">'+ag(si.pubDate)+'</div></div></div>';});ss.innerHTML=sh;}
+    // List
+    var al=document.getElementById('art-list');
+    if(al){var lh='';items.slice(1,4).forEach(function(si){var st2=si.title||'',slk=au(si),sim=gi(si,st2);var dd=st(si.description||si.content||'').substring(0,180);if(dd.length===180)dd+='...';lh+='<div class="art-list-item" onclick="location.href=''+slk.replace(/'/g,"\'")+''"><div class="art-list-thumb"><img src="'+sim+'" alt="" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=300&q=60'"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+sn(si).split('.')[0].toUpperCase().substring(0,16)+'</span><div class="art-list-hl">'+st2+'</div><div class="art-list-deck">'+dd+'</div><div class="byline" style="font-size:11px;">'+ag(si.pubDate)+'</div></div></div>';});al.innerHTML=lh;}
+    // Grid
+    var ag2=document.getElementById('art-grid');
+    if(ag2){var gh='';items.slice(4,7).forEach(function(si){var st2=si.title||'',slk=au(si),sim=gi(si,st2);var dd=st(si.description||si.content||'').substring(0,120);if(dd.length===120)dd+='...';gh+='<div class="art-card" onclick="location.href=''+slk.replace(/'/g,"\'")+''"><div class="art-card-thumb"><img src="'+sim+'" alt="" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=500&q=60'"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+sn(si).split('.')[0].toUpperCase().substring(0,16)+'</span><div class="art-card-hl">'+st2+'</div><div class="art-card-deck">'+dd+'</div><div class="byline" style="font-size:11px;">'+ag(si.pubDate)+'</div></div>';});ag2.innerHTML=gh;}
+    // Sidebar
+    var sb=document.getElementById('sb-list');
+    if(sb){var sbh='';items.slice(0,5).forEach(function(si){var st2=si.title||'',slk=au(si),sim=gi(si,st2);sbh+='<div class="sb-story" onclick="location.href=''+slk.replace(/'/g,"\'")+''"><div class="sb-thumb"><img src="'+sim+'" alt="" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=150&q=60'"></div><div><div class="sb-hl">'+st2+'</div><div class="sb-meta">'+sn(si).split('.')[0]+' &middot; '+ag(si.pubDate)+'</div></div></div>';});sb.innerHTML=sbh;}
+    // Breaking
+    var br=document.getElementById('breaking-text');
+    if(br&&items[0]){br.textContent=items[0].title||'';var bi=1;setInterval(function(){if(!items[bi])bi=0;br.style.opacity='0';setTimeout(function(){br.textContent=(items[bi]&&items[bi].title)||'';br.style.opacity='1';},350);bi++;},7000);br.style.transition='opacity .35s';}
+    // Ticker
+    var tk=document.getElementById('ticker-text');
+    if(tk)tk.textContent=items.slice(0,6).map(function(x){return x.title||'';}).join('  ·  ');
+    // Timestamp
+    var ts=document.getElementById('last-updated');
+    if(ts)ts.textContent='Updated '+new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})+' ET';
+    var hd=document.getElementById('hdate');
+    if(hd)hd.textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    try{localStorage.setItem(CK,JSON.stringify(items));localStorage.setItem(CKT,Date.now().toString());}catch(e){}
   }
-
-  try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',loadPage);}
-  else{loadPage();}
-  setInterval(function(){try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}loadPage();},THREE_HRS);
-  var _lf=Date.now();
-  document.addEventListener('visibilitychange',function(){if(!document.hidden){if(Date.now()-_lf>THREE_HRS){try{localStorage.removeItem(CKEY);localStorage.removeItem(CTS);}catch(e){}loadPage();}_lf=Date.now();}});
-  var toggle=document.getElementById('nav-toggle'),menu=document.getElementById('nav-menu');
-  if(toggle&&menu){toggle.addEventListener('click',function(){toggle.classList.toggle('open');menu.classList.toggle('open');});}
+  function load(){
+    try{var ts=parseInt(localStorage.getItem(CKT)||'0');if(Date.now()-ts<T3){var c=JSON.parse(localStorage.getItem(CK)||'null');if(c&&c.length){upd(c);return;}}}catch(e){}
+    fr(PRI,FB,function(items){if(items&&items.length)upd(items);});
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(load,200);});}else{setTimeout(load,200);}
+  setInterval(function(){try{localStorage.removeItem(CK);localStorage.removeItem(CKT);}catch(e){}load();},T3);
+  var tg=document.getElementById('nav-toggle'),mn=document.getElementById('nav-menu');
+  if(tg&&mn)tg.addEventListener('click',function(){tg.classList.toggle('open');mn.classList.toggle('open');});
 })();
 </script>
-  <script>(function(s){s.dataset.zone='10748039',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<script>(function(s){s.dataset.zone='10748039',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </body>
 </html>
