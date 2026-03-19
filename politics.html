@@ -203,7 +203,15 @@ footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
   function st(h){var d=document.createElement('div');d.innerHTML=h||'';return d.textContent||'';}
   function ag(p){if(!p)return'';var m=Math.floor((Date.now()-new Date(p))/60000);if(m<1)return'Just now';if(m<60)return m+' min ago';if(m<1440)return Math.floor(m/60)+' hr'+(Math.floor(m/60)>1?'s':'')+' ago';return Math.floor(m/1440)+' days ago';}
   function sn(item){if(item.author)return item.author.split(',')[0];try{return new URL(item.link).hostname.replace('www.','');}catch(e){return'Reuters';}}
-  function au(item){var t=item.title||'',lk=item.link||'#',s=sn(item),im=gi(item,t),d=st(item.description||item.content||'').substring(0,400);return 'article.html?title='+encodeURIComponent(t)+'&url='+encodeURIComponent(lk)+'&img='+encodeURIComponent(im)+'&desc='+encodeURIComponent(d)+'&source='+encodeURIComponent(s)+'&section='+encodeURIComponent(SEC)+'&time='+encodeURIComponent(item.pubDate||'');}
+  function au(item){
+    var t=(item.title||'').replace(/['"&%#?=`\\]/g,'').substring(0,120);
+    var lk=item.link||('#');
+    var s=sn(item).replace(/['"&%#?=`]/g,'').substring(0,40);
+    var im=gi(item,t)||'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=800&q=80&fit=crop';
+    var d=st(item.description||item.content||'').replace(/['"&%#?=`<>]/g,'').replace(/\s+/g,' ').substring(0,200);
+    var sec=SEC.replace(/['"&%#?=`]/g,'');
+    return 'article.html?title='+t.replace(/\s+/g,'+')+'&url='+encodeURIComponent(lk)+'&img='+encodeURIComponent(im)+'&desc='+d.replace(/\s+/g,'+')+'&source='+s.replace(/\s+/g,'+')+'&section='+sec.replace(/\s+/g,'+')+'&time='+encodeURIComponent(item.pubDate||'Today');
+  }
   function pr(x){var p=new DOMParser(),doc=p.parseFromString(x,'text/xml'),its=doc.querySelectorAll('item'),r=[];its.forEach(function(i){var enc=i.querySelector('enclosure'),mt=i.querySelector('thumbnail');r.push({title:i.querySelector('title')?i.querySelector('title').textContent:'',link:i.querySelector('link')?i.querySelector('link').textContent:'',description:i.querySelector('description')?i.querySelector('description').textContent:'',pubDate:i.querySelector('pubDate')?i.querySelector('pubDate').textContent:'',author:i.querySelector('creator')?i.querySelector('creator').textContent:'',thumbnail:mt?mt.getAttribute('url'):(enc?enc.getAttribute('url'):''),content:i.querySelector('encoded')?i.querySelector('encoded').textContent:''});});return r;}
   function fp(url,idx,cb){if(idx>=PX.length){cb(null);return;}fetch(PX[idx](url)).then(function(r){return r.json();}).then(function(d){if(d.items&&d.items.length){cb(d.items);return;}if(d.contents){var its=pr(d.contents);if(its.length){cb(its);return;}}throw 0;}).catch(function(){fp(url,idx+1,cb);});}
   function fr(p,f,cb){fp(p,0,function(its){if(its&&its.length){cb(its);return;}fp(f,0,function(its2){cb(its2&&its2.length?its2:null);});});}

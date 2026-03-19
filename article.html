@@ -262,13 +262,23 @@ footer{background:var(--ink);color:#888;padding:32px 0 16px}
 
   // ── Parse URL params ──
 var params = new URLSearchParams(window.location.search);
-var artTitle   = decodeURIComponent(params.get('title')  || 'Breaking News');
-var artUrl     = decodeURIComponent(params.get('url')    || '#');
-var artImg     = decodeURIComponent(params.get('img')    || '');
-var artDesc    = decodeURIComponent(params.get('desc')   || '');
-var artSource  = decodeURIComponent(params.get('source') || 'PulseWire');
-var artSection = decodeURIComponent(params.get('section')|| 'News');
-var artTime    = decodeURIComponent(params.get('time')   || '');
+function dp(val, fb) {
+  try {
+    var v = params.get(val) || fb || '';
+    // Handle + encoded spaces
+    v = v.replace(/\+/g, ' ');
+    return decodeURIComponent(v);
+  } catch(e) {
+    return (params.get(val) || fb || '').replace(/\+/g, ' ');
+  }
+}
+var artTitle   = dp('title',  'Breaking News');
+var artUrl     = dp('url',    '#');
+var artImg     = dp('img',    '');
+var artDesc    = dp('desc',   '');
+var artSource  = dp('source', 'PulseWire');
+var artSection = dp('section','News');
+var artTime    = dp('time',   '');
 
 // ── Populate page ──
 document.title = artTitle + ' – PulseWire';
