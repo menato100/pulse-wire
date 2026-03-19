@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PulseWire X Branding</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#111;font-family:'DM Sans',sans-serif;padding:40px 20px;min-height:100vh}
+  h2{color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;opacity:.5}
+  .section{margin-bottom:48px}
+  .note{color:#666;font-size:12px;font-family:'DM Sans',sans-serif;margin-top:8px}
+
+  /* ── PROFILE PICTURE 400×400 ── */
+  .profile-pic{width:200px;height:200px;background:#1a1714;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:3px solid #c0392b}
+  .profile-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+  .profile-pw{font-family:'Playfair Display',Georgia,serif;font-size:52px;font-weight:900;letter-spacing:-.04em;line-height:1;color:#fff}
+  .profile-pw span{color:#c0392b}
+  .profile-dot{width:6px;height:6px;background:#c0392b;border-radius:50%;margin:0 auto}
+
+  /* ── HEADER BANNER 1500×500 ── */
+  .header-banner{width:750px;height:250px;background:#1a1714;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
+
+  /* Background texture */
+  .header-banner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(192,57,43,.04) 60px,rgba(192,57,43,.04) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(192,57,43,.04) 60px,rgba(192,57,43,.04) 61px)}
+  /* Red accent bar left */
+  .header-banner::after{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,#c0392b 0%,#e74c3c 100%)}
+
+  /* Decorative circles */
+  .bg-circle1{position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(192,57,43,.15)}
+  .bg-circle2{position:absolute;right:-20px;top:-20px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(192,57,43,.1)}
+  .bg-circle3{position:absolute;right:160px;bottom:-80px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(255,255,255,.04)}
+
+  .header-left{position:relative;z-index:2}
+  .header-logo{font-family:'Playfair Display',Georgia,serif;font-size:56px;font-weight:900;letter-spacing:-.03em;line-height:1;color:#fff;margin-bottom:6px}
+  .header-logo span{color:#c0392b}
+  .header-tagline{font-family:'DM Sans',sans-serif;font-style:italic;font-size:14px;color:rgba(255,255,255,.5);letter-spacing:.04em;margin-bottom:16px}
+  .header-url{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#c0392b;letter-spacing:.05em}
+
+  .header-right{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+  .header-pill{background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.3);padding:5px 14px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:#e74c3c;letter-spacing:.08em;text-transform:uppercase}
+  .header-stats{display:flex;gap:20px}
+  .header-stat{text-align:center}
+  .header-stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;display:block;line-height:1}
+  .header-stat-label{font-family:'DM Sans',sans-serif;font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase}
+
+  /* Bottom ticker strip */
+  .header-ticker{position:absolute;bottom:0;left:0;right:0;height:32px;background:rgba(192,57,43,.9);display:flex;align-items:center;padding:0 48px;gap:24px}
+  .ticker-dot{width:6px;height:6px;background:#fff;border-radius:50%;opacity:.8}
+  .ticker-text{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:#fff;letter-spacing:.06em;text-transform:uppercase;opacity:.9}
+  .ticker-sep{color:rgba(255,255,255,.4);font-size:10px}
+
+  /* Download buttons */
+  .btn{display:inline-block;background:#c0392b;color:#fff;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:none;margin-top:12px;text-decoration:none}
+  .btn:hover{background:#a93226}
+  .instructions{background:#1a1a1a;border:1px solid #2a2a2a;padding:20px;margin-top:16px}
+  .instructions h3{color:#fff;font-size:13px;margin-bottom:12px}
+  .instructions li{color:#888;font-size:13px;line-height:1.8;margin-left:16px}
+  .instructions li strong{color:#ccc}
+</style>
+</head>
+<body>
+
+<!-- PROFILE PICTURE -->
+<div class="section">
+  <h2>Profile Picture — 400×400px</h2>
+  <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+    <!-- Round version (for X) -->
+    <div>
+      <div class="profile-pic">
+        <div class="profile-inner">
+          <div class="profile-pw">P<span>W</span></div>
+          <div class="profile-dot"></div>
+        </div>
+      </div>
+      <p class="note">Profile picture (shown as circle on X)</p>
+    </div>
+    <!-- Square version -->
+    <div>
+      <div class="profile-pic" style="border-radius:16px;">
+        <div class="profile-inner">
+          <div class="profile-pw">P<span>W</span></div>
+          <div class="profile-dot"></div>
+        </div>
+      </div>
+      <p class="note">Square version</p>
+    </div>
+    <!-- Full name version -->
+    <div>
+      <div class="profile-pic" style="border-radius:16px;width:260px;height:200px;">
+        <div class="profile-inner">
+          <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1;">Pulse<span style="color:#c0392b;">Wire</span></div>
+          <div style="width:32px;height:2px;background:#c0392b;margin:6px 0;"></div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;">pulsewire.ink</div>
+        </div>
+      </div>
+      <p class="note">Text version</p>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER BANNER -->
+<div class="section">
+  <h2>Header Banner — 1500×500px (shown at 750×250)</h2>
+  <div class="header-banner">
+    <div class="bg-circle1"></div>
+    <div class="bg-circle2"></div>
+    <div class="bg-circle3"></div>
+    <div class="header-left">
+      <div class="header-logo">Pulse<span>Wire</span></div>
+      <div class="header-tagline">America's Window to the World.</div>
+      <div class="header-url">pulsewire.ink</div>
+    </div>
+    <div class="header-right">
+      <div class="header-pill">🔴 Live Updates</div>
+      <div class="header-stats">
+        <div class="header-stat">
+          <span class="header-stat-num">24/7</span>
+          <span class="header-stat-label">Coverage</span>
+        </div>
+        <div class="header-stat">
+          <span class="header-stat-num">3hr</span>
+          <span class="header-stat-label">Updates</span>
+        </div>
+        <div class="header-stat">
+          <span class="header-stat-num">180+</span>
+          <span class="header-stat-label">Countries</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-ticker">
+      <div class="ticker-dot"></div>
+      <span class="ticker-text">Breaking News</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-text">Global Coverage</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-text">U.S. Politics</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-text">World</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-text">Business</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-text">Technology</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-text">Health</span>
+    </div>
+  </div>
+  <p class="note">Upload this as your X header image (1500×500px recommended)</p>
+</div>
+
+<!-- SETUP INSTRUCTIONS -->
+<div class="section">
+  <div class="instructions">
+    <h3>How to update your X account:</h3>
+    <ol>
+      <li>Go to <strong>x.com</strong> → click your profile → <strong>Edit profile</strong></li>
+      <li><strong>Name:</strong> PulseWire</li>
+      <li><strong>Username:</strong> @PulseWireNews (or @PulseWireUS)</li>
+      <li><strong>Bio:</strong> 🌍 America's Window to the World | Breaking news, global coverage & trending stories | Updated every 3 hours | pulsewire.ink</li>
+      <li><strong>Location:</strong> New York, NY</li>
+      <li><strong>Website:</strong> https://pulsewire.ink</li>
+      <li>Take a screenshot of the <strong>profile picture</strong> above and upload it</li>
+      <li>Take a screenshot of the <strong>header banner</strong> above and upload it</li>
+    </ol>
+  </div>
+</div>
+
+</body>
+</html>
