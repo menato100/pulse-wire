@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="Dfmh1yl016Ddlc0wRc9CSLe5REz-WZadO9c5wiAcX5s">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health & Science &ndash; PulseWire</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://5gvci.com/act/files/tag.min.js?z=10748030" data-cfasync="false" async></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1a1714;--ink2:#3d3830;--ink3:#6b6258;--paper:#faf8f4;--paper2:#f2efe9;--paper3:#e8e3da;--red:#c0392b;--red2:#e74c3c;--gold:#b8963a;--blue:#1a4a7a;--serif:'Playfair Display',Georgia,serif;--body-serif:'Source Serif 4',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+html{font-size:16px}body{background:var(--paper);color:var(--ink);font-family:var(--body-serif);line-height:1.6}
+.top-bar{background:var(--ink);color:#aaa;font-family:var(--sans);font-size:11px;padding:6px 0}
+.top-bar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+.top-bar a{color:#ccc;text-decoration:none;margin-left:16px}.top-bar a:hover{color:#fff}
+.ticker-wrap{display:flex;gap:12px;overflow:hidden;flex:1;align-items:center}
+.ticker-label{background:var(--red);color:#fff;padding:1px 8px;font-size:10px;font-weight:600;border-radius:2px;white-space:nowrap}
+header{border-bottom:3px solid var(--ink);padding:18px 0 0;background:var(--paper)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 20px}
+.header-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--paper3)}
+.masthead{font-family:var(--serif);font-size:clamp(38px,6vw,72px);font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--ink);text-decoration:none}
+.masthead span{color:var(--red)}
+.header-tagline{font-family:var(--body-serif);font-style:italic;font-size:13px;color:var(--ink3)}
+
+nav{border-bottom:2px solid var(--ink);position:relative}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+nav ul{list-style:none;display:flex;flex-wrap:wrap}
+nav ul li a{display:block;padding:11px 14px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.05em;text-decoration:none;color:var(--ink2);text-transform:uppercase;transition:color .15s;white-space:nowrap}
+nav ul li a:hover,nav ul li.active a{color:var(--red)}
+nav ul li.active a{border-bottom:3px solid var(--red);margin-bottom:-2px}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:12px 0;flex-direction:column;gap:5px}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:760px){.nav-toggle{display:flex}nav ul{display:none;flex-direction:column;width:100%;background:var(--paper);border-top:1px solid var(--paper3);position:absolute;top:100%;left:0;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.08)}nav ul.open{display:flex}nav ul li a{padding:13px 20px;border-bottom:1px solid var(--paper3)}}
+@media(min-width:761px) and (max-width:1040px){nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}nav ul li a{padding:11px 10px;font-size:11px}}
+.breaking-bar{background:var(--red);color:#fff;font-family:var(--sans);font-size:12px;font-weight:600;padding:7px 0;text-align:center}
+.breaking-bar em{font-style:normal;background:rgba(0,0,0,.2);padding:1px 8px;border-radius:2px;margin-right:10px;font-size:10px}
+.container{max-width:1200px;margin:0 auto;padding:28px 20px}
+.page-grid{display:grid;grid-template-columns:1fr 300px;gap:40px}
+@media(max-width:860px){.page-grid{grid-template-columns:1fr}}
+.slabel{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.slabel::after{content:'';flex:1;height:1px;background:var(--paper3)}
+.cat-tag{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;margin-bottom:8px}
+.byline{font-family:var(--sans);font-size:12px;color:var(--ink3)}
+/* HERO */
+.hero-wrap{display:grid;grid-template-columns:3fr 2fr;gap:32px;padding-bottom:28px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+@media(max-width:680px){.hero-wrap{grid-template-columns:1fr}}
+.hero-img{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:12px}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.hero-img img:hover{transform:scale(1.03)}
+.hero-hl{font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:8px;cursor:pointer}
+.hero-hl:hover{color:var(--red)}
+.hero-deck{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:10px}
+.side-stack{display:flex;flex-direction:column}
+.side-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--paper3);cursor:pointer}
+.side-item:last-child{border-bottom:none}
+.side-thumb{width:88px;min-width:88px;height:62px;overflow:hidden}
+.side-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.side-hl{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px}
+.side-hl:hover{color:var(--red)}
+/* LIST */
+.art-list-item{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid var(--paper3);cursor:pointer}
+.art-list-item:last-child{border-bottom:none}
+.art-list-thumb{width:130px;min-width:130px;height:88px;overflow:hidden}
+.art-list-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.art-list-thumb img:hover{transform:scale(1.04)}
+.art-list-hl{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:5px}
+.art-list-hl:hover{color:var(--red)}
+.art-list-deck{font-size:13px;color:var(--ink2);line-height:1.6;margin-bottom:5px}
+/* GRID */
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:28px}
+@media(max-width:680px){.art-grid{grid-template-columns:1fr}}
+@media(min-width:481px) and (max-width:680px){.art-grid{grid-template-columns:repeat(2,1fr)}}
+.art-card{cursor:pointer;padding-bottom:18px;border-bottom:1px solid var(--paper3)}
+.art-card:nth-last-child(-n+3){border-bottom:none}
+.art-card-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:9px}
+.art-card-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.art-card-thumb img:hover{transform:scale(1.04)}
+.art-card-hl{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:5px}
+.art-card-hl:hover{color:var(--red)}
+.art-card-deck{font-size:12px;color:var(--ink3);line-height:1.5;margin-bottom:5px}
+/* SIDEBAR */
+.sidebar-widget{margin-bottom:28px}
+.sidebar-title{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:14px}
+.sb-story{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--paper3);cursor:pointer}
+.sb-story:last-child{border-bottom:none}
+.sb-thumb{width:60px;min-width:60px;height:44px;overflow:hidden}
+.sb-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.sb-hl{font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:3px}
+.sb-hl:hover{color:var(--red)}
+.sb-meta{font-family:var(--sans);font-size:11px;color:var(--ink3)}
+@keyframes p3{0%,100%{opacity:1}50%{opacity:.4}}
+.live-dot{background:var(--red);color:#fff;padding:2px 7px;border-radius:2px;font-size:9px;animation:p3 1.5s infinite;margin-left:6px;font-family:var(--sans)}
+footer{background:var(--ink);color:#888;padding:40px 0 20px;margin-top:40px}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 20px}
+.footer-logo{font-family:var(--serif);font-size:32px;font-weight:900;color:#fff;margin-bottom:4px}
+.footer-logo span{color:var(--red2)}
+.footer-tagline{font-family:var(--body-serif);font-style:italic;font-size:13px;color:#666;margin-bottom:28px}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-bottom:28px;border-bottom:1px solid #2a2724;margin-bottom:20px}
+@media(max-width:640px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+.footer-col-title{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa;margin-bottom:12px}
+.footer-col a{display:block;font-family:var(--sans);font-size:13px;color:#666;text-decoration:none;margin-bottom:7px}
+.footer-col a:hover{color:#ccc}
+.footer-bottom{display:flex;justify-content:space-between;font-family:var(--sans);font-size:11px;flex-wrap:wrap;gap:8px}
+.footer-bottom a{color:#555;text-decoration:none;margin-left:16px}
+
+.page-banner{background:#3a1a0a;padding:32px 0;border-bottom:2px solid var(--ink)}
+.page-banner-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+  <script>(function(s){s.dataset.zone='10748271',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <script>(function(s){s.dataset.zone='9843906',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <script>(function(s){s.dataset.zone='10750687',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</head>
+<body>
+<div class="top-bar"><div class="top-bar-inner">
+  <div class="ticker-wrap"><span class="ticker-label">LIVE</span><span id="ticker-text">pulsewire.ink &mdash; America&apos;s Window to the World</span></div>
+  <div><a href="index.html">Home</a><a href="contact.html">Contact</a><a href="#">Subscribe</a></div>
+</div></div>
+<header><div class="header-inner">
+  <div class="header-top">
+    <div><a href="index.html" class="masthead">Pulse<span>Wire</span></a>
+    <div class="header-tagline">America&apos;s Window to the World.</div></div>
+    <div style="text-align:right;font-family:var(--sans);font-size:12px;color:var(--ink3);line-height:1.8;">
+      <strong id="hdate" style="display:block;color:var(--ink2);font-size:13px;"></strong>
+      <span>New York, NY &nbsp;&middot;&nbsp; U.S. Edition</span>
+    </div>
+  </div>
+  
+</div>
+<nav id="main-nav"><div class="nav-inner"><ul id="nav-menu"><li><a href="index.html">Home</a></li><li><a href="usnews.html">U.S. News</a></li><li><a href="politics.html">Politics</a></li><li><a href="world.html">World</a></li><li><a href="business.html">Business</a></li><li><a href="technology.html">Technology</a></li><li class="active"><a href="health.html">Health</a></li><li><a href="opinion.html">Opinion</a></li><li><a href="video.html">Video</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul><button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button></div></nav>
+</header>
+<div class="breaking-bar"><em>BREAKING</em> <span id="breaking-text">Iran's Red Crescent: 236 Healthcare Sites Severely Damaged, 498 Schools Struck in U.S.-Israeli Attacks</span></div>
+<div class="page-banner"><div class="page-banner-inner">
+  <h1>Health & Science</h1>
+  <p>Medical news and scientific breakthroughs. <span id="last-updated" style="display:block;font-size:12px;opacity:.6;margin-top:4px;"></span></p>
+</div></div>
+<div class="container">
+  <div class="page-grid">
+    <div>
+      <div class="slabel">Top Story</div>
+      <div class="hero-wrap"><div><div class="hero-img"><img id="hero-img" src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop" alt="WHO Declares Global Health Emergency Over Drug-Resistant Tub" loading="eager"></div><span class="cat-tag" id="hero-tag">PULSEWIRE</span><div class="hero-hl" id="hero-hl" onclick="location.href='article.html?title=Irans%20Red%20Crescent:%20236%20Healthcare%20Sites%20Severely%20Damaged,%20498%20Schools%20Struck%20in%20U.S.-Israeli%20Attac&url=https://pulsewire.ink/&img=https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop&desc=The%20Iranian%20Red%20Crescent%20Society%20said%20236%20healthcare%20facilities%20have%20been%20severely%20damaged%20and%20498%20schools%20struck%20since%20the%20conflict%20began,%20raising%20alarm%20among%20international%20humani&source=PulseWire&section=Health&time=2%20hrs%20ago'">Iran's Red Crescent: 236 Healthcare Sites Severely Damaged, 498 Schools Struck in U.S.-Israeli Attacks</div><div class="hero-deck" id="hero-deck">The Iranian Red Crescent Society said 236 healthcare facilities have been severely damaged and 498 schools struck since the conflict began, raising alarm among international humanitarian organizations.</div><div class="byline" id="hero-byline">PulseWire &nbsp;&middot;&nbsp; 2 hrs ago</div></div><div class="side-stack" id="side-stack"><div class="side-item" onclick="location.href='article.html?title=UN%20WFP%20Warns%2045%20Million%20People%20Face%20Acute%20Hunger%20as%20Oil%20and%20Food%20Prices%20Soar%20Due%20to%20Iran%20War&url=https://pulsewire.ink/&img=https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80&fit=crop&desc=The%20World%20Food%20Program%20warns%20that%20the%20U.S.-Israeli%20war%20on%20Iran%20threatens%20to%20drive%20up%20the%20number%20of%20people%20suffering%20from%20acute%20hunger%20by%20tens%20of%20millions%20worldwide%20as%20shipping%20and%20&source=PulseWire&section=Health&time=3%20hrs%20ago'"><div class="side-thumb"><img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="side-hl">UN WFP Warns 45 Million People Face Acute Hunger as Oil and Food Prices Soar Due to Iran War</div><div class="byline" style="font-size:11px;margin-top:3px;">3 hrs ago</div></div></div><div class="side-item" onclick="location.href='article.html?title=Cuba%20Restores%20Power%20After%20Nationwide%20Blackout%20Amid%20Ongoing%20Economic%20and%20Energy%20Crisis&url=https://pulsewire.ink/&img=https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop&desc=Cuba%20restored%20electricity%20across%20the%20island%20after%20a%20nationwide%20blackout,%20the%20latest%20in%20a%20series%20of%20prolonged%20power%20outages%20driven%20by%20fuel%20shortages%20and%20an%20aging%20energy%20infrastructu&source=PulseWire&section=Health&time=4%20hrs%20ago'"><div class="side-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="side-hl">Cuba Restores Power After Nationwide Blackout Amid Ongoing Economic and Energy Crisis</div><div class="byline" style="font-size:11px;margin-top:3px;">4 hrs ago</div></div></div><div class="side-item" onclick="location.href='article.html?title=Morocco%20Awarded%20Africa%20Cup%20of%20Nations%20Title%20After%20Governing%20Body%20Overturns%20Senegals%20Victory%20in%20Chao&url=https://pulsewire.ink/&img=https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&fit=crop&desc=Morocco%20was%20stunningly%20awarded%20the%20Africa%20Cup%20of%20Nations%20title%20by%20the%20governing%20body%20after%20judges%20overturned%20Senegals%20victory%20in%20a%20chaotic%20final%20in%20January,%20sparking%20controversy%20a&source=PulseWire&section=Health&time=5%20hrs%20ago'"><div class="side-thumb"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="side-hl">Morocco Awarded Africa Cup of Nations Title After Governing Body Overturns Senegal's Victory in Chaotic Final</div><div class="byline" style="font-size:11px;margin-top:3px;">5 hrs ago</div></div></div></div></div></div><div class="side-item" onclick="location.href='article.html?title=AI%20Diagnoses%20Cancer%20Earlier%20Than%20Human%20Doctors%20in%20Landmark%20Johns%20Hopkins%20Study&url=https://pulsewire.ink/health.html&img=https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop&desc=An%20AI%20system%20developed%20at%20Johns%20Hopkins%20detected%20early-stage%20pancreatic%20cancer%20with%2094%%20accuracy,%20compared%20to%2068%%20for%20specialist%20physicians.&source=PulseWire&section=Health&time=4%20hrs%20ago'"><div class="side-thumb"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="side-hl">AI Diagnoses Cancer Earlier Than Human Doctors in Landmark Johns Hopkins Study</div><div class="byline" style="font-size:11px;margin-top:3px;">4 hrs ago</div></div></div><div class="side-item" onclick="location.href='article.html?title=U.S.%20Mental%20Health%20Crisis:%201%20in%203%20Americans%20Now%20Reports%20Clinical%20Anxiety&url=https://pulsewire.ink/health.html&img=https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop&desc=A%20new%20NIH%20survey%20found%20that%20anxiety%20disorders%20now%20affect%2034%%20of%20American%20adults,%20the%20highest%20rate%20ever%20recorded%20in%20a%20national%20health%20survey.&source=PulseWire&section=Health&time=5%20hrs%20ago'"><div class="side-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="side-hl">U.S. Mental Health Crisis: 1 in 3 Americans Now Reports Clinical Anxiety</div><div class="byline" style="font-size:11px;margin-top:3px;">5 hrs ago</div></div></div></div></div>
+      
+      <div class="slabel">Latest Stories <span class="live-dot">&#9679; LIVE</span></div>
+      <div style="margin-bottom:28px;"><div id="art-list"><div class="art-list-item" onclick="location.href='article.html?title=UN%20WFP%20Warns%2045%20Million%20People%20Face%20Acute%20Hunger%20as%20Oil%20and%20Food%20Prices%20Soar%20Due%20to%20Iran%20War&url=https://pulsewire.ink/&img=https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80&fit=crop&desc=The%20World%20Food%20Program%20warns%20that%20the%20U.S.-Israeli%20war%20on%20Iran%20threatens%20to%20drive%20up%20the%20number%20of%20people%20suffering%20from%20acute%20hunger%20by%20tens%20of%20millions%20worldwide%20as%20shipping%20and%20&source=PulseWire&section=Health&time=3%20hrs%20ago'"><div class="art-list-thumb"><img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-list-hl">UN WFP Warns 45 Million People Face Acute Hunger as Oil and Food Prices Soar Due to Iran War</div><div class="art-list-deck">The World Food Program warns that the U.S.-Israeli war on Iran threatens to drive up the number of people suffering from acute hunger by tens of millions worldw...</div><div class="byline" style="font-size:11px;">3 hrs ago</div></div></div><div class="art-list-item" onclick="location.href='article.html?title=Cuba%20Restores%20Power%20After%20Nationwide%20Blackout%20Amid%20Ongoing%20Economic%20and%20Energy%20Crisis&url=https://pulsewire.ink/&img=https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop&desc=Cuba%20restored%20electricity%20across%20the%20island%20after%20a%20nationwide%20blackout,%20the%20latest%20in%20a%20series%20of%20prolonged%20power%20outages%20driven%20by%20fuel%20shortages%20and%20an%20aging%20energy%20infrastructu&source=PulseWire&section=Health&time=4%20hrs%20ago'"><div class="art-list-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-list-hl">Cuba Restores Power After Nationwide Blackout Amid Ongoing Economic and Energy Crisis</div><div class="art-list-deck">Cuba restored electricity across the island after a nationwide blackout, the latest in a series of prolonged power outages driven by fuel shortages and an aging...</div><div class="byline" style="font-size:11px;">4 hrs ago</div></div></div><div class="art-list-item" onclick="location.href='article.html?title=Morocco%20Awarded%20Africa%20Cup%20of%20Nations%20Title%20After%20Governing%20Body%20Overturns%20Senegals%20Victory%20in%20Chao&url=https://pulsewire.ink/&img=https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&fit=crop&desc=Morocco%20was%20stunningly%20awarded%20the%20Africa%20Cup%20of%20Nations%20title%20by%20the%20governing%20body%20after%20judges%20overturned%20Senegals%20victory%20in%20a%20chaotic%20final%20in%20January,%20sparking%20controversy%20a&source=PulseWire&section=Health&time=5%20hrs%20ago'"><div class="art-list-thumb"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-list-hl">Morocco Awarded Africa Cup of Nations Title After Governing Body Overturns Senegal's Victory in Chaotic Final</div><div class="art-list-deck">Morocco was stunningly awarded the Africa Cup of Nations title by the governing body after judges overturned Senegal's victory in a chaotic final in January, sp...</div><div class="byline" style="font-size:11px;">5 hrs ago</div></div></div></div></div></div><div class="art-list-item" onclick="location.href='article.html?title=AI%20Diagnoses%20Cancer%20Earlier%20Than%20Human%20Doctors%20in%20Landmark%20Johns%20Hopkins%20Study&url=https://pulsewire.ink/health.html&img=https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop&desc=An%20AI%20system%20developed%20at%20Johns%20Hopkins%20detected%20early-stage%20pancreatic%20cancer%20with%2094%%20accuracy,%20compared%20to%2068%%20for%20specialist%20physicians.&source=PulseWire&section=Health&time=4%20hrs%20ago'"><div class="art-list-thumb"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-list-hl">AI Diagnoses Cancer Earlier Than Human Doctors in Landmark Johns Hopkins Study</div><div class="art-list-deck">An AI system developed at Johns Hopkins detected early-stage pancreatic cancer with 94% accuracy, compared to 68% for specialist physicians....</div><div class="byline" style="font-size:11px;">4 hrs ago</div></div></div><div class="art-list-item" onclick="location.href='article.html?title=U.S.%20Mental%20Health%20Crisis:%201%20in%203%20Americans%20Now%20Reports%20Clinical%20Anxiety&url=https://pulsewire.ink/health.html&img=https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop&desc=A%20new%20NIH%20survey%20found%20that%20anxiety%20disorders%20now%20affect%2034%%20of%20American%20adults,%20the%20highest%20rate%20ever%20recorded%20in%20a%20national%20health%20survey.&source=PulseWire&section=Health&time=5%20hrs%20ago'"><div class="art-list-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-list-hl">U.S. Mental Health Crisis: 1 in 3 Americans Now Reports Clinical Anxiety</div><div class="art-list-deck">A new NIH survey found that anxiety disorders now affect 34% of American adults, the highest rate ever recorded in a national health survey....</div><div class="byline" style="font-size:11px;">5 hrs ago</div></div></div></div></div>
+      
+      
+<!-- Monetag Banner Zone 10750687 -->
+<div style="text-align:center;margin:24px 0;min-height:90px;">
+<script>(function(s){s.dataset.zone='10750687',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</div>
+
+      <div class="slabel">More Stories</div>
+      <div class="art-grid" id="art-grid"><div class="art-card" onclick="location.href='article.html?title=Morocco%20Awarded%20Africa%20Cup%20of%20Nations%20Title%20After%20Governing%20Body%20Overturns%20Senegals%20Victory%20in%20Chao&url=https://pulsewire.ink/&img=https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&fit=crop&desc=Morocco%20was%20stunningly%20awarded%20the%20Africa%20Cup%20of%20Nations%20title%20by%20the%20governing%20body%20after%20judges%20overturned%20Senegals%20victory%20in%20a%20chaotic%20final%20in%20January,%20sparking%20controversy%20a&source=PulseWire&section=Health&time=5%20hrs%20ago'"><div class="art-card-thumb"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&fit=crop" alt="" loading="lazy"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-card-hl">Morocco Awarded Africa Cup of Nations Title After Governing Body Overturns Senegal's Victory in Chaotic Final</div><div class="art-card-deck">Morocco was stunningly awarded the Africa Cup of Nations title by the governing body after judges ov...</div><div class="byline" style="font-size:11px;">5 hrs ago</div></div><div class="art-card" onclick="location.href='article.html?title=Trump%20Admin%20Considers%20Withholding%20HIV%20Treatments%20From%20Zambia%20in%20Exchange%20for%20Mineral%20Access%20—%20NYT&url=https://pulsewire.ink/&img=https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop&desc=The%20Trump%20administration%20is%20considering%20withholding%20HIV%20treatments%20from%20Zambia%20to%20gain%20greater%20access%20to%20the%20countrys%20strategic%20mineral%20reserves,%20according%20to%20a%20New%20York%20Times%20rep&source=PulseWire&section=Health&time=6%20hrs%20ago'"><div class="art-card-thumb"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop" alt="" loading="lazy"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-card-hl">Trump Admin Considers Withholding HIV Treatments From Zambia in Exchange for Mineral Access — NYT</div><div class="art-card-deck">The Trump administration is considering withholding HIV treatments from Zambia to gain greater acces...</div><div class="byline" style="font-size:11px;">6 hrs ago</div></div><div class="art-card" onclick="location.href='article.html?title=Kenyan%20Grandmothers%20Soccer%20Team%20Goes%20Viral%20—%20Outrunning%20Teenagers%20on%20the%20Field%20at%20Age%2060+&url=https://pulsewire.ink/&img=https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop&desc=A%20group%20of%20grandmothers%20in%20central%20Kenya%20have%20formed%20a%20soccer%20team%20to%20keep%20fit%20and%20inspire%20hope%20in%20a%20generation%20of%20teenagers%20—%20and%20they%20sometimes%20outrun%20the%20younger%20players%20on%20the%20&source=PulseWire&section=Health&time=7%20hrs%20ago'"><div class="art-card-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop" alt="" loading="lazy"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-card-hl">Kenyan Grandmothers' Soccer Team Goes Viral — Outrunning Teenagers on the Field at Age 60+</div><div class="art-card-deck">A group of grandmothers in central Kenya have formed a soccer team to keep fit and inspire hope in a...</div><div class="byline" style="font-size:11px;">7 hrs ago</div></div></div></div><div class="art-card" onclick="location.href='article.html?title=FDA%20Approves%20First%20CRISPR%20Gene%20Therapy%20for%20Sickle%20Cell%20Disease&url=https://pulsewire.ink/health.html&img=https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop&desc=The%20approval%20marks%20a%20historic%20milestone,%20offering%20a%20potential%20cure%20for%20the%20blood%20disorder%20that%20affects%20over%20100,000%20Americans%20and%20millions%20worldwide.&source=PulseWire&section=Health&time=6%20hrs%20ago'"><div class="art-card-thumb"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop" alt="" loading="lazy"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-card-hl">FDA Approves First CRISPR Gene Therapy for Sickle Cell Disease</div><div class="art-card-deck">The approval marks a historic milestone, offering a potential cure for the blood disorder that affec...</div><div class="byline" style="font-size:11px;">6 hrs ago</div></div><div class="art-card" onclick="location.href='article.html?title=Measles%20Cases%20Surpass%201,000%20Across%2014%20States%20—%20CDC%20Urges%20Urgent%20Vaccination&url=https://pulsewire.ink/health.html&img=https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop&desc=The%20outbreak,%20now%20the%20largest%20in%20three%20decades,%20has%20been%20linked%20to%20low%20vaccination%20rates%20in%20school-age%20children%20in%20suburban%20communities.&source=PulseWire&section=Health&time=7%20hrs%20ago'"><div class="art-card-thumb"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop" alt="" loading="lazy"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">PULSEWIRE</span><div class="art-card-hl">Measles Cases Surpass 1,000 Across 14 States — CDC Urges Urgent Vaccination</div><div class="art-card-deck">The outbreak, now the largest in three decades, has been linked to low vaccination rates in school-a...</div><div class="byline" style="font-size:11px;">7 hrs ago</div></div></div>
+    </div>
+    <aside>
+      
+      <div class="sidebar-widget">
+        <div class="sidebar-title">Most Read</div>
+        <div id="sb-list"><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">Iran's Red Crescent: 236 Healthcare Sites Severely Damaged, 498 Schools Struck in U.S.-Israeli Attacks</div><div class="sb-meta">PulseWire &middot; 2 hrs ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">UN WFP Warns 45 Million People Face Acute Hunger as Oil and Food Prices Soar Due to Iran War</div><div class="sb-meta">PulseWire &middot; 3 hrs ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">Cuba Restores Power After Nationwide Blackout Amid Ongoing Economic and Energy Crisis</div><div class="sb-meta">PulseWire &middot; 4 hrs ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">Morocco Awarded Africa Cup of Nations Title After Governing Body Overturns Senegal's Victory in Chaotic Final</div><div class="sb-meta">PulseWire &middot; 5 hrs ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">Trump Admin Considers Withholding HIV Treatments From Zambia in Exchange for Mineral Access — NYT</div><div class="sb-meta">PulseWire &middot; 6 hrs ago</div></div></div></div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">New Weight Loss Drug Outperforms Ozempic — Patients Lose Average 26% Body Weight</div><div class="sb-meta">PulseWire &middot; 3 hrs ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">AI Diagnoses Cancer Earlier Than Human Doctors in Landmark Johns Hopkins Study</div><div class="sb-meta">PulseWire &middot; 4 hrs ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">U.S. Mental Health Crisis: 1 in 3 Americans Now Reports Clinical Anxiety</div><div class="sb-meta">PulseWire &middot; 5 hrs ago</div></div></div><div class="sb-story"><div class="sb-thumb"><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop" alt="" loading="lazy"></div><div><div class="sb-hl">FDA Approves First CRISPR Gene Therapy for Sickle Cell Disease</div><div class="sb-meta">PulseWire &middot; 6 hrs ago</div></div></div></div>
+      </div>
+      
+      
+<!-- Monetag Banner Zone 10750687 -->
+<div style="text-align:center;margin:24px 0;min-height:90px;">
+<script>(function(s){s.dataset.zone='10750687',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</div>
+
+      <div class="sidebar-widget" style="background:var(--ink);padding:20px;color:#ccc;">
+        <div style="font-family:var(--serif);font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;">PulseWire AM</div>
+        <div style="font-size:13px;line-height:1.6;margin-bottom:14px;">Your daily briefing &mdash; free, every morning at 6am ET.</div>
+        <input type="email" placeholder="your@email.com" style="width:100%;padding:9px 12px;font-size:13px;background:#2a2724;border:1px solid #3a3530;color:#ccc;border-radius:4px;margin-bottom:8px;outline:none;">
+        <button style="width:100%;background:var(--red);color:#fff;border:none;padding:9px;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:4px;">Subscribe Free</button>
+      </div>
+      
+    </aside>
+  </div>
+</div>
+<footer><div class="footer-inner">
+    <div class="footer-logo"><a href="index.html" style="text-decoration:none;color:inherit">Pulse<span>Wire</span></a></div>
+    <div class="footer-tagline">America's Window to the World. Independent. Uncompromising.</div>
+    <div class="footer-grid">
+      <div class="footer-col"><div class="footer-col-title">Sections</div><a href="usnews.html">U.S. News</a><a href="politics.html">Politics</a><a href="world.html">World</a><a href="business.html">Business</a><a href="technology.html">Technology</a><a href="health.html">Health</a></div>
+      <div class="footer-col"><div class="footer-col-title">More</div><a href="opinion.html">Opinion</a><a href="video.html">Video</a><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
+      <div class="footer-col"><div class="footer-col-title">World Desks</div><a href="world.html">Europe</a><a href="world.html">Asia-Pacific</a><a href="world.html">Middle East</a><a href="world.html">Latin America</a></div>
+      <div class="footer-col"><div class="footer-col-title">Follow Us</div><a href="#">Facebook</a><a href="#">Twitter/X</a><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">TikTok</a></div>
+    </div>
+    <div class="footer-bottom"><span>2026 PulseWire Media LLC. All rights reserved.</span><div><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div></div>
+  </div></footer>
+
+<script>
+(function(){
+  var SEC='Health',CK='pw_hl3',CKT='pw_hl3_ts',T3=3*60*60*1000;
+  var PRI='https://rss.nytimes.com/services/xml/rss/nyt/Health.xml',FB='https://feeds.bbci.co.uk/news/health/rss.xml';
+  var PX=[
+    function(u){return 'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(u)+'&api_key=public&count=20';},
+    function(u){return 'https://api.allorigins.win/get?url='+encodeURIComponent(u);},
+    function(u){return 'https://corsproxy.io/?'+encodeURIComponent(u);}
+  ];
+  var TI=[
+    ['iran|war|missile|military','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80&fit=crop'],
+    ['trump|white house|president|congress','https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=800&q=80&fit=crop'],
+    ['russia|ukraine|putin','https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=800&q=80&fit=crop'],
+    ['china|taiwan|beijing','https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop'],
+    ['economy|market|stock|inflation|fed','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&fit=crop'],
+    ['ai|tech|openai|nvidia|cyber','https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&fit=crop'],
+    ['health|virus|disease|hospital','https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80&fit=crop'],
+    ['election|vote|ballot','https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=800&q=80&fit=crop'],
+    ['space|nasa|rocket','https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80&fit=crop'],
+  ];
+  function ti(t){var v=(t||'').toLowerCase();for(var k=0;k<TI.length;k++){var kk=TI[k][0].split('|');for(var j=0;j<kk.length;j++)if(v.indexOf(kk[j])>-1)return TI[k][1];}return 'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=800&q=80&fit=crop';}
+  function gi(item,t){return item.thumbnail||(item.enclosure&&item.enclosure.link)||ti(t);}
+  function st(h){var d=document.createElement('div');d.innerHTML=h||'';return d.textContent||'';}
+  function ag(p){if(!p)return'';var m=Math.floor((Date.now()-new Date(p))/60000);if(m<1)return'Just now';if(m<60)return m+' min ago';if(m<1440)return Math.floor(m/60)+' hr'+(Math.floor(m/60)>1?'s':'')+' ago';return Math.floor(m/1440)+' days ago';}
+  function sn(item){if(item.author)return item.author.split(',')[0];try{return new URL(item.link).hostname.replace('www.','');}catch(e){return'Reuters';}}
+  function au(item){
+    var t=(item.title||'').replace(/['"&%#?=`\\]/g,'').substring(0,120);
+    var lk=item.link||('#');
+    var s=sn(item).replace(/['"&%#?=`]/g,'').substring(0,40);
+    var im=gi(item,t)||'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=800&q=80&fit=crop';
+    var d=st(item.description||item.content||'').replace(/['"&%#?=`<>]/g,'').replace(/\s+/g,' ').substring(0,200);
+    var sec=SEC.replace(/['"&%#?=`]/g,'');
+    return 'article.html?title='+t.replace(/\s+/g,'+')+'&url='+encodeURIComponent(lk)+'&img='+encodeURIComponent(im)+'&desc='+d.replace(/\s+/g,'+')+'&source='+s.replace(/\s+/g,'+')+'&section='+sec.replace(/\s+/g,'+')+'&time='+encodeURIComponent(item.pubDate||'Today');
+  }
+  function pr(x){var p=new DOMParser(),doc=p.parseFromString(x,'text/xml'),its=doc.querySelectorAll('item'),r=[];its.forEach(function(i){var enc=i.querySelector('enclosure'),mt=i.querySelector('thumbnail');r.push({title:i.querySelector('title')?i.querySelector('title').textContent:'',link:i.querySelector('link')?i.querySelector('link').textContent:'',description:i.querySelector('description')?i.querySelector('description').textContent:'',pubDate:i.querySelector('pubDate')?i.querySelector('pubDate').textContent:'',author:i.querySelector('creator')?i.querySelector('creator').textContent:'',thumbnail:mt?mt.getAttribute('url'):(enc?enc.getAttribute('url'):''),content:i.querySelector('encoded')?i.querySelector('encoded').textContent:''});});return r;}
+  function fp(url,idx,cb){if(idx>=PX.length){cb(null);return;}fetch(PX[idx](url)).then(function(r){return r.json();}).then(function(d){if(d.items&&d.items.length){cb(d.items);return;}if(d.contents){var its=pr(d.contents);if(its.length){cb(its);return;}}throw 0;}).catch(function(){fp(url,idx+1,cb);});}
+  function fr(p,f,cb){fp(p,0,function(its){if(its&&its.length){cb(its);return;}fp(f,0,function(its2){cb(its2&&its2.length?its2:null);});});}
+  function upd(items){
+    if(!items||!items.length)return;
+    var item=items[0],t=item.title||'',lk=au(item),s=sn(item),im=gi(item,t);
+    var d=st(item.description||item.content||'').substring(0,260);if(d.length===260)d+='...';
+    var img=document.getElementById('hero-img'),hl=document.getElementById('hero-hl'),deck=document.getElementById('hero-deck'),byl=document.getElementById('hero-byline'),tag=document.getElementById('hero-tag');
+    if(img){img.src=im;img.alt=t;}
+    if(tag)tag.textContent=s.split('.')[0].toUpperCase().substring(0,16);
+    if(hl){hl.textContent=t;hl.onclick=function(){location.href=lk;};}
+    if(deck)deck.textContent=d;
+    if(byl)byl.innerHTML='<strong>'+s.split('.')[0]+'</strong> &middot; '+ag(item.pubDate);
+    // Side stack
+    var ss=document.getElementById('side-stack');
+    if(ss){var sh='';items.slice(1,4).forEach(function(si){var st2=si.title||'',slk=au(si),sim=gi(si,st2);sh+='<div class="side-item" onclick="location.href=''+slk.replace(/'/g,"\'")+''"><div class="side-thumb"><img src="'+sim+'" alt="" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=200&q=60'"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+sn(si).split('.')[0].toUpperCase().substring(0,16)+'</span><div class="side-hl">'+st2+'</div><div class="byline" style="font-size:11px;margin-top:3px;">'+ag(si.pubDate)+'</div></div></div>';});ss.innerHTML=sh;}
+    // List
+    var al=document.getElementById('art-list');
+    if(al){var lh='';items.slice(1,4).forEach(function(si){var st2=si.title||'',slk=au(si),sim=gi(si,st2);var dd=st(si.description||si.content||'').substring(0,180);if(dd.length===180)dd+='...';lh+='<div class="art-list-item" onclick="location.href=''+slk.replace(/'/g,"\'")+''"><div class="art-list-thumb"><img src="'+sim+'" alt="" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=300&q=60'"></div><div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+sn(si).split('.')[0].toUpperCase().substring(0,16)+'</span><div class="art-list-hl">'+st2+'</div><div class="art-list-deck">'+dd+'</div><div class="byline" style="font-size:11px;">'+ag(si.pubDate)+'</div></div></div>';});al.innerHTML=lh;}
+    // Grid
+    var ag2=document.getElementById('art-grid');
+    if(ag2){var gh='';items.slice(4,7).forEach(function(si){var st2=si.title||'',slk=au(si),sim=gi(si,st2);var dd=st(si.description||si.content||'').substring(0,120);if(dd.length===120)dd+='...';gh+='<div class="art-card" onclick="location.href=''+slk.replace(/'/g,"\'")+''"><div class="art-card-thumb"><img src="'+sim+'" alt="" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=500&q=60'"></div><span class="cat-tag" style="font-size:9px;padding:2px 7px;">'+sn(si).split('.')[0].toUpperCase().substring(0,16)+'</span><div class="art-card-hl">'+st2+'</div><div class="art-card-deck">'+dd+'</div><div class="byline" style="font-size:11px;">'+ag(si.pubDate)+'</div></div>';});ag2.innerHTML=gh;}
+    // Sidebar
+    var sb=document.getElementById('sb-list');
+    if(sb){var sbh='';items.slice(0,5).forEach(function(si){var st2=si.title||'',slk=au(si),sim=gi(si,st2);sbh+='<div class="sb-story" onclick="location.href=''+slk.replace(/'/g,"\'")+''"><div class="sb-thumb"><img src="'+sim+'" alt="" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=150&q=60'"></div><div><div class="sb-hl">'+st2+'</div><div class="sb-meta">'+sn(si).split('.')[0]+' &middot; '+ag(si.pubDate)+'</div></div></div>';});sb.innerHTML=sbh;}
+    // Breaking
+    var br=document.getElementById('breaking-text');
+    if(br&&items[0]){br.textContent=items[0].title||'';var bi=1;setInterval(function(){if(!items[bi])bi=0;br.style.opacity='0';setTimeout(function(){br.textContent=(items[bi]&&items[bi].title)||'';br.style.opacity='1';},350);bi++;},7000);br.style.transition='opacity .35s';}
+    // Ticker
+    var tk=document.getElementById('ticker-text');
+    if(tk)tk.textContent=items.slice(0,6).map(function(x){return x.title||'';}).join('  ·  ');
+    // Timestamp
+    var ts=document.getElementById('last-updated');
+    if(ts)ts.textContent='Updated '+new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})+' ET';
+    var hd=document.getElementById('hdate');
+    if(hd)hd.textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    try{localStorage.setItem(CK,JSON.stringify(items));localStorage.setItem(CKT,Date.now().toString());}catch(e){}
+  }
+  function load(){
+    try{var ts=parseInt(localStorage.getItem(CKT)||'0');if(Date.now()-ts<T3){var c=JSON.parse(localStorage.getItem(CK)||'null');if(c&&c.length){upd(c);return;}}}catch(e){}
+    fr(PRI,FB,function(items){if(items&&items.length)upd(items);});
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(load,200);});}else{setTimeout(load,200);}
+  setInterval(function(){try{localStorage.removeItem(CK);localStorage.removeItem(CKT);}catch(e){}load();},T3);
+  var tg=document.getElementById('nav-toggle'),mn=document.getElementById('nav-menu');
+  if(tg&&mn)tg.addEventListener('click',function(){tg.classList.toggle('open');mn.classList.toggle('open');});
+})();
+</script>
+<script>(function(s){s.dataset.zone='10748039',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</body>
+</html>

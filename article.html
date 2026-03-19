@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="google-site-verification" content="Dfmh1yl016Ddlc0wRc9CSLe5REz-WZadO9c5wiAcX5s"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Article – PulseWire</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1a1714;--ink2:#3d3830;--ink3:#6b6258;--paper:#faf8f4;--paper2:#f2efe9;--paper3:#e8e3da;--red:#c0392b;--red2:#e74c3c;--gold:#b8963a;--blue:#1a4a7a;--serif:'Playfair Display',Georgia,serif;--body-serif:'Source Serif 4',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+html{font-size:16px}body{background:var(--paper);color:var(--ink);font-family:var(--body-serif);line-height:1.6;min-height:100vh}
+.top-bar{background:var(--ink);color:#aaa;font-family:var(--sans);font-size:11px;padding:6px 0}
+.top-bar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+.top-bar a{color:#ccc;text-decoration:none;margin-left:16px}.top-bar a:hover{color:#fff}
+header{border-bottom:3px solid var(--ink);padding:14px 0;background:var(--paper)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.masthead{font-family:var(--serif);font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-.03em;color:var(--ink);text-decoration:none}
+.masthead span{color:var(--red)}
+nav{border-bottom:2px solid var(--ink);position:relative}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+nav ul{list-style:none;display:flex;flex-wrap:wrap}
+nav ul li a{display:block;padding:10px 14px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.05em;text-decoration:none;color:var(--ink2);text-transform:uppercase;transition:color .15s;white-space:nowrap}
+nav ul li a:hover{color:var(--red)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:10px 0;flex-direction:column;gap:5px}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:760px){.nav-toggle{display:flex}nav ul{display:none;flex-direction:column;width:100%;background:var(--paper);border-top:1px solid var(--paper3);position:absolute;top:100%;left:0;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.08)}nav ul.open{display:flex}nav ul li a{padding:12px 20px;border-bottom:1px solid var(--paper3)}}
+
+/* ARTICLE LAYOUT */
+.article-container{max-width:860px;margin:0 auto;padding:40px 20px}
+.article-breadcrumb{font-family:var(--sans);font-size:12px;color:var(--ink3);margin-bottom:20px}
+.article-breadcrumb a{color:var(--red);text-decoration:none}
+.article-breadcrumb a:hover{text-decoration:underline}
+.article-tag{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;margin-bottom:14px}
+.article-headline{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.15;color:var(--ink);margin-bottom:16px}
+.article-meta{display:flex;align-items:center;gap:16px;padding:14px 0;border-top:1px solid var(--paper3);border-bottom:1px solid var(--paper3);margin-bottom:24px;flex-wrap:wrap}
+.article-source{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink2)}
+.article-time{font-family:var(--sans);font-size:12px;color:var(--ink3)}
+.article-hero-img{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:10px}
+.article-hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+.article-img-caption{font-family:var(--sans);font-size:11px;color:var(--ink3);margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--paper3)}
+.article-summary{font-size:17px;line-height:1.8;color:var(--ink2);margin-bottom:28px;padding:20px 24px;background:var(--paper2);border-left:4px solid var(--red)}
+.article-summary p{margin-bottom:12px}.article-summary p:last-child{margin-bottom:0}
+.full-story-banner{background:var(--ink);color:#fff;padding:24px;margin-bottom:28px;text-align:center}
+.full-story-banner p{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.7);margin-bottom:14px}
+.btn-read-full{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:12px 28px;text-decoration:none;transition:background .2s;cursor:pointer;border:none}
+.btn-read-full:hover{background:#a93226}
+
+/* EMBED FRAME */
+.embed-section{margin-bottom:40px}
+.embed-section h3{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.embed-section h3::after{content:'';flex:1;height:1px;background:var(--paper3)}
+.embed-frame-wrap{position:relative;width:100%;height:640px;border:1px solid var(--paper3);background:var(--paper2);overflow:hidden}
+.embed-frame-wrap iframe{width:100%;height:100%;border:none;display:block}
+.embed-blocked{display:none;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;text-align:center;padding:32px}
+.embed-blocked .icon{font-size:36px}
+.embed-blocked p{font-family:var(--sans);font-size:14px;color:var(--ink3);max-width:340px;line-height:1.6}
+.embed-blocked .btn-read-full{margin-top:8px}
+@media(max-width:600px){.embed-frame-wrap{height:480px}}
+
+/* RELATED */
+.related{padding-top:28px;border-top:2px solid var(--ink);margin-bottom:40px}
+.related h2{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:20px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+.related-card{cursor:pointer}
+.related-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;margin-bottom:8px}
+.related-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.related-thumb img:hover{transform:scale(1.04)}
+.related-headline{font-family:var(--serif);font-size:15px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px}
+.related-headline:hover{color:var(--red)}
+.related-meta{font-family:var(--sans);font-size:11px;color:var(--ink3)}
+
+/* SHARE */
+.share-bar{display:flex;gap:10px;align-items:center;padding:16px 0;border-top:1px solid var(--paper3);border-bottom:1px solid var(--paper3);margin-bottom:28px;flex-wrap:wrap}
+.share-label{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.share-btn{background:none;border:1px solid var(--paper3);padding:6px 14px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;color:var(--ink2);transition:all .15s}
+.share-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* AD */
+
+footer{background:var(--ink);color:#888;padding:32px 0 16px}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 20px}
+.footer-logo{font-family:var(--serif);font-size:28px;font-weight:900;color:#fff;margin-bottom:4px}
+.footer-logo span{color:var(--red2)}
+.footer-tagline{font-family:var(--body-serif);font-style:italic;font-size:13px;color:#666;margin-bottom:20px}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:16px}
+.footer-links a{font-family:var(--sans);font-size:12px;color:#666;text-decoration:none}
+.footer-links a:hover{color:#ccc}
+.footer-bottom{font-family:var(--sans);font-size:11px;color:#555;padding-top:16px;border-top:1px solid #2a2724}
+</style>
+  <script src="https://5gvci.com/act/files/tag.min.js?z=10748030" data-cfasync="false" async></script>
+  <script>(function(s){s.dataset.zone='10748271',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <script>(function(s){s.dataset.zone='9843906',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <script>(function(s){s.dataset.zone='10750687',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span style="color:#666;">America's Window to the World</span>
+    <div><a href="index.html">Home</a><a href="contact.html">Contact</a><a href="#">Subscribe</a></div>
+  </div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="masthead">Pulse<span>Wire</span></a>
+    <div style="font-family:var(--body-serif);font-style:italic;font-size:13px;color:var(--ink3);">America's Window to the World.</div>
+  </div>
+</header>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <ul id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="usnews.html">U.S. News</a></li>
+      <li><a href="politics.html">Politics</a></li>
+      <li><a href="world.html">World</a></li>
+      <li><a href="business.html">Business</a></li>
+      <li><a href="technology.html">Technology</a></li>
+      <li><a href="health.html">Health</a></li>
+      <li><a href="opinion.html">Opinion</a></li>
+      <li><a href="video.html">Video</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- BACK NAVIGATION BAR -->
+<div id="back-bar" style="background:var(--paper2);border-bottom:1px solid var(--paper3);padding:10px 0;">
+  <div style="max-width:860px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <button onclick="goBack()" style="background:none;border:1px solid var(--paper3);padding:6px 14px;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--ink2);cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s;" onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)';" onmouseout="this.style.borderColor='var(--paper3)';this.style.color='var(--ink2)';">
+      &#8592; Back to <span id="back-section-label">News</span>
+    </button>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <a href="index.html" style="font-family:var(--sans);font-size:12px;color:var(--ink3);text-decoration:none;">🏠 Home</a>
+      <span style="color:var(--paper3);">|</span>
+      <a href="usnews.html" style="font-family:var(--sans);font-size:12px;color:var(--ink3);text-decoration:none;">U.S. News</a>
+      <span style="color:var(--paper3);">|</span>
+      <a href="world.html" style="font-family:var(--sans);font-size:12px;color:var(--ink3);text-decoration:none;">World</a>
+      <span style="color:var(--paper3);">|</span>
+      <a href="business.html" style="font-family:var(--sans);font-size:12px;color:var(--ink3);text-decoration:none;">Business</a>
+      <span style="color:var(--paper3);">|</span>
+      <a href="technology.html" style="font-family:var(--sans);font-size:12px;color:var(--ink3);text-decoration:none;">Tech</a>
+    </div>
+  </div>
+</div>
+
+<!-- AD SLOT TOP -->
+<div style="max-width:860px;margin:16px auto;padding:0 20px;">
+  
+</div>
+
+<div class="article-container">
+  <!-- BREADCRUMB -->
+  <div class="article-breadcrumb">
+    <a href="index.html">Home</a> &rsaquo; <span id="bc-section">News</span>
+  </div>
+
+  <!-- TAG + HEADLINE -->
+  <span class="article-tag" id="art-tag">News</span>
+  <h1 class="article-headline" id="art-headline">Loading story…</h1>
+
+  <!-- META -->
+  <div class="article-meta">
+    <span class="article-source" id="art-source"></span>
+    <span class="article-time" id="art-time"></span>
+    <a id="art-ext-link" href="#" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:12px;color:var(--red);text-decoration:none;font-weight:600;margin-left:auto;">View on source site ↗</a>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="article-hero-img">
+    <img id="art-img" src="https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=860&q=80&fit=crop" alt="Article image">
+  </div>
+  <div class="article-img-caption" id="art-caption">Image via source publication</div>
+
+  <!-- SHARE BAR -->
+  <div class="share-bar">
+    <span class="share-label">Share</span>
+    <button class="share-btn" onclick="shareStory('twitter')">🐦 Twitter</button>
+    <button class="share-btn" onclick="shareStory('facebook')">📘 Facebook</button>
+    <button class="share-btn" onclick="shareStory('whatsapp')">💬 WhatsApp</button>
+    <button class="share-btn" onclick="copyLink()">🔗 Copy Link</button>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="article-summary" id="art-summary">
+    <p>Loading article summary…</p>
+  </div>
+
+  <!-- AD MID -->
+
+  <!-- FULL STORY BANNER -->
+  
+<!-- Monetag Banner Zone 10750687 -->
+<div style="text-align:center;margin:24px 0;min-height:90px;">
+<script>(function(s){s.dataset.zone='10750687',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</div>
+
+  <div class="full-story-banner">
+    <p>This story is published by <strong id="banner-source">the original publisher</strong>. Click below to read the full article on their website.</p>
+    <a id="btn-read-full" href="#" target="_blank" rel="noopener" class="btn-read-full">Read Full Story ↗</a>
+  </div>
+
+  <!-- EMBED SECTION -->
+  <div class="embed-section">
+    <h3>Full Article</h3>
+    <div class="embed-frame-wrap" id="embed-wrap">
+      <iframe id="embed-frame" src="" title="Full article" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" loading="lazy"></iframe>
+      <div class="embed-blocked" id="embed-blocked">
+        <div class="icon">🔒</div>
+        <p>This publisher does not allow their content to be embedded. Click below to read the full story on their website.</p>
+        <a id="btn-blocked" href="#" target="_blank" rel="noopener" class="btn-read-full">Read Full Story ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD BOTTOM -->
+
+  <!-- RELATED ARTICLES -->
+  
+<!-- Monetag Banner Zone 10750687 -->
+<div style="text-align:center;margin:24px 0;min-height:90px;">
+<script>(function(s){s.dataset.zone='10750687',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</div>
+
+  <div class="related">
+    <h2>More Stories</h2>
+    <div class="related-grid" id="related-grid">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><a href="index.html" style="text-decoration:none;color:inherit">Pulse<span>Wire</span></a></div>
+    <div class="footer-tagline">America's Window to the World. Independent. Uncompromising.</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="usnews.html">U.S. News</a><a href="world.html">World</a>
+      <a href="business.html">Business</a><a href="technology.html">Technology</a>
+      <a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a>
+    </div>
+    <div class="footer-bottom">© 2026 PulseWire Media LLC. New York, NY. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+
+  // Back navigation
+  function goBack(){
+    var sec = (new URLSearchParams(window.location.search).get('section')||'').toLowerCase();
+    var map = {
+      'u.s. news':'usnews.html','politics':'politics.html','world':'world.html',
+      'business':'business.html','technology':'technology.html','health':'health.html',
+      'opinion':'opinion.html','video':'video.html'
+    };
+    var dest = map[sec] || (document.referrer && document.referrer.includes('pulsewire') ? document.referrer : 'index.html');
+    location.href = dest;
+  }
+  // Update back label
+  var bsec = new URLSearchParams(window.location.search).get('section')||'News';
+  var bl = document.getElementById('back-section-label');
+  if(bl) bl.textContent = bsec;
+
+  // ── Parse URL params ──
+var params = new URLSearchParams(window.location.search);
+function dp(val, fb) {
+  try {
+    var v = params.get(val) || fb || '';
+    // Handle + encoded spaces
+    v = v.replace(/\+/g, ' ');
+    return decodeURIComponent(v);
+  } catch(e) {
+    return (params.get(val) || fb || '').replace(/\+/g, ' ');
+  }
+}
+var artTitle   = dp('title',  'Breaking News');
+var artUrl     = dp('url',    '#');
+var artImg     = dp('img',    '');
+var artDesc    = dp('desc',   '');
+var artSource  = dp('source', 'PulseWire');
+var artSection = dp('section','News');
+var artTime    = dp('time',   '');
+
+// ── Populate page ──
+document.title = artTitle + ' – PulseWire';
+document.getElementById('page-title').textContent = artTitle + ' – PulseWire';
+document.getElementById('art-headline').textContent = artTitle;
+document.getElementById('art-tag').textContent = artSection;
+document.getElementById('bc-section').textContent = artSection;
+document.getElementById('art-source').textContent = artSource;
+document.getElementById('art-time').textContent = artTime;
+document.getElementById('art-ext-link').href = artUrl;
+document.getElementById('art-caption').textContent = 'Image via ' + artSource;
+document.getElementById('banner-source').textContent = artSource;
+document.getElementById('btn-read-full').href = artUrl;
+document.getElementById('btn-blocked').href = artUrl;
+
+// Image
+if(artImg){
+  document.getElementById('art-img').src = artImg;
+  document.getElementById('art-img').alt = artTitle;
+} else {
+  // topic-based image fallback
+  var TIMGS=[
+    ['iran|war|missile|military|strike','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=860&q=80&fit=crop'],
+    ['oil|gas|energy|barrel','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=860&q=80&fit=crop'],
+    ['trump|white house|president|congress|senate|capitol','https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=860&q=80&fit=crop'],
+    ['russia|ukraine|putin|zelensky','https://images.unsplash.com/photo-1604076913837-52ab5629fde9?w=860&q=80&fit=crop'],
+    ['china|beijing|taiwan|xi','https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=860&q=80&fit=crop'],
+    ['economy|market|stock|dow|inflation|fed','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=860&q=80&fit=crop'],
+    ['ai|tech|openai|gpt|nvidia|chip|cyber','https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=860&q=80&fit=crop'],
+    ['health|cdc|virus|disease|hospital|vaccine','https://images.unsplash.com/photo-1584515933487-779824d29309?w=860&q=80&fit=crop'],
+    ['climate|environment|carbon','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=860&q=80&fit=crop'],
+    ['court|supreme|judge|law','https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=860&q=80&fit=crop'],
+    ['election|vote|ballot|democrat|republican','https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=860&q=80&fit=crop'],
+    ['israel|hamas|gaza|middle east','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=860&q=80&fit=crop'],
+    ['space|nasa|rocket|moon|spacex','https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=860&q=80&fit=crop'],
+  ];
+  var t=artTitle.toLowerCase(), found=false;
+  for(var k=0;k<TIMGS.length;k++){var keys=TIMGS[k][0].split('|');for(var j=0;j<keys.length;j++){if(t.indexOf(keys[j])>-1){document.getElementById('art-img').src=TIMGS[k][1];found=true;break;}}if(found)break;}
+}
+
+// Summary
+var summaryEl = document.getElementById('art-summary');
+if(artDesc){
+  // Split into paragraphs if long
+  var sentences = artDesc.replace(/([.!?])\s+/g,'$1|').split('|').filter(Boolean);
+  var html = '';
+  var chunk = '';
+  sentences.forEach(function(s,i){
+    chunk += s + ' ';
+    if((i+1)%3===0 || i===sentences.length-1){ html += '<p>'+chunk.trim()+'</p>'; chunk=''; }
+  });
+  summaryEl.innerHTML = html || '<p>'+artDesc+'</p>';
+} else {
+  summaryEl.innerHTML = '<p>Click "Read Full Story" to read the complete article on the original publisher\'s website.</p>';
+}
+
+// ── Embed iframe ──
+var frame = document.getElementById('embed-frame');
+var blocked = document.getElementById('embed-blocked');
+if(artUrl && artUrl !== '#'){
+  frame.src = artUrl;
+  // Detect if blocked (X-Frame-Options)
+  frame.onload = function(){
+    try{
+      var doc = frame.contentDocument || frame.contentWindow.document;
+      if(!doc || doc.body.innerHTML === ''){
+        frame.style.display='none';
+        blocked.style.display='flex';
+      }
+    }catch(e){
+      // Cross-origin = page loaded (good) or blocked
+      // Check after 3s if frame has content indicator
+    }
+  };
+  // Timeout fallback — most blocked frames show nothing after 4s
+  setTimeout(function(){
+    try{
+      var h = frame.offsetHeight;
+      if(h < 50){ frame.style.display='none'; blocked.style.display='flex'; }
+    }catch(e){
+      frame.style.display='none'; blocked.style.display='flex';
+    }
+  }, 4000);
+} else {
+  frame.style.display='none';
+  blocked.style.display='flex';
+}
+
+// ── Load related articles from same feed ──
+var SECTION_FEEDS = {
+  'U.S. News': 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHomePage.xml&api_key=public&count=8',
+  'Politics':  'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHomePage.xml&api_key=public&count=8',
+  'World':     'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FWorld.xml&api_key=public&count=8',
+  'Business':  'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FBusiness.xml&api_key=public&count=8',
+  'Technology':'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FTechnology.xml&api_key=public&count=8',
+  'Health':    'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHealth.xml&api_key=public&count=8',
+};
+var BB_FALLBACK = {
+  'World':     'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fworld%2Frss.xml&api_key=public&count=8',
+  'Business':  'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fbusiness%2Frss.xml&api_key=public&count=8',
+  'Technology':'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Ftechnology%2Frss.xml&api_key=public&count=8',
+  'Health':    'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Fhealth%2Frss.xml&api_key=public&count=8',
+};
+var DEFAULT_FEED = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FHomePage.xml&api_key=public&count=8';
+var DEFAULT_FB   = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml&api_key=public&count=8';
+
+function getRelatedImg(item,title){
+  var i=item.thumbnail||(item.enclosure&&item.enclosure.link)||'';
+  if(i)return i;
+  var TIMGS=[
+    ['iran|war|missile|military','https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=400&q=80&fit=crop'],
+    ['oil|gas|energy','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80&fit=crop'],
+    ['trump|white house|president|congress','https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=400&q=80&fit=crop'],
+    ['economy|market|stock|inflation','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=80&fit=crop'],
+    ['ai|tech|openai|cyber','https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=80&fit=crop'],
+    ['health|virus|disease','https://images.unsplash.com/photo-1584515933487-779824d29309?w=400&q=80&fit=crop'],
+  ];
+  var t=(title||'').toLowerCase();
+  for(var k=0;k<TIMGS.length;k++){var keys=TIMGS[k][0].split('|');for(var j=0;j<keys.length;j++){if(t.indexOf(keys[j])>-1)return TIMGS[k][1];}}
+  return 'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=400&q=80&fit=crop';
+}
+
+function buildArticleUrl(item,sec){
+  var src2=item.author||(item.link?new URL(item.link).hostname.replace('www.',''):'News');
+  var im=item.thumbnail||(item.enclosure&&item.enclosure.link)||getRelatedImg(item,item.title||'');
+  var d=(item.description||item.content||'').replace(/<[^>]+>/g,'').substring(0,400);
+  return 'article.html?'+
+    'title='+encodeURIComponent(item.title||'')+
+    '&url='+encodeURIComponent(item.link||'')+
+    '&img='+encodeURIComponent(im)+
+    '&desc='+encodeURIComponent(d)+
+    '&source='+encodeURIComponent(src2)+
+    '&section='+encodeURIComponent(sec||artSection)+
+    '&time='+encodeURIComponent(item.pubDate||'');
+}
+
+function renderRelated(items){
+  var grid=document.getElementById('related-grid');
+  if(!grid)return;
+  var html='';
+  // Exclude current article
+  var filtered=items.filter(function(x){return x.title!==artTitle;}).slice(0,3);
+  filtered.forEach(function(item){
+    var t=item.title||'';
+    var im=getRelatedImg(item,t);
+    var src2=item.author||(item.link?(function(){try{return new URL(item.link).hostname.replace('www.','');}catch(e){return'News';}}()):'News');
+    var url=buildArticleUrl(item,artSection);
+    html+='<div class="related-card" onclick="location.href=\''+url.replace(/'/g,"\\'")+'\'">'+
+      '<div class="related-thumb"><img src="'+im+'" alt="'+t.substring(0,40)+'" onerror="this.src=\'https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?w=400&q=60\'"></div>'+
+      '<div class="related-headline">'+t+'</div>'+
+      '<div class="related-meta">'+src2+'</div>'+
+    '</div>';
+  });
+  grid.innerHTML=html||'<p style="font-family:var(--sans);font-size:13px;color:var(--ink3);">No related stories found.</p>';
+}
+
+var feedUrl=SECTION_FEEDS[artSection]||DEFAULT_FEED;
+var fbUrl=(BB_FALLBACK[artSection])||DEFAULT_FB;
+fetch(feedUrl).then(function(r){return r.json();}).then(function(d){
+  if(d.items&&d.items.length)renderRelated(d.items);
+  else throw 0;
+}).catch(function(){
+  fetch(fbUrl).then(function(r){return r.json();}).then(function(d){
+    if(d.items&&d.items.length)renderRelated(d.items);
+  }).catch(function(){});
+});
+
+// ── Share ──
+function shareStory(platform){
+  var url=encodeURIComponent(window.location.href);
+  var title=encodeURIComponent(artTitle);
+  var links={
+    twitter:'https://twitter.com/intent/tweet?text='+title+'&url='+url,
+    facebook:'https://www.facebook.com/sharer/sharer.php?u='+url,
+    whatsapp:'https://wa.me/?text='+title+' '+url
+  };
+  if(links[platform])window.open(links[platform],'_blank','width=600,height=400');
+}
+function copyLink(){
+  if(navigator.clipboard){navigator.clipboard.writeText(window.location.href).then(function(){alert('Link copied!');});}
+  else{var t=document.createElement('input');t.value=window.location.href;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);alert('Link copied!');}
+}
+
+// ── Nav toggle ──
+var toggle=document.getElementById('nav-toggle'),menu=document.getElementById('nav-menu');
+if(toggle&&menu){toggle.addEventListener('click',function(){toggle.classList.toggle('open');menu.classList.toggle('open');});}
+</script>
+  <script>(function(s){s.dataset.zone='10748039',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</body>
+</html>
