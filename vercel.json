@@ -1,0 +1,30 @@
+{
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/article", "dest": "/article.html" },
+    { "src": "/usnews", "dest": "/usnews.html" },
+    { "src": "/politics", "dest": "/politics.html" },
+    { "src": "/world", "dest": "/world.html" },
+    { "src": "/business", "dest": "/business.html" },
+    { "src": "/technology", "dest": "/technology.html" },
+    { "src": "/health", "dest": "/health.html" },
+    { "src": "/opinion", "dest": "/opinion.html" },
+    { "src": "/video", "dest": "/video.html" },
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/contact", "dest": "/contact.html" },
+    { "src": "/privacy", "dest": "/privacy.html" },
+    { "src": "/(.*)\\.html(.*)", "dest": "/$1.html$2" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
